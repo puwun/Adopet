@@ -1,26 +1,103 @@
 *{
-  margin:0;
-  padding:0;
-  height: 1000vh;
-  background:linear-gradient(45deg,#fff,
-    #f0f0f0,
-    #e6e6e6,
-    #ea7877,
-    #dca29c,
-    #edcf6b,
-    #c1c7cf,#dca29c,#ea7877,#edcf6b,#e6e6e6);
-    background-size:300% 300%;
-    animation:color 6s ease-in-out infinite;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  height:100%;
+  width:100%;
+}
+#page1{
+  height:100vh;
+  width:100%;
+  background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  position:relative;
+}
+#page1 video{
+  position:absolute;
+  object-fit:cover;
+  top:0;
+  left:0;
+  font-family: 'Amatic SC', sans-serif;
+  width:100%;
+  height:100%;
+
+}
+#page1-content{
+  height:100%;
+  width:100%;
+  font-family: 'Amatic SC', sans-serif;
+  position:relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+  color:#c1c7cf;
+  font-size: large;
+  padding-top: 90;
+  /* padding-bottom: 70; */
+  /* background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite; */
 }
 
 
-#page1 h1{
-  padding-top: 1vh;
-  padding-left: 4vh;
-  font-size: 9vh;
-  text-transform: uppercase;
-  font-family: 'Philosopher', sans-serif;
-  font-family: 'Ubuntu', sans-serif;
+nav{
+  /* height:100%; */
+  display: flex;
+  justify-content: space-between;
+  padding:2vw 3vw;
+  width:100%;
+  display:flex;
+  /* background-color: aqua; */
+  justify-content:space-between;
+  align-items:center;
+  position:absolute;
+  top:0;
+  left:0;
 }
-
+nav h3{
+  font-size:2.6vw;
+  color: #c1c7cf;
+}
+nav h4{
+  font-size:2.6vw;
+  color:#c1c7cf
   
+}
+/* h1{
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 20vw;
+  background-color:linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%; ;
+  text-align: center;
+  padding-top: 400px;
+}*/
+h1 { 
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 27vw;
+  background-image: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%;
+  text-align: center;
+  padding-top: 39vh;
+
+  -webkit-background-clip: text; /* For webkit-based browsers */
+  background-clip: text;
+  color: transparent; /* Hides the text color */
+}
+#page1-content h1{
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 27vw;
+  background-image: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%;
+  text-align: center;
+  padding-top: 39vh;
+}
+#page1-content h1 span{
+  font-family:  'Amatic SC', sans-serif ;
+}
+
+
