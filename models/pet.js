@@ -15,7 +15,16 @@ const petSchema = new Schema({
         required: [true, 'Pet description is required'],
 
     },
+    age:{
+        type:String,
+        required: [true, 'Age is required']
+    },
     image: {
+        type: String,
+        required: [true, 'Pet image is required'],
+
+    },
+    medHistory: {
         type: String,
         required: [true, 'Pet image is required'],
 
@@ -29,11 +38,11 @@ const petSchema = new Schema({
         ref: 'User'
     },
     isFullyVaccinated: {
-        type: Boolean,
+        type: String,// type: Boolean, 
         required: [true, 'Vaccinated is required'],
     },
-    goodWithKids: {
-        type: Boolean,
+    isGoodWithKids: {
+        type: String, // type: Boolean,
         required: [true, 'Good with kids is required'],
     },
     gender: {

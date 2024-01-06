@@ -26,9 +26,9 @@
       <input type="text" name="breed" id="breed"/>
     </div>
     <div class="form-example">
-        <label for="descrip">Enter pet description: </label>
+        <label for="description">Enter pet description: </label>
         <br>
-        <input type="text" name="descrip" id="descrip" required />
+        <input type="text" name="description" id="description" required />
     </div>
     <div class="form-example">
       <label for="age">Enter pet age: </label>
@@ -38,28 +38,36 @@
     <div class="form-example">
       <label for="image">Enter pet image: </label>
       <br>
-      <input type="file" name="image" id="image" required />
+      <!-- <input type="file" name="image" id="image" required /> -->
+      <input type="text" name="image" id="image" required />
     </div>
     <div>
         <label for="isFullyVaccinated">Are shots up to date?</label>
         <br>
-        <input type="radio" id="yesVacc" name="isFullyVaccinated" value="isFullyVaccinated" required />
+        <!-- <input type="radio" id="yesVacc" name="isFullyVaccinated" value="true" required />
         <label for="isFullyVaccinated">Yes</label>
-        <input type="radio" id="noVacc" name="isFullyVaccinated" value="isFullyVaccinated" required/>
-        <label for="isFullyVaccinated">No</label>
+        <input type="radio" id="noVacc" name="isFullyVaccinated" value="false" required/>
+        <label for="isFullyVaccinated">No</label> -->
+        <input type="text" name="isFullyVaccinated" id="isFullyVaccinated" required />
+        <!-- Make it boolean -->
     </div>
     <div class="form-example">
-      <label for="history">Enter pet medical history: </label>
+      <label for="medHistory">Enter pet medical history: </label>
       <br>
-      <input type="file" name="history" id="history" required />
+      <!-- <input type="file" name="medHistory" id="medHistory" required /> -->
+      <input type="text" name="medHistory" id="medHistory" required />
+
     </div>
     <div>
         <label for="isGoodWithKids">Is the pet good with kids?</label>
         <br>
-        <input type="radio" id="yesKids" name="isGoodWithKids" value="isGoodWithKids" required/>
+        <input type="text" name="isGoodWithKids" id="isGoodWithKids" required />
+ 
+        <!-- <input type="radio" id="yesKids" name="isGoodWithKids" value="true" required/>
         <label for="isGoodWithKids1">Yes</label>
-        <input type="radio" id="noKids" name="isGoodWithKids" value="isGoodWithKids" required/>
-        <label for="isGoodWithKids">No</label>
+        <input type="radio" id="noKids" name="isGoodWithKids" value="false" required/>
+        <label for="isGoodWithKids">No</label> -->
+        <!-- Make it boolean -->
     </div>
     <div class="form-example">
         <label for="gender">Enter pet gender: </label>
