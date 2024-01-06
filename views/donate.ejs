@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Form</title>
+</head>
+
+<body>
+  <h1>Donation form</h1>
+  <form action="/donate" method="POST" class="form-example">
+    <div class="form-example">
+        <label for="username">Enter pet name: </label>
+        <br>
+        <input type="text" name="petName" id="petName" required />
+    </div>
+    <div class="form-example">
+      <label for="category">Enter pet category: </label>
+      <br>
+      <input type="text" name="category" id="category" required />
+    </div>
+    <div class="form-example">
+      <label for="breed">Enter pet breed: </label>
+      <br>
+      <input type="text" name="breed" id="breed"/>
+    </div>
+    <div class="form-example">
+        <label for="descrip">Enter pet description: </label>
+        <br>
+        <input type="text" name="descrip" id="descrip" required />
+    </div>
+    <div class="form-example">
+      <label for="age">Enter pet age: </label>
+      <br>
+      <input type="number" name="age" id="age" required />
+    </div>
+    <div class="form-example">
+      <label for="image">Enter pet image: </label>
+      <br>
+      <input type="file" name="image" id="image" required />
+    </div>
+    <div>
+        <label for="isFullyVaccinated">Are shots up to date?</label>
+        <br>
+        <input type="radio" id="yesVacc" name="isFullyVaccinated" value="isFullyVaccinated" required />
+        <label for="isFullyVaccinated">Yes</label>
+        <input type="radio" id="noVacc" name="isFullyVaccinated" value="isFullyVaccinated" required/>
+        <label for="isFullyVaccinated">No</label>
+    </div>
+    <div class="form-example">
+      <label for="history">Enter pet medical history: </label>
+      <br>
+      <input type="file" name="history" id="history" required />
+    </div>
+    <div>
+        <label for="isGoodWithKids">Is the pet good with kids?</label>
+        <br>
+        <input type="radio" id="yesKids" name="isGoodWithKids" value="isGoodWithKids" required/>
+        <label for="isGoodWithKids1">Yes</label>
+        <input type="radio" id="noKids" name="isGoodWithKids" value="isGoodWithKids" required/>
+        <label for="isGoodWithKids">No</label>
+    </div>
+    <div class="form-example">
+        <label for="gender">Enter pet gender: </label>
+        <br>
+        <input type="text" name="gender" id="gender" required />
+    </div>
+    <div class="form-example">
+        <label for="whyDonate">Why donate? </label>
+        <br>
+        <input type="text" name="whyDonate" id="whyDonate" required />
+    </div>
+    <div class="form-example">
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+  </form>
+</body>
+
+</html>
