@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ form</title>
+</head>
+<body>
+    <h1>Feedback form</h1>
+    <form action="/feedback" method="POST" class="form-example">
+        <div class="form-example">
+          <label for="name">Your Name </label>
+          <br>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div class="form-example">
+          <label for="email">Your Email </label>
+          <br>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="form-example">
+            <label for="phone">Your phone number </label>
+            <br>
+            <input type="text" name="phone" id="phone" required />
+        </div>
+        <div class="form-example">
+          <label for="password">Subject </label>
+          <br>
+          <input type="text" name="subject" id="subject" required />
+        </div>
+        <div class="form-example">
+            <label for="password">Your Feedback </label>
+            <br>
+            <input type="text" name="feedback" id="feedback" required />
+        </div>
+        
+        <div class="form-example">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+</body>
+</html>
