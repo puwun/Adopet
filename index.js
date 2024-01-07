@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const ExpressError = require('express-error-handler');
-const UserRoutes = require('./routes/user');
+const userRouter = require('./routes/user');
+const articleRouter = require('./routes/articles');
 const User = require('./models/user');
+const Article = require('./models/article');
 const Pet = require('./models/pet');
+const { use } = require('passport');
+const catchAsync = require('./utils/catchAsync');
+const Joi = require('joi');
 // const session = require('express-session');
 // const flash = require('connect-flash');
 // const passport = require('passport');
@@ -13,11 +19,12 @@ const Pet = require('./models/pet');
 
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
-app.use(express.urlencoded({ extended: true }));
+app.set('views', './views');   //lets express know where to look for views
+app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'));
 
 
-mongoose.connect('mongodb://localhost:27017/pet-adoption', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/pet-adoption')
     .then(() => {
         console.log('Mongo connection open!')
     })
@@ -26,12 +33,6 @@ mongoose.connect('mongodb://localhost:27017/pet-adoption', { useNewUrlParser: tr
         console.log(err)
     })
 
-
-function catchAsync(fn) {
-    return function (req, res, next) {
-        fn(req, res, next).catch(e => next(e))
-    }
-}
 
 //session
 // const sessionOptions = { secret: 'notagoodsecret', resave: false, saveUninitialized: false }
@@ -47,12 +48,14 @@ function catchAsync(fn) {
 // })
 
 
-
-
-
-app.get('/signup', (req, res) => {
-    res.render('signup.ejs');
+app.get('/', (req, res) => {
+    // res.render('home.ejs');
+    res.send('THIS IS HOME PAGE text');
+    // res.render('index');
 })
+
+
+app.use('/signup', userRouter);
 
 app.get('/feedback', (req, res) => {
     res.render('feedback.ejs');
@@ -66,13 +69,6 @@ app.get('/donate', (req, res) => {
     res.render('donate.ejs');
 })
 
-app.post('/signup', catchAsync(async (req, res) => {
-    const { username, password, email, phone } = req.body;
-    const user = new User({ username, password, email, phone });
-    await user.save();
-    res.json({ success: true, user });
-}
-))
 
 
 app.post('/donate', catchAsync(async (req, res) => {
@@ -82,6 +78,13 @@ app.post('/donate', catchAsync(async (req, res) => {
     res.json({ success: true, pet });
 }))
 
+
+app.use('/articles', articleRouter);
+
+
+
+//the above middleware is used to prefix all the routes in articleRouter with /articles
+//it implies that we are USING the prefix /articles for all the middlewares in articleRouter
 
 
 // app.post('/signup', catchAsync(async (req, res) => {
@@ -106,6 +109,17 @@ app.post('/donate', catchAsync(async (req, res) => {
 //     next(new ExpressError('Page Not Found', 404))
 //     }
 // )
+
+    // app.get('*', (req, res) => {
+    //     res.send('I dont know this path!!')
+    // })
+
+
+app.use((err, req, res, next)=>{
+    const {statusCode = 500, message = 'Something went wrong'} = err;
+    res.status(statusCode)
+    res.render('error', {err});
+})
 
 app.listen(3000, () => {
     console.log('Server is listening on port 3000!!!')

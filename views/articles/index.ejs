@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Example</title>
+
+  <!-- Isme css karna hai such that ek line mei 3 article dikhne chahiye-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px;
+      /* grid-template-columns: 100px 100px 100px; */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <%- include('../partials/navbar') %>
+  <h1>Main Blog Page</h1>
+</div>
+<% for(let art of aart){%>
+  <div class="card">
+    <img src="https://placekitten.com/300/201" alt="Card Image">
+    <div class="card-content">
+      <h2 class="card-title"><a href="/articles/<%= art._id%>"><%= art.title%></a></h2>
+      <p class="card-description"><%= art.content%></p>
+      
+    </div>
+  </div>
+  <br>
+  <%}%>
+</body>
+</html>
