@@ -5,33 +5,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form</title>
+  <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <h1>Login form</h1>
-  <form action="/signup" method="POST" class="form-example">
+  <h1>Signup form</h1>
+  <div> <%- include('partials/navbar') %>
+  </div>
+  <form action="/signup" method="POST" novalidate class="needs-validation" >
+    <!-- <div class="form-example">
+      <label for="username">Enter your name: </label>
+      <input type="text" name="username" id="username" required />
+    </div> -->
     <div class="form-example">
-        <label for="username">Enter your name: </label>
-        <input type="text" name="username" id="username" required />
-    
+      <label for="username" class="form-label">Enter name</label>
+      <input type="text" class="form-control" name="username" id="username"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter a valid name.
+      </div>
     </div>
     <div class="form-example">
-      <label for="email">Enter your email: </label>
-      <input type="email" name="email" id="email" required />
+      <label for="email" class="form-label">Enter your email</label>
+      <input type="email" class="form-control" name="email" id="email"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter a valid email.
+      </div>
     </div>
     <div class="form-example">
-      <label for="password">Enter your password: </label>
-      <input type="password" name="password" id="password" required />
+      <label for="password" class="form-label">Enter your password</label>
+      <input type="password" class="form-control" name="password" id="password"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter a valid password.
+      </div>
     </div>
     <div class="form-example">
-      <label for="phone">Enter your phone number: </label>
-      <input type="text" name="phone" id="phone" required />
+      <label for="phone" class="form-label">Enter your phone</label>
+      <input type="text" class="form-control" name="phone" id="phone"  required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please enter a valid phone number.
+      </div>
     </div>
     <div class="form-example">
-        <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" />
     </div>
-</form>
   </form>
+  <script>  // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+    (function () {
+    'use strict'
+    
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+    
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()</script>
 </body>
 
 </html>
+
+
+
+
+
+
+
