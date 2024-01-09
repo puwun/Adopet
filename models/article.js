@@ -10,11 +10,17 @@ const articleSchema = new Schema({
         type: String,
         required: [true, 'Content is required'],
     },
+    author:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    // comments:
+    }
     // user: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'User'
     // }
-})
+)
 
 
 

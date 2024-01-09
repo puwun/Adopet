@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+    height: 1000vh;
+    background:linear-gradient(45deg,#fff,
+      #f0f0f0,
+      #e6e6e6,
+      #ea7877,
+      #dca29c,
+      #edcf6b,
+      #c1c7cf,#dca29c,#ea7877,#edcf6b,#e6e6e6);
+      background-size:300% 300%;
+      animation:color 6s ease-in-out infinite;
+  }
+  
+  
+  #page1 h1{
+    padding-top: 1vh;
+    padding-left: 4vh;
+    font-size: 9vh;
+    text-transform: uppercase;
+    font-family: 'Philosopher', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+    

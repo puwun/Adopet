@@ -7,23 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Write a new article</h1>
+    <h1>Edit a article</h1>
     <%- include('../partials/navbar') %>
     <!-- <form action="/articles" method="POST" class="form-example"> -->
-    <form action="/articles/new" method="POST" class="form-example">
+    <form action="/articles/<%=article._id%>?_method=PUT" method="POST" class="form-example">
         <div class="form-example">
             <label for="title">Enter title: </label>
-            <input type="text" name="title" id="title" required />
+            <input type="text" name="title" id="title" value="<%=article.title%>" required />
         </div>
 <!-- content input should be of type textarea -->
         <div class="form-example">
             <label for="content">Enter content: </label>
-            <input type="text" name="content" id="content" required />
+            <input type="text" name="content" id="content" value="<%= article.content %>" required />
         </div>
         <div class="form-example">
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Update" />
         </div>
     </form>
+    <a href="/articles">Back to all Articles</a>
     <div> <%- include('../partials/footer') %>
     </div>
 
