@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>signup Form</title>
+  <title>Login Form</title>
   <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -16,18 +16,14 @@
 </head>
 
 <body>
-  <div> <%- include('./partials/navbar') %>
-    <%- include('./partials/flash') %>
+  <h1>Login form</h1>
+  <div> <%- include('partials/navbar') %>
+  <%- include('partials/flash') %>
   </div>
-  <h1>Signup form</h1>
-  <form action="/signup" method="POST" novalidate class="needs-validation" >
-    <!-- <div class="form-example">
-      <label for="username">Enter your name: </label>
-      <input type="text" name="username" id="username" required />
-    </div> -->
+  <form action="/login" method="POST" novalidate class="needs-validation" >
     <div class="form-example">
-      <label for="username" class="form-label">Enter name</label>
-      <input type="text" class="form-control" name="username" id="username"  required>
+      <label for="username" class="form-label">Enter username</label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -35,16 +31,7 @@
         Please enter a valid name.
       </div>
     </div>
-    <div class="form-example">
-      <label for="email" class="form-label">Enter your email</label>
-      <input type="email" class="form-control" name="email" id="email"  required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please enter a valid email.
-      </div>
-    </div>
+
     <div class="form-example">
       <label for="password" class="form-label">Enter your password</label>
       <input type="password" class="form-control" name="password" id="password"  required>
@@ -56,17 +43,7 @@
       </div>
     </div>
     <div class="form-example">
-      <label for="phone" class="form-label">Enter your phone</label>
-      <input type="text" class="form-control" name="phone" id="phone"  required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please enter a valid phone number.
-      </div>
-    </div>
-    <div class="form-example">
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Login" />
     </div>
   </form>
   <script>  // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -85,14 +62,10 @@
             event.preventDefault()
             event.stopPropagation()
           }
-    
           form.classList.add('was-validated')
         }, false)
       })
     })()</script>
-        <div> <%- include('./partials/footer') %>
-    </div>
-
 </body>
 
 </html>

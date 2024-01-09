@@ -7,25 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
+  <main>
+
+    <!-- header -->
     <header>
-<%- include('../partials/navbar') %>
+      <nav class = "navbar">
+        <div class = "container">
+          <a href = "index.html" class = "navbar-brand">Adopet Blog</a>
+          <div class = "navbar-nav">
+            <a href = "">Donate</a>
+            <a href = "">Adopt</a>
+            <a href = "">Get to vet</a>
+            <a href = "">Blog</a>
+            <a href = "">events</a>
+            <a href = "">Sign up</a>
+            <a href = "">Sign in</a>
+          </div>
+        </div>
+      </nav>
       <div class = "banner">
         <div class = "container">
           <h1 class = "banner-title">
             <span>Blog</span>
-            <img src="../images/banner-bg.jpg" alt="">
           </h1>
           <p>everything that you want to know about your pets</p>
-          <!-- <img src = "https://staging.petmag.com/wp-content/uploads/2020/08/category-header-cats.jpg" -->
+          <img src = "../images/banner-bg.jpg" alt = "">
         </div>
       </div>
     </header>
     <!-- end of header -->
     
     <!-- design -->
-
     <div class="scroll-tracker"></div>
     <section class = "design" id = "design">
       <div class = "container">
@@ -33,35 +47,22 @@
           <h2>Read about Dogs & cats</h2>
           <p>recent arts & designs on the blog</p>
         </div>
-        <% for(let art of aart){%>
 
         <div class = "design-content">
           <!-- item -->
-          <!-- <div class="card"> -->
           <div class = "design-item">
-            <div class="design-img">
-              <a href="/articles/<%= art._id%>">
-                <img src="https://plus.unsplash.com/premium_photo-1663047910718-c8758a6785e9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="article-image">
-                <!-- <label for="article-link">Article Link</label> -->
-              </a>
-              <span><i class="far fa-heart"></i> 22</span>
+            <div class = "design-img">
+              <img src = "https://plus.unsplash.com/premium_photo-1663047910718-c8758a6785e9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
               <span>Adopet</span>
-            
             </div>
-            
             <div class = "design-title">
-              <div class="card-content">
-                <h2 class="card-title"><a href="/articles/<%= art._id%>"><%= art.title%></a></h2>
-                <p class="card-description"><%= art.content%></p>
-                
-              </div>
+              <a href = "#">Jot down pet care blogs</a>
             </div>
           </div>
         </div>
         </div>
     </section>
-    <%}%>
-
     <!-- end of design -->
 
 
@@ -182,8 +183,27 @@
   </main>
 
     <!-- footer -->
- <%- include('../partials/footer') %>
-      <!-- end of footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <div class="left-section">
+        <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="right-section">
+        <img src="/" alt="Logo" />
+    </div>
+      <span>ADOPET</span>
+    </footer>
+    <!-- end of footer -->
     
     
   </body>
