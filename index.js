@@ -5,6 +5,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ExpressError = require('express-error-handler');
 const userRouter = require('./routes/user');
+const petRouter = require('./routes/adopt');
 const articleRouter = require('./routes/articles');
 const User = require('./models/user');
 const Article = require('./models/article');
@@ -123,6 +124,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/', userRouter);
+app.use('/adopt', petRouter);
 
 
 app.get('/fakeUser', async(req, res)=>{
@@ -151,17 +153,36 @@ app.get('/faq', (req, res) => {
     res.render('faq.ejs');
 })
 
+
+
 app.get('/donate', (req, res) => {
     res.render('donate.ejs');
 })
 
-
-
 app.post('/donate', catchAsync(async (req, res) => {
-    const {petName, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
-    const pet = new Pet({petName, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-    await pet.save();
-    res.json({ success: true, pet });
+    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+    const newPet = new Pet({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+    await newPet.save();
+    switch(pet){
+        case 'dog':
+            res.redirect('/adopt/dogs');
+            break;
+        case 'cat':
+            res.redirect('/adopt/cats');
+            break;
+        case 'bird':
+            res.redirect('/adopt/birds');
+            break;
+        case 'smallandfurry':
+            res.redirect('/adopt/smallandfurries');
+            break;
+        case 'other':
+            res.redirect('/adopt/others');
+            break;
+        default:
+            res.redirect('/adopt');
+            break;
+    }
 }))
 
 

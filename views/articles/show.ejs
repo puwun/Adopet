@@ -10,6 +10,7 @@
 
     <h1><%=article.title%></h1>
     <h2><%=article.content%></h2>
+    <!-- <h3>by %=article.author%> </h3>  here authors name should come-->
    <p><a href="/articles/<%= article._id%>/edit">Edit</a></p> 
    <p><form action="/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
     <a href="/articles">Go back to all blogs</a>

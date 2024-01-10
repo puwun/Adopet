@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs</title>
+</head>
+<body>
+    <h1>THIS IS ALL birds PAGE chiiiiiiiuuuuuuuuchuuuuchuuu!!</h1>
+    <%- include('../../partials/navbar') %>
+
+    <%for(let bird of birdies) {%>
+
+        <h2><%=bird.name  %></h2>
+<% } %>
+
+    <div> <%- include('../../partials/footer') %>
+</body>
+</html>

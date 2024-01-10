@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Example</title>
+
+  <!-- Isme css karna hai such that ek line mei 3 article dikhne chahiye-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px;
+      /* grid-template-columns: 100px 100px 100px; */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+  <h1>Main Event Page</h1>
+</div>
+
+<div><a href="events/new">Make a new event</a></div>
+<% for(let ev of eve){%>
+  <div class="card">
+    <img src="https://placekitten.com/300/201" alt="Card Image">
+    <div class="card-content">
+      <h2 class="card-title"><a href="/events/<%= ev._id%>"><%= ev.title%></a></h2>
+      <p class="card-description"><%= ev.content%></p>
+      
+    </div>
+  </div>
+  <br>
+  <%}%>
+  <div> <%- include('../partials/footer') %>
+  </div>
+</body>
+</html>
