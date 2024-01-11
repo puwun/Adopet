@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 const Joi = require('joi');
-const { validateArticle, isLoggedIn} = require('../middleware');
+const { validateArticle, isLoggedIn, isAuthor} = require('../middleware');
 // const passport = require('passport');  redundant as even without importing passport we were able to use .isAuthenticated() bcoz we had already imported it in index.js
 
 
@@ -33,6 +33,7 @@ router.get('/new',isLoggedIn ,(req, res) =>{
 
 router.post('/new', isLoggedIn, validateArticle, catchAsync(async (req, res, next) => {
     const article = new Article(req.body);
+    article.author = req.user._id;
     await article.save();
     req.flash('success', 'Successfully made a new article!');
     res.redirect('/articles')
@@ -46,21 +47,32 @@ router.post('/new', isLoggedIn, validateArticle, catchAsync(async (req, res, nex
 
 //required User so that only a particular user can edit/deletee his article
 router.get('/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const article = await Article.findById(id);
+    // const { id } = req.params;
+    const article = await Article.findById(req.params.id).populate('author');
+    // console.log('----------------------')
+    // console.log(article)
+    // console.log('----------------------')
+    // console.log(article.author)
+    // console.log('----------------------')
+    // console.log(article.author.username)
     res.render('../views/articles/show', {article})
 }))
 
-router.get('/:id/edit',catchAsync(async (req, res) => {
+router.get('/:id/edit',isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     // res.send('editing a specific article');
-    const article = await Article.findById(req.params.id);
+    const { id } = req.params;
+    const article = await Article.findById(id);
+    if(!article){
+        res.flash('error', 'Cannot find that article!');
+        return res.redirect('/articles');
+    }
     res.render('../views/articles/edit', {article})
 }))
 
 
-router.put('/:id', isLoggedIn,validateArticle, catchAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, isAuthor, validateArticle, catchAsync(async (req, res) => {
     // res.send('updating a specific article');
-     const { id } = req.params;
+    const { id } = req.params;
      const article =  await Article.findByIdAndUpdate(id, {...req.body});
     //  console.log(id)
     //  console.log(req.body)
@@ -70,7 +82,7 @@ router.put('/:id', isLoggedIn,validateArticle, catchAsync(async (req, res) => {
 }))
 
 
-router.delete('/:id', isLoggedIn,catchAsync(async (req, res) => {
+router.delete('/:id', isLoggedIn,isAuthor, catchAsync(async (req, res) => {
     const {id} = req.params;
     await Article.findByIdAndDelete(id);
     res.redirect('/articles');

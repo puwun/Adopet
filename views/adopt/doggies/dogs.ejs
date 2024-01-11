@@ -11,7 +11,7 @@
 
     <%for(let dog of doggies) {%>
 
-        <h2><%=dog.name  %></h2>
+        <h2><a href="/adopt/dogs/<%= dog.id %>"><%=dog.name  %></a></h2>
 <% } %>
 
 

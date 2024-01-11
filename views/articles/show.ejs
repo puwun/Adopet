@@ -7,12 +7,18 @@
 </head>
 <body>
      <%- include('../partials/navbar') %>
+     <%- include('../partials/flash') %>
 
     <h1><%=article.title%></h1>
     <h2><%=article.content%></h2>
-    <!-- <h3>by %=article.author%> </h3>  here authors name should come-->
+    <h3>Wriiten by <%=article.author.username%> </h3>  
+
+    <!-- things will break if we only check for whether cuurentUser is same as the one logged in as guest can be able to access these features -->
+    <!-- so we added one more condition, to check first whether currentUser even exists or not -->
+    <% if(currentUser && article.author.equals(currentUser)) { %>
    <p><a href="/articles/<%= article._id%>/edit">Edit</a></p> 
    <p><form action="/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
+    <% } %>
     <a href="/articles">Go back to all blogs</a>
         <div> <%- include('../partials/footer') %>
     </div>

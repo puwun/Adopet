@@ -9,8 +9,12 @@ const petRouter = require('./routes/adopt');
 const articleRouter = require('./routes/articles');
 const User = require('./models/user');
 const Article = require('./models/article');
-const Pet = require('./models/pet');
-const { use } = require('passport');
+const Dog = require('./models/pets/dog');
+const Cat = require('./models/pets/cat');
+const Bird = require('./models/pets/bird');
+const Smallandfurry = require('./models/pets/saf');
+const Other = require('./models/pets/other');
+// const { use } = require('passport');
 const catchAsync = require('./utils/catchAsync');
 const Joi = require('joi');
 const session = require('express-session');
@@ -21,6 +25,7 @@ const cookieParser = require('cookie-parser');
 // const bcrypt = require('bcrypt');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
+const { isLoggedIn } = require('./middleware');
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 
 
@@ -159,24 +164,32 @@ app.get('/donate', (req, res) => {
     res.render('donate.ejs');
 })
 
-app.post('/donate', catchAsync(async (req, res) => {
+app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
     const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
-    const newPet = new Pet({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-    await newPet.save();
     switch(pet){
         case 'dog':
+            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+            await dog.save();
             res.redirect('/adopt/dogs');
             break;
         case 'cat':
+            const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+            await cat.save();
             res.redirect('/adopt/cats');
             break;
         case 'bird':
+            const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+            await bird.save();
             res.redirect('/adopt/birds');
             break;
         case 'smallandfurry':
+            const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+            await smallandfurry.save();
             res.redirect('/adopt/smallandfurries');
             break;
         case 'other':
+            const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+            await other.save();
             res.redirect('/adopt/others');
             break;
         default:

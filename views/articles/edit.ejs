@@ -9,6 +9,7 @@
 <body>
     <h1>Edit a article</h1>
     <%- include('../partials/navbar') %>
+    <%- include('../partials/flash') %>
     <!-- <form action="/articles" method="POST" class="form-example"> -->
     <form action="/articles/<%=article._id%>?_method=PUT" method="POST" class="form-example">
         <div class="form-example">

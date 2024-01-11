@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const Article = require('./models/article');
 const ExpressError = require('./utils/ExpressError');
 
 
@@ -58,10 +59,22 @@ const requireLogin = (req, res, next) => {
     }
 }
 
+
+
+const isAuthor = async(req, res, next)=>{
+    const { id } = req.params;
+    const article = await Article.findById(id);
+    if(!article.author.equals(req.user._id)) {
+           req.flash('error', 'You do  not have permission to do that!');
+           return res.redirect(`/articles/${id}`);
+       }
+       next();
+}
 // Exporting all middleware functions as an object
 module.exports = {
     isLoggedIn,
     requireLogin,
     validateUser,
     validateArticle,
+    isAuthor,
   };
