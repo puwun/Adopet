@@ -11,7 +11,11 @@
 
     <%for(let bird of birdies) {%>
 
+<<<<<<< Updated upstream
         <h2><%=bird.name  %></h2>
+=======
+        <h2><a href="/adopt/birds/<%= bird.id %>"><%=bird.name  %></a></h2>
+>>>>>>> Stashed changes
 <% } %>
 
     <div> <%- include('../../partials/footer') %>

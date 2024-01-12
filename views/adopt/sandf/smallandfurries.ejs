@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
     <title>Dogs</title>
+=======
+    <title>saf</title>
+>>>>>>> Stashed changes
 </head>
 <body>
     <h1>THIS IS ALL small and furries PAGE uWu !!</h1>
     <%- include('../../partials/navbar') %>
 
+<<<<<<< Updated upstream
     <%for(let s of smallandfurries) {%>
 
         <h2><a href="/adopt/smallandfurries/<%= s.id %>"><%=s.name  %></a></h2>
+=======
+    <%for(let smol of smallandfurries) {%>
+
+        <h2><a href="/adopt/smallandfurries/<%= smol.id %>"><%=smol.name  %></a></h2>
+>>>>>>> Stashed changes
 <% } %>
     <div> <%- include('../../partials/footer') %>
 </body>

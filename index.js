@@ -132,15 +132,15 @@ app.use('/', userRouter);
 app.use('/adopt', petRouter);
 
 
-app.get('/fakeUser', async(req, res)=>{
-    const user = new User({
-        email: 'fake@gmail.com',
-        username: 'fakeUser',
-        phone: 1234567890
-    })
-    const newUser = await User.register(user, 'chicken');
-    res.send(newUser);
-})
+// app.get('/fakeUser', async(req, res)=>{
+//     const user = new User({
+//         email: 'fake@gmail.com',
+//         username: 'fakeUser',
+//         phone: 1234567890
+//     })
+//     const newUser = await User.register(user, 'chicken');
+//     res.send(newUser);
+// })
 
 app.get('/secret',requireLogin, (req, res) =>{
     res.send('THIS IS SECRET PAGE');
@@ -166,29 +166,56 @@ app.get('/donate', (req, res) => {
 
 app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
     const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+<<<<<<< Updated upstream
     switch(pet){
         case 'dog':
             const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+=======
+    // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+    // dog.owner = req.user._id;
+    // await dog.save();
+    // res.redirect('/adopt/dogs');
+    switch(pet){
+        case 'dog':
+            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                dog.owner = req.user._id;
+>>>>>>> Stashed changes
             await dog.save();
             res.redirect('/adopt/dogs');
             break;
         case 'cat':
             const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+<<<<<<< Updated upstream
+=======
+                cat.owner = req.user._id;
+>>>>>>> Stashed changes
             await cat.save();
             res.redirect('/adopt/cats');
             break;
         case 'bird':
             const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+<<<<<<< Updated upstream
+=======
+                bird.owner = req.user._id;
+>>>>>>> Stashed changes
             await bird.save();
             res.redirect('/adopt/birds');
             break;
         case 'smallandfurry':
             const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+<<<<<<< Updated upstream
+=======
+                smallandfurry.owner = req.user._id;
+>>>>>>> Stashed changes
             await smallandfurry.save();
             res.redirect('/adopt/smallandfurries');
             break;
         case 'other':
             const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+<<<<<<< Updated upstream
+=======
+                other.owner = req.user._id;
+>>>>>>> Stashed changes
             await other.save();
             res.redirect('/adopt/others');
             break;

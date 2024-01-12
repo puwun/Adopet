@@ -9,10 +9,17 @@ const {Schema} = mongoose;
 // This approach helps Mongoose handle circular dependencies more effectively.
 
 const birdSchema = new Schema({
+<<<<<<< Updated upstream
     // pet : {
     //     type: String,
     //     required: [true, 'Type of animal is required'],
     // },
+=======
+    pet : {
+        type: String,
+        required: [true, 'Type of animal is required'],
+    },
+>>>>>>> Stashed changes
     name: {
         type: String,
         required: [true, 'Pet name is required'],
