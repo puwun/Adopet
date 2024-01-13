@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-<<<<<<< Updated upstream
-const Smallandfurry = require('../models/pet/saf');
-=======
 const Smallandfurry = require('../models/pets/saf');
->>>>>>> Stashed changes
 
 
 
@@ -30,11 +26,7 @@ mongoose.connect('mongodb://localhost:27017/pet-adoption')
 const seedSafs = async()=>{ 
     await Smallandfurry.deleteMany({});
         const newSaf = new Smallandfurry({
-<<<<<<< Updated upstream
-            pet: 'bird',
-=======
             pet: 'smallandfurry',
->>>>>>> Stashed changes
             name: 'laapatachotafurry',
             breed: 'unknown',
             description: 'alien',

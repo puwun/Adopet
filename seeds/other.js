@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-<<<<<<< Updated upstream
-const Other = require('../models/pet/other');
-=======
 const Other = require('../models/pets/other');
->>>>>>> Stashed changes
 
 
 

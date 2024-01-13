@@ -69,7 +69,7 @@ const isAuthor = async(req, res, next)=>{
            return res.redirect(`/articles/${id}`);
        }
        next();
-}
+}   
 // Exporting all middleware functions as an object
 module.exports = {
     isLoggedIn,

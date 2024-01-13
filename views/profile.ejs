@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <!-- <div><p>Username </p></div>
+    <div><p></p></div>
+    <div><p>email</p></div>
+    <div><p></p></div>
+    <div><p>phone</p></div>
+    <div><p></p></div> -->
+    <!-- % for(user of users){ %> -->
+        <div><h1>Username: <%= currUser.username %></h1></div>
+        <div><p>Username: <%= currUser %></p></div>
+        <!-- % } %> -->
+
+    <div> <%- include('./partials/footer') %>
+</body>
+</html>

@@ -4,10 +4,7 @@ const Pet = require('../models/pet');
 
 
 // janhavi id 659c17cb621f1ca0f409e2cf
-<<<<<<< Updated upstream
-=======
 //shinchan id 659f908311bd4c31a9ac1260
->>>>>>> Stashed changes
 
 /**
  * procedure for seeding
@@ -29,8 +26,6 @@ mongoose.connect('mongodb://localhost:27017/pet-adoption')
 
 const seedPets = async()=>{ 
     await Pet.deleteMany({});
-<<<<<<< Updated upstream
-=======
     const newPet = new Pet({
         pet: 'dog',
         name: 'laapatakutta',
@@ -45,7 +40,6 @@ const seedPets = async()=>{
         whyDonate: 'unknown',
         owner: '659c17cb621f1ca0f409e2cf'
     })
->>>>>>> Stashed changes
 
     // if(Pet.pet === 'dog'){
     //     const newPet = new Pet({
@@ -80,33 +74,10 @@ const seedPets = async()=>{
     //     })
     //     await newPet.save();
     // }
-<<<<<<< Updated upstream
-    // const newPet = new Pet({
-    //     pet: 'dog',
-    //     name: 'laapatakutta',
-    //     breed: 'unknown',
-    //     description: 'alien',
-    //     age: 'unknown',
-    //     image: 'unknown',
-    //     medHistory: 'unknown',
-    //     isFullyVaccinated: 'unknown',
-    //     isGoodWithKids: 'unknown',
-    //     gender: 'unknown',
-    //     whyDonate: 'unknown',
-    //     user: '659c17cb621f1ca0f409e2cf'
-    // })
-    // await newPet.save();
-=======
 
     await newPet.save();
->>>>>>> Stashed changes
 
 
 }
 
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 seedPets();

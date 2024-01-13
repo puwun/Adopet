@@ -5,7 +5,7 @@ const Joi = require('joi');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
-
+// const {current}
 
 const validateUser = (req, res, next) => {
     const userSchema = Joi.object({
@@ -110,6 +110,21 @@ router.get('/logout', (req, res) => {
     });
 })
 
+
+router.get('/user/profile',  catchAsync(async(req, res) => {
+    // res.send('THIS IS PROFILE PAGE');
+    // let users = await User.findById({cuurentUser._id});
+    // let users = await User.findById(req.user._id);
+    // const user = await User.findById(req.session.user.id);
+    const user = await User.findById(req.session.user_id);
+    // console.log(user);
+    // console.log('----------------------');
+    // console.log(req.user);
+    const currUser = req.user;
+    console.log('----------------------');
+    console.log(currUser);
+    res.render('../views/profile', {currUser});
+}))
 
 
 // router.get('/signup', (req, res)=> {

@@ -33,8 +33,8 @@ const { isLoggedIn } = require('./middleware');
 
 //Chnages to be mad
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
-
-
+// ---> should comments be added to a blog???
+// ---> admin should be able to delete comments
 
 
 app.set('view engine', 'ejs');
@@ -68,6 +68,7 @@ cookie: {
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,       //Date.now() works in milliseconds so 1000ms * 60s * 60min * 24hrs * 7days
     maxAge: 1000 * 60 * 60 * 24 * 7                //expiration in 1 week
 }}
+
 
 //expiration is imp bcoz once we use it for authentication, after that someone will stay loggqed in forever just by signing in once
 app.use(session(sessionConfig));
@@ -130,6 +131,7 @@ app.get('/', (req, res) => {
 
 app.use('/', userRouter);
 app.use('/adopt', petRouter);
+app.use('/articles', articleRouter);
 
 
 // app.get('/fakeUser', async(req, res)=>{
@@ -166,11 +168,6 @@ app.get('/donate', (req, res) => {
 
 app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
     const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
-<<<<<<< Updated upstream
-    switch(pet){
-        case 'dog':
-            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-=======
     // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
     // dog.owner = req.user._id;
     // await dog.save();
@@ -179,43 +176,30 @@ app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
         case 'dog':
             const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 dog.owner = req.user._id;
->>>>>>> Stashed changes
             await dog.save();
             res.redirect('/adopt/dogs');
             break;
         case 'cat':
             const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-<<<<<<< Updated upstream
-=======
                 cat.owner = req.user._id;
->>>>>>> Stashed changes
             await cat.save();
             res.redirect('/adopt/cats');
             break;
         case 'bird':
             const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-<<<<<<< Updated upstream
-=======
                 bird.owner = req.user._id;
->>>>>>> Stashed changes
             await bird.save();
             res.redirect('/adopt/birds');
             break;
         case 'smallandfurry':
             const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-<<<<<<< Updated upstream
-=======
                 smallandfurry.owner = req.user._id;
->>>>>>> Stashed changes
             await smallandfurry.save();
             res.redirect('/adopt/smallandfurries');
             break;
         case 'other':
             const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-<<<<<<< Updated upstream
-=======
                 other.owner = req.user._id;
->>>>>>> Stashed changes
             await other.save();
             res.redirect('/adopt/others');
             break;
@@ -226,7 +210,7 @@ app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
 }))
 
 
-app.use('/articles', articleRouter);
+
 
 
 
