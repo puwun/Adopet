@@ -37,9 +37,17 @@
         color: red;
         display: none;
     }
+    .input-box img{
+      width: 30px;
+      cursor: pointer;
+    }
+    
 </style>
+      <div class="input-box">
       <label for="password" class="form-label">Enter your password</label>
-      <input type="password" class="form-control" name="password" id="capsLockInput"  required>
+      <input type="password" class="form-control" name="password" placeholder="password" id="capsLockInput"  required>
+      <img src="/images/eyes-closed.png" alt="" id="eyeicon">
+    </div>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -52,6 +60,18 @@
             var capsLockWarning = document.getElementById('capsLockWarning');
             event.getModifierState('CapsLock') ? capsLockWarning.style.display = 'block' : capsLockWarning.style.display = 'none';
         });
+
+        let eyeicon = document.getElementById('eyeicon');
+        let password = document.getElementById('capsLockInput');
+        eyeicon.onclick = function() {
+          if(password.type == "password"){
+            password.type = "text";
+            eyeicon.src = "/images/eyes-open.png";
+          }else{
+            password.type = "password";
+            eyeicon.src = "/images/eyes-closed.png";
+          }
+        }
     </script>
     </div>
     <div class="form-example">
@@ -77,7 +97,9 @@
           form.classList.add('was-validated')
         }, false)
       })
-    })()</script>
+    })()
+  
+  </script>
 </body>
 
 </html>

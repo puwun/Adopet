@@ -35,6 +35,7 @@ const { isLoggedIn } = require('./middleware');
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
 // ---> should comments be added to a blog???
 // ---> admin should be able to delete comments
+// ---> adopter should be able to send a enquiry to the owner of the pet which should be visible to the owner
 
 
 app.set('view engine', 'ejs');
