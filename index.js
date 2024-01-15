@@ -25,7 +25,11 @@ const cookieParser = require('cookie-parser');
 // const bcrypt = require('bcrypt');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
+<<<<<<< Updated upstream
 const { isLoggedIn } = require('./middleware');
+=======
+const { isLoggedIn, storeReturnTo } = require('./middleware');
+>>>>>>> Stashed changes
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 
 
@@ -34,8 +38,27 @@ const { isLoggedIn } = require('./middleware');
 //Chnages to be mad
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
 // ---> should comments be added to a blog???
+<<<<<<< Updated upstream
 // ---> admin should be able to delete comments
 // ---> adopter should be able to send a enquiry to the owner of the pet which should be visible to the owner
+=======
+// ---> admin should be able to delete inappropriate blogs and comments
+// ---> adopter should be able to send a enquiry to the owner of the pet which should be (visible to the owner) first viewed by the admin
+/*enquiry placeholder
+IMPORTANT -You will be reviewed as a potential adopter based on your profile and initial enquiry. Please fill out the form below to the best of your ability. We will contact you if we feel you are a good match for the pet you are interested in. Please note that we are a volunteer-run organization and it may take us a few days to get back to you. Thank you for your patience and understanding.
+*/
+//So basically if we were to add an enquiry option we have to add admin as a user which will approve all the enquiries and then the owner will be able to see the enquiries and then he can approve or reject them
+//ANother option is a direct chat interface between the owner and the adopter
+//in case of admin login, we can create a new model called enquiry and then the admin can see all the enquiries and then he can approve or reject them - copilot
+// ---> add a search bar to search for pets
+//in case of admin, we can add an attribute isAdmin to the User model and then we can check if the user is admin or not and then we can show the admin page accordingly
+// for every route we have to make changes whether it can be viewed by guest, user or admin
+//some major changes needs to be make due to our admin feature
+// forget password works on jwt but we have used pasportJs, so i dont know how to implement it
+//our admin user is basically various typw of pet saving orgs so we also need to validate them and options for them to reach out to adopter as well as donator a
+
+
+>>>>>>> Stashed changes
 
 
 app.set('view engine', 'ejs');
