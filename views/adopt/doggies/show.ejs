@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <%- include('../../partials/navbar') %>
+
+
+<!-- //we can also access all the dog attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the dog    -->
+<h1><%= dog.name  %></h1>
+     <h2>donated by <%= dog.owner.username %></h2>   
+    <h2><%= dog.owner %></h2>
+    <h4><%= dog  %></h4> 
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs</title>
+</head>
+<body>
+    <h1>THIS IS ALL Others PAGE huhh !!</h1>
+    <%- include('../../partials/navbar') %>
+
+    <% for(let o of other) {%>
+
+        <h2><a href="/adopt/others/<%= o.id %>"><%=o.name  %></a></h2>
+<% } %>
+    <div> <%- include('../../partials/footer') %>
+</body>
+</html>

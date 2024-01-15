@@ -1,0 +1,31 @@
+<!-- to post new event -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Write a new event</h1>
+    <%- include('../partials/navbar') %>
+    <!-- <form action="/articles" method="POST" class="form-example"> -->
+    <form action="/events/new" method="POST" class="form-example">
+        <div class="form-example">
+            <label for="title">Enter event title: </label>
+            <input type="text" name="title" id="title" required />
+        </div>
+<!-- content input should be of type textarea -->
+        <div class="form-example">
+            <label for="content">Enter event details: </label>
+            <input type="text" name="content" id="content" required />
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+    <div> <%- include('../partials/footer') %>
+    </div>
+
+</body>
+</html>

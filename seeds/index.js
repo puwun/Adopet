@@ -14,7 +14,8 @@ const seedArticles = async()=>{
     await Article.deleteMany({});
     const article = new Article({
         title: 'first article',
-        content: 'first article content'
+        content: 'first article content',
+        author: '659ab183e37a2c272e23a8e4'
     })
     await article.save();
 }

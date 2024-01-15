@@ -20,7 +20,7 @@ const userSchema = new Schema({
     },
     subject: [String],
     feedback: [String],
-    question: [String]
+    question: [String],
 })
 
 userSchema.plugin(passportLocalMongoose); //adds username,hash and salt to schema

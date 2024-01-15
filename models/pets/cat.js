@@ -2,19 +2,13 @@ const mongoose = require('mongoose')
 const {Schema} = mongoose;
 
 
-// // By referencing the model name as a string, you ensure that Mongoose can resolve the models during runtime without encountering issues related to schema compilation order.
-// // Remember that when you populate a field that references another model, use the same string name as the model you want to populate. For example:
-// // Assuming you have a pet document with a category field referencing a Category document
-// // const populatedPet = await Pet.findById(somePetId).populate('category');
-// // This approach helps Mongoose handle circular dependencies more effectively.
+// By referencing the model name as a string, you ensure that Mongoose can resolve the models during runtime without encountering issues related to schema compilation order.
+// Remember that when you populate a field that references another model, use the same string name as the model you want to populate. For example:
+// Assuming you have a pet document with a category field referencing a Category document
+// const populatedPet = await Pet.findById(somePetId).populate('category');
+// This approach helps Mongoose handle circular dependencies more effectively.
 
-<<<<<<< Updated upstream
-=======
-
-//---------------------------------------------------------THIS FILE IS OF NO USE!!!!!!!!!!!!!!!!-------------------------------------------
-
->>>>>>> Stashed changes
-const petSchema = new Schema({
+const catSchema = new Schema({
     pet : {
         type: String,
         required: [true, 'Type of animal is required'],
@@ -50,7 +44,7 @@ const petSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: 'Category'
     // },
-    user: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -69,9 +63,8 @@ const petSchema = new Schema({
     whyDonate:{
         type: String,
         required:[true,"Reason is required"]
-    },
-    
+    }
 })
 
-const Pet = mongoose.model('Pet', petSchema);
-module.exports = Pet;
+const Cat = mongoose.model('Cat', catSchema);
+module.exports = Cat;

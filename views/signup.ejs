@@ -27,7 +27,7 @@
     </div> -->
     <div class="form-example">
       <label for="username" class="form-label">Enter name</label>
-      <input type="text" class="form-control" name="username" id="username"  required>
+      <input type="text" class="form-control" name="username" id="username" autofocus required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -46,14 +46,26 @@
       </div>
     </div>
     <div class="form-example">
+      <style>#capsLockWarning {
+        color: red;
+        display: none;
+    }
+</style>
       <label for="password" class="form-label">Enter your password</label>
-      <input type="password" class="form-control" name="password" id="password"  required>
+      <input type="password" class="form-control" name="password" id="capsLockInput"  required>
       <div class="valid-feedback">
         Looks good!
       </div>
       <div class="invalid-feedback">
         Please enter a valid password.
       </div>
+      <p id="capsLockWarning">CAPS LOCK ON !!</p>
+    <script>
+        document.getElementById('capsLockInput').addEventListener('keyup', function (event) {
+            var capsLockWarning = document.getElementById('capsLockWarning');
+            event.getModifierState('CapsLock') ? capsLockWarning.style.display = 'block' : capsLockWarning.style.display = 'none';
+        });
+    </script>
     </div>
     <div class="form-example">
       <label for="phone" class="form-label">Enter your phone</label>

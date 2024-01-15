@@ -5,11 +5,16 @@ const path = require('path');
 const methodOverride = require('method-override');
 const ExpressError = require('express-error-handler');
 const userRouter = require('./routes/user');
+const petRouter = require('./routes/adopt');
 const articleRouter = require('./routes/articles');
 const User = require('./models/user');
 const Article = require('./models/article');
-const Pet = require('./models/pet');
-const { use } = require('passport');
+const Dog = require('./models/pets/dog');
+const Cat = require('./models/pets/cat');
+const Bird = require('./models/pets/bird');
+const Smallandfurry = require('./models/pets/saf');
+const Other = require('./models/pets/other');
+// const { use } = require('passport');
 const catchAsync = require('./utils/catchAsync');
 const Joi = require('joi');
 const session = require('express-session');
@@ -20,6 +25,11 @@ const cookieParser = require('cookie-parser');
 // const bcrypt = require('bcrypt');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
+<<<<<<< Updated upstream
+const { isLoggedIn } = require('./middleware');
+=======
+const { isLoggedIn, storeReturnTo } = require('./middleware');
+>>>>>>> Stashed changes
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 
 
@@ -27,8 +37,28 @@ const requireLogin = require('./routes/user');
 
 //Chnages to be mad
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
+// ---> should comments be added to a blog???
+<<<<<<< Updated upstream
+// ---> admin should be able to delete comments
+// ---> adopter should be able to send a enquiry to the owner of the pet which should be visible to the owner
+=======
+// ---> admin should be able to delete inappropriate blogs and comments
+// ---> adopter should be able to send a enquiry to the owner of the pet which should be (visible to the owner) first viewed by the admin
+/*enquiry placeholder
+IMPORTANT -You will be reviewed as a potential adopter based on your profile and initial enquiry. Please fill out the form below to the best of your ability. We will contact you if we feel you are a good match for the pet you are interested in. Please note that we are a volunteer-run organization and it may take us a few days to get back to you. Thank you for your patience and understanding.
+*/
+//So basically if we were to add an enquiry option we have to add admin as a user which will approve all the enquiries and then the owner will be able to see the enquiries and then he can approve or reject them
+//ANother option is a direct chat interface between the owner and the adopter
+//in case of admin login, we can create a new model called enquiry and then the admin can see all the enquiries and then he can approve or reject them - copilot
+// ---> add a search bar to search for pets
+//in case of admin, we can add an attribute isAdmin to the User model and then we can check if the user is admin or not and then we can show the admin page accordingly
+// for every route we have to make changes whether it can be viewed by guest, user or admin
+//some major changes needs to be make due to our admin feature
+// forget password works on jwt but we have used pasportJs, so i dont know how to implement it
+//our admin user is basically various typw of pet saving orgs so we also need to validate them and options for them to reach out to adopter as well as donator a
 
 
+>>>>>>> Stashed changes
 
 
 app.set('view engine', 'ejs');
@@ -62,6 +92,7 @@ cookie: {
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,       //Date.now() works in milliseconds so 1000ms * 60s * 60min * 24hrs * 7days
     maxAge: 1000 * 60 * 60 * 24 * 7                //expiration in 1 week
 }}
+
 
 //expiration is imp bcoz once we use it for authentication, after that someone will stay loggqed in forever just by signing in once
 app.use(session(sessionConfig));
@@ -123,17 +154,19 @@ app.get('/', (req, res) => {
 
 
 app.use('/', userRouter);
+app.use('/adopt', petRouter);
+app.use('/articles', articleRouter);
 
 
-app.get('/fakeUser', async(req, res)=>{
-    const user = new User({
-        email: 'fake@gmail.com',
-        username: 'fakeUser',
-        phone: 1234567890
-    })
-    const newUser = await User.register(user, 'chicken');
-    res.send(newUser);
-})
+// app.get('/fakeUser', async(req, res)=>{
+//     const user = new User({
+//         email: 'fake@gmail.com',
+//         username: 'fakeUser',
+//         phone: 1234567890
+//     })
+//     const newUser = await User.register(user, 'chicken');
+//     res.send(newUser);
+// })
 
 app.get('/secret',requireLogin, (req, res) =>{
     res.send('THIS IS SECRET PAGE');
@@ -151,21 +184,57 @@ app.get('/faq', (req, res) => {
     res.render('faq.ejs');
 })
 
+
+
 app.get('/donate', (req, res) => {
     res.render('donate.ejs');
 })
 
-
-
-app.post('/donate', catchAsync(async (req, res) => {
-    const {petName, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
-    const pet = new Pet({petName, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-    await pet.save();
-    res.json({ success: true, pet });
+app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
+    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+    // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+    // dog.owner = req.user._id;
+    // await dog.save();
+    // res.redirect('/adopt/dogs');
+    switch(pet){
+        case 'dog':
+            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                dog.owner = req.user._id;
+            await dog.save();
+            res.redirect('/adopt/dogs');
+            break;
+        case 'cat':
+            const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                cat.owner = req.user._id;
+            await cat.save();
+            res.redirect('/adopt/cats');
+            break;
+        case 'bird':
+            const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                bird.owner = req.user._id;
+            await bird.save();
+            res.redirect('/adopt/birds');
+            break;
+        case 'smallandfurry':
+            const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                smallandfurry.owner = req.user._id;
+            await smallandfurry.save();
+            res.redirect('/adopt/smallandfurries');
+            break;
+        case 'other':
+            const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                other.owner = req.user._id;
+            await other.save();
+            res.redirect('/adopt/others');
+            break;
+        default:
+            res.redirect('/adopt');
+            break;
+    }
 }))
 
 
-app.use('/articles', articleRouter);
+
 
 
 

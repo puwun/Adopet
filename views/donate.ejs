@@ -13,14 +13,23 @@
   <%- include('partials/navbar') %>
   <form action="/donate" method="POST" class="form-example">
     <div class="form-example">
-        <label for="username">Enter pet name: </label>
-        <br>
-        <input type="text" name="petName" id="petName" required />
+       <label for="pet">Enter type of pet: </label>
+      <br> 
+      <!-- <input type="text" name="pet" id="pet" required /> -->
+      <label for="pet">Enter type of pet:</label>
+      <select name="pet" id="pet">
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="bird">Bird</option>
+        <option value="smallandfurry">Small & Furry</option>
+        <option value="other">Other</option>
+        <!-- Add more options as needed -->
+       </select>
     </div>
     <div class="form-example">
-      <label for="category">Enter pet category: </label>
-      <br>
-      <input type="text" name="category" id="category" required />
+        <label for="name">Enter pet name: </label>
+        <br>
+        <input type="text" name="name" id="name" required />
     </div>
     <div class="form-example">
       <label for="breed">Enter pet breed: </label>
@@ -35,7 +44,7 @@
     <div class="form-example">
       <label for="age">Enter pet age: </label>
       <br>
-      <input type="number" name="age" id="age" required />
+      <input type="text" name="age" id="age" required />
     </div>
     <div class="form-example">
       <label for="image">Enter pet image: </label>

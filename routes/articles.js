@@ -2,9 +2,10 @@ const express = require('express');
 const Article = require('../models/article');
 const catchAsync = require('../utils/catchAsync');
 const router = express.Router();
+const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 const Joi = require('joi');
-const isLoggedIn = require('../middleware');
+const { validateArticle, isLoggedIn, isAuthor} = require('../middleware');
 // const passport = require('passport');  redundant as even without importing passport we were able to use .isAuthenticated() bcoz we had already imported it in index.js
 
 
@@ -12,27 +13,8 @@ const isLoggedIn = require('../middleware');
 //we can just write / and it will be assumed that it is /articles, its like treating this file as main page 
 
 
-const validateArticle = (req, res, next) => {
-        // const articleSchema = Joi.object({
-    //     article : Joi.object({
-    //         title : Joi.string().required(),    //colts pattern for validation was for article[title] and article[content] 
-    //         content : Joi.string().required()
-    //     }).required()
-    // })
-    const articleSchema = Joi.object({
-        title : Joi.string().required(),
-        content : Joi.string().required()
-    })
-    const {error} = articleSchema.validate(req.body)
-    if(error){
-    // console.log(error)
-    // console.log(error.details[0].message)
-    throw new ExpressError(error.details[0].message, 400)
-    }
-    else{
-        next();
-    }
-}
+
+
 
 router.get('/', async (req, res) =>{
     let aart = await Article.find({})
@@ -51,6 +33,7 @@ router.get('/new',isLoggedIn ,(req, res) =>{
 
 router.post('/new', isLoggedIn, validateArticle, catchAsync(async (req, res, next) => {
     const article = new Article(req.body);
+    article.author = req.user._id;
     await article.save();
     req.flash('success', 'Successfully made a new article!');
     res.redirect('/articles')
@@ -62,23 +45,34 @@ router.post('/new', isLoggedIn, validateArticle, catchAsync(async (req, res, nex
 //     res.send(req.body)
 // })
 
-
+//required User so that only a particular user can edit/deletee his article
 router.get('/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const article = await Article.findById(id);
+    // const { id } = req.params;
+    const article = await Article.findById(req.params.id).populate('author');
+    // console.log('----------------------')
+    // console.log(article)
+    // console.log('----------------------')
+    // console.log(article.author)
+    // console.log('----------------------')
+    // console.log(article.author.username)
     res.render('../views/articles/show', {article})
 }))
 
-router.get('/:id/edit', catchAsync(async (req, res) => {
+router.get('/:id/edit',isLoggedIn, isAuthor, catchAsync(async (req, res) => {
     // res.send('editing a specific article');
-    const article = await Article.findById(req.params.id);
+    const { id } = req.params;
+    const article = await Article.findById(id);
+    if(!article){
+        res.flash('error', 'Cannot find that article!');
+        return res.redirect('/articles');
+    }
     res.render('../views/articles/edit', {article})
 }))
 
 
-router.put('/:id', validateArticle, catchAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, isAuthor, validateArticle, catchAsync(async (req, res) => {
     // res.send('updating a specific article');
-     const { id } = req.params;
+    const { id } = req.params;
      const article =  await Article.findByIdAndUpdate(id, {...req.body});
     //  console.log(id)
     //  console.log(req.body)
@@ -88,7 +82,7 @@ router.put('/:id', validateArticle, catchAsync(async (req, res) => {
 }))
 
 
-router.delete('/:id', catchAsync(async (req, res) => {
+router.delete('/:id', isLoggedIn,isAuthor, catchAsync(async (req, res) => {
     const {id} = req.params;
     await Article.findByIdAndDelete(id);
     res.redirect('/articles');

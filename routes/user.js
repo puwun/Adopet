@@ -5,7 +5,11 @@ const Joi = require('joi');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
-
+<<<<<<< Updated upstream
+=======
+const {storeReturnTo} = require('../middleware');
+>>>>>>> Stashed changes
+// const {current}
 
 const validateUser = (req, res, next) => {
     const userSchema = Joi.object({
@@ -73,12 +77,15 @@ router.get('/login', (req, res) => {
     res.render('../views/login');
 })
 
-
-router.post('/login', passport.authenticate('local', { failureFlash : true, failureRedirect: '/login' }), (req, res) => {
+// using the storeReturnTo middleware to save the returnTo value from session to res.locals brfore passport.authenticate() middleware runs because passport.authenticate logs the user in and clears req.session
+router.post('/login', storeReturnTo, passport.authenticate('local', { failureFlash : true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'Welcome back!');
+    // console.log(req.body.role)
+    const redirectUrl = res.locals.returnTo || '/';
+    res.redirect(redirectUrl);
     // console.log(req.user);
     // console.log(req.flash('error'));
-    res.redirect('/');
+    // res.redirect('/');
 
 })
 
@@ -110,6 +117,21 @@ router.get('/logout', (req, res) => {
     });
 })
 
+
+router.get('/user/profile',  catchAsync(async(req, res) => {
+    // res.send('THIS IS PROFILE PAGE');
+    // let users = await User.findById({cuurentUser._id});
+    // let users = await User.findById(req.user._id);
+    // const user = await User.findById(req.session.user.id);
+    const user = await User.findById(req.session.user_id);
+    // console.log(user);
+    // console.log('----------------------');
+    // console.log(req.user);
+    const currUser = req.user;
+    console.log('----------------------');
+    console.log(currUser);
+    res.render('../views/profile', {currUser});
+}))
 
 
 // router.get('/signup', (req, res)=> {
