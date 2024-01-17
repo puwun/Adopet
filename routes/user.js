@@ -4,43 +4,17 @@ const User = require('../models/user');
 const Joi = require('joi');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
+const Dog = require('../models/pets/dog');
+const Cat = require('../models/pets/cat');
+const Bird = require('../models/pets/bird');
+const Smallandfurry = require('../models/pets/saf');
+const Other = require('../models/pets/other');
 const passport = require('passport');
-<<<<<<< Updated upstream
-=======
-const {storeReturnTo} = require('../middleware');
->>>>>>> Stashed changes
+const {storeReturnTo, isAdmin, requireLogin, validateUser,isLoggedIn} = require('../middleware');
 // const {current}
 
-const validateUser = (req, res, next) => {
-    const userSchema = Joi.object({
-        username: Joi.string().required(),
-        password: Joi.string()
-            // .min(8) 
-            .required(),
-        email: Joi.string().required(),
-        phone: Joi.string()
-            // .pattern(new RegExp('/^[0-9]{10}$/'))
-            .required()
-            .messages({ 'string.pattern.base': 'Invalid phone number. Please provide a 10-digit number.', }),
-    }).required()
-    const { error } = userSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        // console.log(error);
-        // console.log('----------------------');
-        // console.log(msg);
-        throw new ExpressError(msg, 400);
-    } else {
-        next();
-    }
-}
 
 
-const requireLogin = (req, res, next) => {
-    if (!req.session.user_id) {
-        res.render('/login');
-    }
-}
 
 
 router.get('/signup', (req, res) => {
@@ -53,6 +27,10 @@ router.post('/signup', validateUser, catchAsync(async (req, res) => {
         const { username, password, email, phone } = req.body;
         const user = new User({ username, email, phone });
         const registeredUser = await User.register(user, password); //register() automatically saves the user, we don't need to execute newUser.save() to save it to database.
+        console.log('----------------------');
+        console.log(registeredUser)
+        console.log('----------------------');
+        console.log(req.user)
         req.login(registeredUser, err =>{
             if(err) return next(err);
             req.flash('success', 'Welcome to Adopet!');
@@ -80,6 +58,7 @@ router.get('/login', (req, res) => {
 // using the storeReturnTo middleware to save the returnTo value from session to res.locals brfore passport.authenticate() middleware runs because passport.authenticate logs the user in and clears req.session
 router.post('/login', storeReturnTo, passport.authenticate('local', { failureFlash : true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'Welcome back!');
+    // console.log()
     // console.log(req.body.role)
     const redirectUrl = res.locals.returnTo || '/';
     res.redirect(redirectUrl);
@@ -118,7 +97,7 @@ router.get('/logout', (req, res) => {
 })
 
 
-router.get('/user/profile',  catchAsync(async(req, res) => {
+router.get('/user/profile', catchAsync(async(req, res) => {
     // res.send('THIS IS PROFILE PAGE');
     // let users = await User.findById({cuurentUser._id});
     // let users = await User.findById(req.user._id);
@@ -134,17 +113,69 @@ router.get('/user/profile',  catchAsync(async(req, res) => {
 }))
 
 
-// router.get('/signup', (req, res)=> {
-//     res.render('../views/signup')
-// })
+router.get('/feedback', (req, res) => {
+    res.render('feedback.ejs');
+})
 
-// router.post('/signup', validateUser,catchAsync(async (req, res) => {
-//     const { username, password, email, phone } = req.body;
-//     const user = new User({ username, password, email, phone });
-//     await user.save();
-//     res.json({ success: true, user });
-// }
-// ))
+router.post('/feedback',catchAsync(async (req, res) => {
+    const { subject, feedback } = req.body;
+    await User.updateOne({ _id: req.user._id }, { $push: { subject: subject, feedback: feedback } });
+    res.redirect('/user/profile');
+}))
+
+router.get('/faq', (req, res) => {
+    res.render('faq.ejs');
+})
+
+
+
+router.get('/donate', isLoggedIn,(req, res) => {
+    res.render('donate.ejs');
+})
+
+router.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
+    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+    // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+    // dog.owner = req.user._id;
+    // await dog.save();
+    // res.redirect('/adopt/dogs');
+    switch(pet){
+        case 'dog':
+            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                dog.owner = req.user._id;
+            await dog.save();
+            res.redirect('/adopt/dogs');
+            break;
+        case 'cat':
+            const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                cat.owner = req.user._id;
+            await cat.save();
+            res.redirect('/adopt/cats');
+            break;
+        case 'bird':
+            const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                bird.owner = req.user._id;
+            await bird.save();
+            res.redirect('/adopt/birds');
+            break;
+        case 'smallandfurry':
+            const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                smallandfurry.owner = req.user._id;
+            await smallandfurry.save();
+            res.redirect('/adopt/smallandfurries');
+            break;
+        case 'other':
+            const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+                other.owner = req.user._id;
+            await other.save();
+            res.redirect('/adopt/others');
+            break;
+        default:
+            res.redirect('/adopt');
+            break;
+    }
+}))
+
 
 
 

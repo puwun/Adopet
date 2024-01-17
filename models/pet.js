@@ -8,12 +8,9 @@ const {Schema} = mongoose;
 // // const populatedPet = await Pet.findById(somePetId).populate('category');
 // // This approach helps Mongoose handle circular dependencies more effectively.
 
-<<<<<<< Updated upstream
-=======
 
 //---------------------------------------------------------THIS FILE IS OF NO USE!!!!!!!!!!!!!!!!-------------------------------------------
 
->>>>>>> Stashed changes
 const petSchema = new Schema({
     pet : {
         type: String,

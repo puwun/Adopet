@@ -25,11 +25,7 @@ const cookieParser = require('cookie-parser');
 // const bcrypt = require('bcrypt');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
-<<<<<<< Updated upstream
-const { isLoggedIn } = require('./middleware');
-=======
 const { isLoggedIn, storeReturnTo } = require('./middleware');
->>>>>>> Stashed changes
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 
 
@@ -38,10 +34,6 @@ const { isLoggedIn, storeReturnTo } = require('./middleware');
 //Chnages to be mad
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
 // ---> should comments be added to a blog???
-<<<<<<< Updated upstream
-// ---> admin should be able to delete comments
-// ---> adopter should be able to send a enquiry to the owner of the pet which should be visible to the owner
-=======
 // ---> admin should be able to delete inappropriate blogs and comments
 // ---> adopter should be able to send a enquiry to the owner of the pet which should be (visible to the owner) first viewed by the admin
 /*enquiry placeholder
@@ -58,7 +50,6 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //our admin user is basically various typw of pet saving orgs so we also need to validate them and options for them to reach out to adopter as well as donator a
 
 
->>>>>>> Stashed changes
 
 
 app.set('view engine', 'ejs');
@@ -262,28 +253,28 @@ app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
 
 
 //cookieDemo
-app.get('/setname', (req, res) => {
-    res.cookie('name', 'stevie chicks')
-    res.cookie('animal', 'harlequin shrimp')
-    res.send('OK SENT YOU A COOKIE!!!')
-})
+// app.get('/setname', (req, res) => {
+//     res.cookie('name', 'stevie chicks')
+//     res.cookie('animal', 'harlequin shrimp')
+//     res.send('OK SENT YOU A COOKIE!!!')
+// })
 
-app.get('/getcookie', (req, res) => {
-    // console.log(req.cookies);
-    const { name = 'No-name', animal = 'No-animal' } = req.cookies;
-    res.send(`HEYYYY, ${name}`)
-}   
-)
+// app.get('/getcookie', (req, res) => {
+//     // console.log(req.cookies);
+//     const { name = 'No-name', animal = 'No-animal' } = req.cookies;
+//     res.send(`HEYYYY, ${name}`)
+// }   
+// )
 
-app.get('/getsignedcookie', (req, res) => {
-    res.cookie('fruit', 'grape', {signed: true})
-    res.send('OK SIGNED YOUR FRUIT COOKIE!!!')
-})
+// app.get('/getsignedcookie', (req, res) => {
+//     res.cookie('fruit', 'grape', {signed: true})
+//     res.send('OK SIGNED YOUR FRUIT COOKIE!!!')
+// })
 
-app.get('/verifyfruit', (req, res) => {
-    console.log(req.cookies, req.signedCookies);
-    res.send(req.signedCookies)
-})
+// app.get('/verifyfruit', (req, res) => {
+//     console.log(req.cookies, req.signedCookies);
+//     res.send(req.signedCookies)
+// })
 
 //if we visit a site and it sets us a cookie then that cookie stays with us and is carried forward to all the requests that we make to that site
 //Cookies are domain-specific, meaning they are associated with a specific domain and are not accessible by other domains.

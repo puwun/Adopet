@@ -13,33 +13,6 @@ const isLoggedIn = (req, res, next) => {
     next();
 }
 
-<<<<<<< Updated upstream
-const validateUser = (req, res, next) => {
-    const userSchema = Joi.object({
-        username: Joi.string().required(),
-        password: Joi.string()
-            // .min(8) 
-            .required(),
-        email: Joi.string().required(),
-        phone: Joi.string()
-            // .pattern(new RegExp('/^[0-9]{10}$/'))
-            .required()
-            .messages({ 'string.pattern.base': 'Invalid phone number. Please provide a 10-digit number.', }),
-    }).required()
-    const { error } = userSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        // console.log(error);
-        // console.log('----------------------');
-        // console.log(msg);
-        throw new ExpressError(msg, 400);
-    } else {
-        next();
-    }
-}
-
-
-=======
 const storeReturnTo = (req, res, next)=>{
     if(req.session.returnTo){
         res.locals.returnTo = req.session.returnTo;
@@ -73,7 +46,6 @@ const validateUser = (req, res, next) => {
 }
 
 
->>>>>>> Stashed changes
 const validateArticle = (req, res, next) => {
     const articleSchema = Joi.object({
         title: Joi.string().required(),
@@ -107,16 +79,16 @@ const isAuthor = async(req, res, next)=>{
        }
        next();
 }   
-<<<<<<< Updated upstream
-=======
 
 
 
 
-// const isAdmin = (req, res, next) => {
-
-// }
->>>>>>> Stashed changes
+const isAdmin = (req, res, next) => {
+    if(req.user.role === 0){
+        req.flash('error', 'Access denied, you must be an admin to do that!');
+        return
+    }next();
+}
 // Exporting all middleware functions as an object
 module.exports = {
     isLoggedIn,
@@ -124,8 +96,6 @@ module.exports = {
     validateUser,
     validateArticle,
     isAuthor,
-<<<<<<< Updated upstream
-=======
     storeReturnTo,
->>>>>>> Stashed changes
+    isAdmin
   };
