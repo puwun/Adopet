@@ -63,13 +63,9 @@ const smallandfurrySchema = new Schema({
     whyDonate:{
         type: String,
         required:[true,"Reason is required"]
-<<<<<<< Updated upstream
-    }
-=======
     },
     wishlist: [{type: Schema.Types.ObjectId,
     ref: 'User'}]
->>>>>>> Stashed changes
 })
 
 const Smallandfurry = mongoose.model('Smallandfurry', smallandfurrySchema);

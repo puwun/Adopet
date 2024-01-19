@@ -25,23 +25,30 @@ const cookieParser = require('cookie-parser');
 // const bcrypt = require('bcrypt');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
-<<<<<<< Updated upstream
-const { isLoggedIn } = require('./middleware');
-=======
 const { isLoggedIn, storeReturnTo } = require('./middleware');
->>>>>>> Stashed changes
+const cloudinary = require('cloudinary').v2;
+const sendMail = require('./controller/sendMail')
 //makeing schema validations using joi for phone using regex as we have set its type to be string
+const fileUpload = require('express-fileupload')
 
+
+
+cloudinary.config({
+    cloud_name:'dlfbnluzs',
+    api_key:'493262577953715',
+    api_secret:'u7V1SmLvruxIVo2ZZqLJEQVNxxY'
+})
+
+
+app.use(fileUpload({
+    useTempFiles:true,
+}))
 
 
 
 //Chnages to be mad
 // ---> every query string should begin with something like localhost:3000/adopet/corresponding_route see wikipedia for eg
 // ---> should comments be added to a blog???
-<<<<<<< Updated upstream
-// ---> admin should be able to delete comments
-// ---> adopter should be able to send a enquiry to the owner of the pet which should be visible to the owner
-=======
 // ---> admin should be able to delete inappropriate blogs and comments
 // ---> adopter should be able to send a enquiry to the owner of the pet which should be (visible to the owner) first viewed by the admin
 /*enquiry placeholder
@@ -58,7 +65,6 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //our admin user is basically various typw of pet saving orgs so we also need to validate them and options for them to reach out to adopter as well as donator a
 
 
->>>>>>> Stashed changes
 
 
 app.set('view engine', 'ejs');
@@ -168,70 +174,74 @@ app.use('/articles', articleRouter);
 //     res.send(newUser);
 // })
 
-app.get('/secret',requireLogin, (req, res) =>{
-    res.send('THIS IS SECRET PAGE');
-})
+// app.get('/secret',requireLogin, (req, res) =>{
+//     res.send('THIS IS SECRET PAGE');
+// })
 
 
 
 
 
-app.get('/feedback', (req, res) => {
-    res.render('feedback.ejs');
-})
-
-app.get('/faq', (req, res) => {
-    res.render('faq.ejs');
-})
+// app.get('/feedback', isLoggedIn, (req, res) => {
+//     res.render('feedback.ejs');
+// })
 
 
+// app.post('/feedback', isLoggedIn, catchAsync(async (req, res) => {
+//     const {subject,feedback} = req.body;
+//     await User.findByIdAndUpdate(id, {subject : subject,feedback:feedback});
+//     sendMail(req.user.username,req.user.email,req.body.subject,req.body.feedback)
+// }))
 
-app.get('/donate', (req, res) => {
-    res.render('donate.ejs');
-})
+// app.get('/faq', isLoggedIn, (req, res) => {
+//     res.render('faq.ejs');
+// })
 
-app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
-    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
-    // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-    // dog.owner = req.user._id;
-    // await dog.save();
-    // res.redirect('/adopt/dogs');
-    switch(pet){
-        case 'dog':
-            const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-                dog.owner = req.user._id;
-            await dog.save();
-            res.redirect('/adopt/dogs');
-            break;
-        case 'cat':
-            const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-                cat.owner = req.user._id;
-            await cat.save();
-            res.redirect('/adopt/cats');
-            break;
-        case 'bird':
-            const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-                bird.owner = req.user._id;
-            await bird.save();
-            res.redirect('/adopt/birds');
-            break;
-        case 'smallandfurry':
-            const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-                smallandfurry.owner = req.user._id;
-            await smallandfurry.save();
-            res.redirect('/adopt/smallandfurries');
-            break;
-        case 'other':
-            const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
-                other.owner = req.user._id;
-            await other.save();
-            res.redirect('/adopt/others');
-            break;
-        default:
-            res.redirect('/adopt');
-            break;
-    }
-}))
+
+
+
+// app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
+//     const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+//     // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//     // dog.owner = req.user._id;
+//     // await dog.save();
+//     // res.redirect('/adopt/dogs');
+//     switch(pet){
+//         case 'dog':
+//             const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//                 dog.owner = req.user._id;
+//             await dog.save();
+//             res.redirect('/adopt/dogs');
+//             break;
+//         case 'cat':
+//             const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//                 cat.owner = req.user._id;
+//             await cat.save();
+//             res.redirect('/adopt/cats');
+//             break;
+//         case 'bird':
+//             const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//                 bird.owner = req.user._id;
+//             await bird.save();
+//             res.redirect('/adopt/birds');
+//             break;
+//         case 'smallandfurry':
+//             const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//                 smallandfurry.owner = req.user._id;
+//             await smallandfurry.save();
+//             res.redirect('/adopt/smallandfurries');
+//             break;
+//         case 'other':
+//             const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
+//                 other.owner = req.user._id;
+//             await other.save();
+//             res.redirect('/adopt/others');
+//             break;
+//         default:
+//             res.redirect('/adopt');
+//             break;
+//     }
+// }))
 
 
 
@@ -262,28 +272,28 @@ app.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
 
 
 //cookieDemo
-app.get('/setname', (req, res) => {
-    res.cookie('name', 'stevie chicks')
-    res.cookie('animal', 'harlequin shrimp')
-    res.send('OK SENT YOU A COOKIE!!!')
-})
+// app.get('/setname', (req, res) => {
+//     res.cookie('name', 'stevie chicks')
+//     res.cookie('animal', 'harlequin shrimp')
+//     res.send('OK SENT YOU A COOKIE!!!')
+// })
 
-app.get('/getcookie', (req, res) => {
-    // console.log(req.cookies);
-    const { name = 'No-name', animal = 'No-animal' } = req.cookies;
-    res.send(`HEYYYY, ${name}`)
-}   
-)
+// app.get('/getcookie', (req, res) => {
+//     // console.log(req.cookies);
+//     const { name = 'No-name', animal = 'No-animal' } = req.cookies;
+//     res.send(`HEYYYY, ${name}`)
+// }   
+// )
 
-app.get('/getsignedcookie', (req, res) => {
-    res.cookie('fruit', 'grape', {signed: true})
-    res.send('OK SIGNED YOUR FRUIT COOKIE!!!')
-})
+// app.get('/getsignedcookie', (req, res) => {
+//     res.cookie('fruit', 'grape', {signed: true})
+//     res.send('OK SIGNED YOUR FRUIT COOKIE!!!')
+// })
 
-app.get('/verifyfruit', (req, res) => {
-    console.log(req.cookies, req.signedCookies);
-    res.send(req.signedCookies)
-})
+// app.get('/verifyfruit', (req, res) => {
+//     console.log(req.cookies, req.signedCookies);
+//     res.send(req.signedCookies)
+// })
 
 //if we visit a site and it sets us a cookie then that cookie stays with us and is carried forward to all the requests that we make to that site
 //Cookies are domain-specific, meaning they are associated with a specific domain and are not accessible by other domains.
