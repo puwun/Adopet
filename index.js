@@ -63,7 +63,9 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //some major changes needs to be make due to our admin feature
 // forget password works on jwt but we have used pasportJs, so i dont know how to implement it
 //our admin user is basically various typw of pet saving orgs so we also need to validate them and options for them to reach out to adopter as well as donator a
-
+//making website MongoInjection proof
+//asnitising HTML w Joi 
+//implementing use of HelmetJs which removes various vulnerabilities like xss(cross-site-scripting), clickjacking, etc
 
 
 
@@ -94,7 +96,9 @@ const sessionConfig = { secret: 'notagoodsecret',
 resave: false, 
 saveUninitialized: true, 
 cookie: {
+    name: 'woof',        //this is the name of the cookie that will be sent to the browser, by default it is connect.sid, if someone is specifically looking for connect.sid on our site for any malpractices then they wont find it as it is now renamed as woof 
     httpOnly: true,       //if this flag is included then the cookie cannot be accessed by client side javascript
+    // secure: true,        //if this flag is included then the cookie will only be sent over https but we are currently on localhost so uncomment it only when we deploy our site
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,       //Date.now() works in milliseconds so 1000ms * 60s * 60min * 24hrs * 7days
     maxAge: 1000 * 60 * 60 * 24 * 7                //expiration in 1 week
 }}

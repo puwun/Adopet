@@ -21,4 +21,8 @@ async function sendMail(username,email,subject,feedback)
    });
 };
 
+<<<<<<< Updated upstream
 module.exports = sendMail;
+=======
+module.exports = sendMail;  
+>>>>>>> Stashed changes
