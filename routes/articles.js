@@ -6,6 +6,9 @@ const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 const Joi = require('joi');
 const { validateArticle, isLoggedIn, isAuthor} = require('../middleware');
+const multer = require('multer')
+const {storage} = require('../cloudinary')
+const upload = multer({storage})
 // const passport = require('passport');  redundant as even without importing passport we were able to use .isAuthenticated() bcoz we had already imported it in index.js
 
 
@@ -31,9 +34,22 @@ router.get('/new',isLoggedIn ,(req, res) =>{
     res.render('../views/articles/new')
 })
 
-router.post('/new', isLoggedIn, validateArticle, catchAsync(async (req, res, next) => {
+router.post('/new', isLoggedIn, validateArticle, upload.single('cover'), catchAsync(async (req, res, next) => {
     const article = new Article(req.body);
     article.author = req.user._id;
+    // const resp = res.json(req.files)
+    // console.log(resp)
+    console.log('----------------------');
+    console.log(req.body)
+    console.log('----------------------');
+    console.log(req.body.cover);
+    console.log('----------------------');
+    console.log(req.file);
+    console.log('----------------------');
+    console.log(req.files);
+    console.log('----------------------');
+    // console.log(req.files.cover.name);
+    article.cover = req.body.cover;
     await article.save();
     req.flash('success', 'Successfully made a new article!');
     res.redirect('/articles')

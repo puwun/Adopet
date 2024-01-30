@@ -7,12 +7,12 @@ const Cat = require('../models/pets/cat');
 const Bird = require('../models/pets/bird');
 const Smallandfurry = require('../models/pets/saf');
 const Other = require('../models/pets/other');
-
 const Joi = require('joi');
 const ExpressError = require('../utils/ExpressError');
 const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
 const {isLoggedIn, validateUser, requireLogin } = require('../middleware');
+const {storage} = require('../cloudinary')
 
 //creating a page for every category of pet
 
@@ -44,6 +44,9 @@ router.get('/dogs/:id', catchAsync(async(req, res) => {
     console.log(dog);
     console.log('----------------------');
     console.log(dog.owner.username );
+    console.log('----------------------');
+    console.log(req.files);
+
     res.render('../views/adopt/doggies/show', {dog});
 }))
 

@@ -14,8 +14,13 @@ const articleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    // comments:
+    cover:{
+        type: String,
+        // required: [true, 'Cover image is required'],
+    },
     }
+    // comments:
+    
     // user: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'User'

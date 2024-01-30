@@ -7,6 +7,7 @@
 </head>
 <body>
     <%- include('partials/navbar') %>
+
     <!-- <div><p>Username </p></div>
     <div><p></p></div>
     <div><p>email</p></div>
@@ -19,7 +20,17 @@
 
         <!-- ACCESSING THIS PAGE WHEN LOGGED OUT RESULTED IN AN ERROR DISPLAYING ON OUR SITE WHICH IS A BAD THING  -->
         <div><h1>Username: <%= currUser.username %></h1></div>
-        <div><p>Username: <%= currUser %></p></div>
+        <div><h1>Email: <%= currUser.email %></h1></div>
+        <div><h1>Phone: <%= currUser.phone %></h1></div>
+        <div><h1>Favourites: <%= currUser.favourites %></h1></div>
+        <div><p>User: <%= currUser %></p></div>
+
+        <% for(let md of myDogs){%>
+            <div><h1>Dogs: <%= md.name %> | <%= md.image %> | <%= md.description %></h1></div>
+            <div><h1>Dogs: <%= md %></h1></div>
+        <% } %>
+        <div><p>Dogs: <%= myDogs %></p></div>
+
         <!-- % } %> -->
 
     <div> <%- include('./partials/footer') %>

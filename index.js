@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -26,23 +31,18 @@ const cookieParser = require('cookie-parser');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
 const { isLoggedIn, storeReturnTo } = require('./middleware');
-const cloudinary = require('cloudinary').v2;
 const sendMail = require('./controller/sendMail')
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 const fileUpload = require('express-fileupload')
+const multer = require('multer')
+const upload = multer({dest: 'uploads/'})
 
 
 
-cloudinary.config({
-    cloud_name:'dlfbnluzs',
-    api_key:'493262577953715',
-    api_secret:'u7V1SmLvruxIVo2ZZqLJEQVNxxY'
-})
 
-
-app.use(fileUpload({
-    useTempFiles:true,
-}))
+// app.use(fileUpload({
+//     useTempFiles:true,
+// }))
 
 
 
@@ -181,6 +181,7 @@ app.use('/articles', articleRouter);
 // app.get('/secret',requireLogin, (req, res) =>{
 //     res.send('THIS IS SECRET PAGE');
 // })
+
 
 
 

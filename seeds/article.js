@@ -15,7 +15,8 @@ const seedArticles = async()=>{
     const article = new Article({
         title: 'first article',
         content: 'first article content',
-        author: '659ab183e37a2c272e23a8e4'
+        author: '659ab183e37a2c272e23a8e4',
+        cover: 'https://images.pexels.com/photos/3171712/pexels-photo-3171712.jpeg?auto=compress&cs=tinysrgb&w=600'
     })
     await article.save();
 }

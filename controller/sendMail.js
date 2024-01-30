@@ -2,6 +2,7 @@ const nodemailer = require('nodemailer');
 async function sendMail(username,email,subject,feedback)
 {
    let receiverMail = email; 
+   //write formalities for submission of feedback like your username has submiites this feedback
    let text = username+" "+subject+" "+feedback;
    let transporter = await nodemailer.createTransport({
         host:"smtp.gmail.com",
@@ -9,7 +10,7 @@ async function sendMail(username,email,subject,feedback)
         secure: true,
         auth:{
             user: 'maddercode69@gmail.com', //use maddercode ka acoount
-            pass: 'cpvircjbyjunnwfh',
+            pass: 'bxfeelaiqxnlqeqw',
         },
    });
    
@@ -21,8 +22,4 @@ async function sendMail(username,email,subject,feedback)
    });
 };
 
-<<<<<<< Updated upstream
-module.exports = sendMail;
-=======
 module.exports = sendMail;  
->>>>>>> Stashed changes

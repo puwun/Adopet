@@ -23,7 +23,7 @@ let map;
         draggable: false,
         icon: "blue.png"
     }]);
-
+    
     const adoptionMarker = new google.maps.Marker([{
         position: {lat:19.2153, lng:72.8343},
         map:map,

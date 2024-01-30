@@ -11,10 +11,21 @@ const Smallandfurry = require('../models/pets/saf');
 const Other = require('../models/pets/other');
 const passport = require('passport');
 const {storeReturnTo, isAdmin, requireLogin, validateUser,isLoggedIn} = require('../middleware');
-// const {current}
+const multer = require('multer')
+const {storage} = require('../cloudinary')
+const upload = multer({dest: storage})
+const fileUpload = require('express-fileupload')
+const sendMail = require('../controller/sendMail')
+
+router.use(fileUpload({
+    useTempFiles:true,
+}))
 
 
 
+router.get('/events' , (req, res) => {
+    res.render('../views/event');
+})
 
 
 router.get('/signup', (req, res) => {
@@ -31,6 +42,7 @@ router.post('/signup', validateUser, catchAsync(async (req, res) => {
         console.log(registeredUser)
         console.log('----------------------');
         console.log(req.user)
+
         req.login(registeredUser, err =>{
             if(err) return next(err);
             req.flash('success', 'Welcome to Adopet!');
@@ -109,7 +121,14 @@ router.get('/user/profile', catchAsync(async(req, res) => {
     const currUser = req.user;
     console.log('----------------------');
     console.log(currUser);
-    res.render('../views/profile', {currUser});
+    const myDogs = await Dog.find({owner: currUser._id});
+    console.log('----------------------');
+    console.log(myDogs);
+    // const cats = await Cat.find({owner: req.user._id});
+    // const birds = await Bird.find({owner: req.user._id});
+    // const smallandfurries = await Smallandfurry.find({owner: req.user._id});
+    // const others = await Other.find({owner: req.user._id});
+    res.render('../views/profile', {currUser, myDogs});
 }))
 
 
@@ -120,6 +139,8 @@ router.get('/feedback', isLoggedIn,(req, res) => {
 router.post('/feedback', isLoggedIn,catchAsync(async (req, res) => {
     const { subject, feedback } = req.body;
     await User.updateOne({ _id: req.user._id }, { $push: { subject: subject, feedback: feedback } });
+    sendMail(req.user.username,req.user.email,req.body.subject,req.body.feedback)
+    req.flash('success', 'Feedback submitted successfully!');
     res.redirect('/user/profile');
 }))
 
@@ -133,7 +154,8 @@ router.get('/donate', isLoggedIn,(req, res) => {
     res.render('donate.ejs');
 })
 
-router.post('/donate',isLoggedIn ,catchAsync(async (req, res) => {
+router.post('/donate',isLoggedIn , upload.single('image'),catchAsync(async (req, res) => {
+
     const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
     // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
     // dog.owner = req.user._id;

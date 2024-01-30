@@ -50,7 +50,8 @@ const validateArticle = (req, res, next) => {
     const articleSchema = Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
-        // author: Joi.string().required(),
+        author: Joi.string(),
+        cover: Joi.string(),
     }).required()
     const { error } = articleSchema.validate(req.body);
     if (error) {
