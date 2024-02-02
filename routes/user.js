@@ -15,7 +15,7 @@ const multer = require('multer')
 const {storage} = require('../cloudinary')
 const upload = multer({dest: storage})
 const fileUpload = require('express-fileupload')
-const sendMail = require('../controller/sendMail')
+const sendMail = require('../controllers/sendMail')
 
 router.use(fileUpload({
     useTempFiles:true,

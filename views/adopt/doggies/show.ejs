@@ -4,15 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link rel="stylesheet" href="../../../stylesheets/adopt.css">
 </head>
 <body>
     <%- include('../../partials/navbar') %>
 
 
 <!-- //we can also access all the dog attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the dog    -->
-<h1><%= dog.name  %></h1>
-     <h2>donated by <%= dog.owner.username %></h2>   
-    <h2><%= dog.owner %></h2>
-    <h4><%= dog  %></h4> 
+
+    <div class="container">
+        <div class="box">
+            <div class="images">
+                <div class="img-holder active">
+                    <img src="p1.jpg">
+                </div>
+                <div class="img-holder">
+                    <img src="p1.jpg">
+                </div>
+                <div class="img-holder">
+                    <img src="p3.jpg">
+                </div>
+                <div class="img-holder">
+                    <img src="p1.jpg">
+                </div>
+            </div>
+            <div class="basic-info">
+                <h1><%= dog.name  %></h1>
+                <div class="rate">
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                    <i class="filled fas fa-star"></i>
+                </div>
+            <div class="options">
+                <a href="#">Become a shelter provider</a>
+            </div>
+            </div>
+            <div class="description">
+                <p><%= dog.description  %></p>
+                <ul class="features">
+                    <li><i class="fa-solid fa-circle-check"></i>Age:<%= dog.age  %> months</li>
+                    <li><i class="fa-solid fa-circle-check"></i>Gender:<%= dog.gender  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Vaccinatated:<%= dog.isFullyVaccinated  %></li>
+                    <li><i class="fa-solid fa-circle-check"></i>Good with Kids:<%= dog.isGoodWithKids  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Contact Number: <%= dog.owner.phone  %></li>
+                    <!-- medHistory view file feature remaining, after clicking the enquiry button a new page, you mail was sent to this pets this owner something like this -->
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

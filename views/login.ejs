@@ -7,17 +7,46 @@
   <title>Login Form</title>
   <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<link rel="stylesheet" href="../stylesheets/style.css">
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5 .2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
   <h1>Login form</h1>
-  <div> <%- include('partials/navbar') %>
+
+
+  <nav class = "navbar">
+    <div class = "container">
+      <a href = "/" class = "navbar-brand">Adopet Blog</a>
+      <div class = "navbar-nav">
+        <a href = "/donate">Donate</a>
+        <a href = "/adopt">Adopt</a>
+        <a href = "">Get to vet</a>
+        <a href = "/articles">Blog</a>
+        <a href = "/events">events</a>
+        <% if(!currentUser) { %>
+        <a href = "/signup">Sign up</a>
+        <a href = "/login">Log in</a>
+        <% }else{ %>
+        <a href = "/logout">Log out</a>
+        <% } %>
+
+      </div>
+    </div>
+  </nav>
   <%- include('partials/flash') %>
   </div>
   <form action="/login" method="POST" novalidate class="needs-validation" >

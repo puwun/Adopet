@@ -145,15 +145,7 @@ header{
     position:fixed;
 
 }
-.search-btn{
-    width: 40px;
-    font-size: 1.1rem;
-    color: var(--dark);
-    border: none;
-    background: transparent;
-    outline: 0;
-    cursor: pointer;
-}
+
 
 /* design */
 .design{

@@ -8,6 +8,8 @@
     <!-- Font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/likes.css">
+
   </head>
     <header>
       <!-- %- include('../partials/navbar') %> -->
@@ -20,7 +22,7 @@
       <a href = "/adopt">Adopt</a>
       <a href = "">Get to vet</a>
       <a href = "/articles">Blog</a>
-      <a href = "">events</a>
+      <a href = "/events">events</a>
       <% if(!currentUser) { %>
       <a href = "/signup">Sign up</a>
       <a href = "/login">Log in</a>
@@ -80,6 +82,12 @@
           </div>
         </div>
         </div>
+        <div class="like-button">
+          <div class="heart-bg">
+          <div class="heart-icon"><button data-post-id="<%= art.id %>"></button></div>
+      </div>
+      <div class="likes-amount">7</div>
+      </div>
     </section>
     <%}%>
 
@@ -201,11 +209,12 @@
     
 
   </main>
+  <script src="../js/like.js"></script>
 
     <!-- footer -->
- <%- include('../partials/footer') %>
-      <!-- end of footer -->
+    <!-- end of footer -->
     
     
+    <%- include('../partials/footer') %>
   </body>
 </html>

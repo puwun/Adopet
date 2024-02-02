@@ -1,19 +1,31 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dogs</title>
+    <title>birds</title>
+    <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
+
 </head>
 <body>
-    <h1>THIS IS ALL birds PAGE chiiiiiiiuuuuuuuuchuuuuchuuu!!</h1>
     <%- include('../../partials/navbar') %>
+    <div class="container">
+        <div class="card__container">
+            <%for(let bird of birdies) {%>
+                <article class="card__article">
+              <img src="../../../images/p1.jpg" alt="image" class="card__img">
+              <div class="card__data">
+                 <span class="card__description"></span>
+                 <h2 class="card__title">Name <%= bird.name%></h2>
+                 <a href="/adopt/birds/<%= bird.id %>" class="card__button">Know More</a>
+              </div>
+           </article>
+           <% } %>
+           </div>
+           </div>
+        <div> <%- include('../../partials/footer') %>
 
-    <%for(let bird of birdies) {%>
-
-        <h2><a href="/adopt/birds/<%= bird.id %>"><%=bird.name  %></a></h2>
-<% } %>
-
-    <div> <%- include('../../partials/footer') %>
 </body>
 </html>

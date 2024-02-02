@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dogs</title>
+    <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
 </head>
 <body>
-    <h1>THIS IS ALL DOGS PAGE WOOOOF!!</h1>
     <%- include('../../partials/navbar') %>
-
-    <%for(let dog of doggies) {%>
-
-        <h2><a href="/adopt/dogs/<%= dog.id %>"><%=dog.name  %></a></h2>
-<% } %>
-
-
+<div class="container">
+    <div class="card__container">
+        <%for(let dog of doggies) {%>
+       <article class="card__article">
+          <img src="../../../images/p1.jpg" alt="image" class="card__img">
+          <div class="card__data">
+             <span class="card__description"></span>
+             <h2 class="card__title">Name <%= dog.name%></h2>
+             <a href="/adopt/dogs/<%= dog.id %>" class="card__button">Know More</a>
+          </div>
+       </article>
+       <% } %>
+       </div>
+       </div>
     <div> <%- include('../../partials/footer') %>
 </body>
 </html>

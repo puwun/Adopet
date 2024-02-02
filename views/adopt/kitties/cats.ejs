@@ -3,16 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dogs</title>
+    <title>Cats</title>
+    <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
+
 </head>
 <body>
-    <h1>THIS IS ALL cats PAGE meowwwwwwwwwww!!</h1>
     <%- include('../../partials/navbar') %>
+    <div class="container">
+        <div class="card__container">
+            <%for(let cat of kitties) {%>
+           <article class="card__article">
+              <img src="../../../images/p1.jpg" alt="image" class="card__img">
+              <div class="card__data">
+                 <span class="card__description"></span>
+                 <h2 class="card__title">Name <%= cat.name%></h2>
+                 <a href="/adopt/cats/<%= cat.id %>" class="card__button">Know More</a>
+              </div>
+           </article>
+           <% } %>
+           </div>
+           </div>
+        <div> <%- include('../../partials/footer') %>
 
-    <%for(let cat of kitties) {%>
-
-        <h2><a href="/adopt/cats/<%= cat.id %>"><%=cat.name  %></a></h2>
-<% } %>
-    <div> <%- include('../../partials/footer') %>
 </body>
 </html>

@@ -27,7 +27,10 @@ const userSchema = new Schema({
     //     default : 0
     // },
     favourites: [{type: Schema.Types.ObjectId,
-        ref: 'Article',}]
+        ref: 'Article',}],
+
+    // likes: [{type: Schema.Types.ObjectId,
+    //     ref: 'Like',}],
 })
 
 userSchema.plugin(passportLocalMongoose); //adds username,hash and salt to schema

@@ -1,0 +1,132 @@
+html, body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+    position:relative;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    
+}
+.error{
+    font-family: 'Dosis',sans-serif;
+    font-weight: bolder;
+    color: red;
+    padding-bottom: 60vh;
+    padding-left: 12vh;
+    padding-top: 19vh;
+    font-size:48px;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.title{
+    color: #fff;
+    font-family: 'Dosis', sans-serif;
+    font-size: 70px;
+    font-weight:  bold;
+    letter-spacing: -5px;
+}
+.subtitle{
+    color: red;
+    font-weight: lighter;
+    font-size: 98px;
+    font-family: 'Dosis','sans-serif';
+}
+.first {
+    font-size: 450px; 
+    font-family: 'Dosis','sans-serif';
+}
+
+.second {
+    font-size: 418px; 
+    font-family: 'Dosis','sans-serif';
+
+}
+
+.animation-container {
+    flex-shrink: 0;
+    width: 100vw; 
+}
+
+.loader_wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader_img {
+    width: 100%;
+    max-width: 200px; 
+}
+
+.progressGroup {
+    animation: 30s linear 1s infinite ProgressOpacity;
+    opacity: 0.25;
+}
+.text {
+    font-size: 16px; 
+    margin: 5px; 
+}
+.progress {
+	animation: 1.5s ease-in-out infinite alternate Pulse;
+}
+.progress1 {
+	animation: 30s linear 1s infinite Progress1;
+	stroke-dasharray: 0 1000;
+}
+.progress2 {
+	animation: 30s linear 1s infinite Progress2;
+	stroke-dasharray: 0 0 1 1000;
+	display: none;
+}
+
+@keyframes ProgressOpacity {
+	to { 
+		opacity: 1;
+	}
+}
+@keyframes Progress1 {
+	to {  stroke-dasharray: 280 1000; }
+}
+@keyframes Progress2 {
+	to {  stroke-dasharray: 0 280 1 1000; }
+}
+@keyframes Pulse {
+	to { stroke: #ff6600; }
+}
+
+#wheel {
+	animation: 1.5s linear infinite Spin;
+	transform: rotate(0deg);
+	transform-origin: 50px 50px;
+}
+@keyframes Spin {
+	to { transform: rotate(360deg); }
+}
+
+#whisky {
+	animation: 1.5s ease-in-out infinite alternate Rock;
+	transform: rotate(20deg) translate(18px,49px);
+	transform-origin: 50px 50px;
+}
+@keyframes Rock {
+	to { transform: rotate(-20deg) translate(18px,49px); }
+}
+
+.legs {
+	transform-origin: 40px -40px;
+	transform: translatex(1px) rotate(2deg);
+	animation: 0.25s ease-in-out infinite alternate Wiggle;
+}
+@keyframes Wiggle {
+	50% { transform: translatex(-1px) rotate(-2deg); }
+}

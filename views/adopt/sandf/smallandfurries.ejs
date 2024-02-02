@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>saf</title>
+    <title></title>
+    <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
 </head>
 <body>
-    <h1>THIS IS ALL small and furries PAGE uWu !!</h1>
     <%- include('../../partials/navbar') %>
-
-    <%for(let smol of smallandfurries) {%>
-
-        <h2><a href="/adopt/smallandfurries/<%= smol.id %>"><%=smol.name  %></a></h2>
-<% } %>
+<div class="container">
+    <div class="card__container">
+        <%for(let smol of smallandfurries) {%>
+       <article class="card__article">
+          <img src="../../../images/p1.jpg" alt="image" class="card__img">
+          <div class="card__data">
+             <span class="card__description"></span>
+             <h2 class="card__title">Name <%= smol.name%></h2>
+             <a href="/adopt/dogs/<%= smol.id %>" class="card__button">Know More</a>
+          </div>
+       </article>
+       <% } %>
+       </div>
+       </div>
     <div> <%- include('../../partials/footer') %>
 </body>
 </html>

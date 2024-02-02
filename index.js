@@ -31,7 +31,7 @@ const cookieParser = require('cookie-parser');
 const validateUser = require('./routes/user');
 const requireLogin = require('./routes/user');
 const { isLoggedIn, storeReturnTo } = require('./middleware');
-const sendMail = require('./controller/sendMail')
+const sendMail = require('./controllers/sendMail')
 //makeing schema validations using joi for phone using regex as we have set its type to be string
 const fileUpload = require('express-fileupload')
 const multer = require('multer')
@@ -317,6 +317,7 @@ app.use((err, req, res, next)=>{
     const {statusCode = 500, message = 'Something went wrong'} = err;
     res.status(statusCode)
     res.render('error', {err});
+    // res.render('404.ejs');
 })
 
 app.listen(3000, () => {
