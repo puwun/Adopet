@@ -11,11 +11,15 @@ const Smallandfurry = require('../models/pets/saf');
 const Other = require('../models/pets/other');
 const passport = require('passport');
 const {storeReturnTo, isAdmin, requireLogin, validateUser,isLoggedIn} = require('../middleware');
-const multer = require('multer')
-const {storage} = require('../cloudinary')
-const upload = multer({dest: storage})
+const cloudinary = require('cloudinary').v2;
 const fileUpload = require('express-fileupload')
 const sendMail = require('../controllers/sendMail')
+
+cloudinary.config({
+    cloud_name:'dlfbnluzs',
+    api_key:'493262577953715',
+    api_secret:'u7V1SmLvruxIVo2ZZqLJEQVNxxY'
+});
 
 router.use(fileUpload({
     useTempFiles:true,
@@ -154,9 +158,30 @@ router.get('/donate', isLoggedIn,(req, res) => {
     res.render('donate.ejs');
 })
 
-router.post('/donate',isLoggedIn , upload.single('image'),catchAsync(async (req, res) => {
-
-    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+router.post('/donate',isLoggedIn,catchAsync(async (req, res) => {
+    const photo = req.files.imageFile;
+    const med = req.files.medHistoryFile;
+    const image =await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(photo.tempFilePath, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log(result);
+            resolve(result.secure_url);
+          }
+        });
+    });
+    const medHistory =await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(med.tempFilePath, (err, result) => {
+            if (err) {
+            reject(err);
+            } else {
+            console.log(result);
+            resolve(result.secure_url);
+            }
+        });
+    });
+    const {pet, name, breed, description, age,isFullyVaccinated,isGoodWithKids, gender, whyDonate} = req.body;
     // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
     // dog.owner = req.user._id;
     // await dog.save();
@@ -197,8 +222,5 @@ router.post('/donate',isLoggedIn , upload.single('image'),catchAsync(async (req,
             break;
     }
 }))
-
-
-
 
 module.exports = router;

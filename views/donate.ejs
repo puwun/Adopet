@@ -13,9 +13,9 @@
   <%- include('partials/navbar') %>
   <form action="/donate" method="POST" class="form-example" enctype="multipart/form-data">
     <div class="form-example">
-       <label for="pet">Enter type of pet: </label>
+       <!-- <label for="pet">Enter type of pet: </label>
       <br> 
-      <!-- <input type="text" name="pet" id="pet" required /> -->
+      <input type="text" name="pet" id="pet" required /> -->
       <label for="pet">Enter type of pet:</label>
       <select name="pet" id="pet">
         <option value="dog">Dog</option>
@@ -24,7 +24,7 @@
         <option value="smallandfurry">Small & Furry</option>
         <option value="other">Other</option>
         <!-- Add more options as needed -->
-      </select>
+       </select>
     </div>
     <div class="form-example">
         <label for="name">Enter pet name: </label>
@@ -46,15 +46,12 @@
       <br>
       <input type="text" name="age" id="age" required />
     </div>
-    <!-- <div class="form-example">
-      <label for="image">Enter pet image: </label>
+    <div class="form-example">
+      <label for="imageFile">Enter pet image: </label>
       <br>
-      <input type="file" name="image" id="image" required />
-    </div> -->
-    <div class="form-example">  
-      <label for="image">Enter cover image for blog: </label>
-      <input type="file" name="image" id="image" required />
-  </div>
+      <input type="file" name="imageFile" id="imageFile" required />
+      <!-- <input type="text" name="image" id="image" required /> -->
+    </div>
     <div>
         <label for="isFullyVaccinated">Are shots up to date?</label>
         <br>
@@ -66,10 +63,10 @@
         <!-- Make it boolean -->
     </div>
     <div class="form-example">
-      <label for="medHistory">Enter pet medical history: </label>
+      <label for="medHistoryFile">Enter pet medical history: </label>
       <br>
-      <!-- <input type="file" name="medHistory" id="medHistory" required /> -->
-      <input type="text" name="medHistory" id="medHistory" required />
+      <input type="file" name="medHistoryFile" id="medHistoryFile" required />
+      <!-- <input type="text" name="medHistory" id="medHistory" required /> -->
 
     </div>
     <div>
@@ -96,7 +93,7 @@
     <div class="form-example">
         <input type="submit" value="Submit" />
     </div>
-
+</form>
   </form>
   <div> <%- include('./partials/footer') %>
   </div>
