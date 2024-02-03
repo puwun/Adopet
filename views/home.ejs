@@ -1,16 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Adopet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/home.css">
 </head>
-<body>
-     <%- include('./partials/navbar') %>
 
-    <%- include('./partials/flash') %>
-    <h1>THIS IS HOME PAGE</h1>
-    <div> <%- include('./partials/footer') %>
+<body>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/donate">Donate</a>
+                <a href = "/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/articles">Blog</a>
+                <a href = "/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/signup">Sign up</a>
+                <a href = "/login">Log in</a>
+                <% }else{ %>
+                <a href = "/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
     </div>
-    </html>
+    <div id="cursor"></div>
+    <div id="main">
+        
+        <div id="page1">
+            
+            <div id="video-container">
+                <div id="play">PLAY</div>
+                <video autoplay loop muted src="../images/video.mp4"></video>
+            </div>
+        </div>
+
+        <div class="logo">
+        </div>
+    
+        <div class="wrapper">
+            <section class="intro">
+                <div class="line"></div>
+            </section>
+            <section class="pet1 character">
+                <div class="block"></div>
+                <img src="../images/pet1.png" alt=""><span class="huge-text">Snowey</span>
+                <div class="caption">
+                    Meet Snowy, snow-white feline with eyes that sparkle like diamonds. This fluffy ball of love has a heart as pure as freshly fallen snow and a playful spirit that's bound to melt your heart.
+                
+                <!-- Snowy's gentle purrs and affectionate nature make every day brighter. Whether he's curled up by the window, basking in the sunlight, or chasing after feather toys, his zest for life is contagious. His soft fur invites cuddles, and his endearing antics are sure to bring laughter to your days. -->
+                
+                <!-- This lovable cat craves companionship and longs for a forever home where he can share his love and bring endless happiness. Snowy is not just a pet; he's a loyal friend waiting to make a deep and lasting impression on your life. Adopting Snowy isn't just a choice; it's an opportunity to fill your life with love, warmth, and endless purrs of contentment -->
+                </div>
+                <div class="nickname"><span>Nickname</span>Bald cape</div>
+                <div class="quote">
+                    Our Bond is Just Unbreakable
+                </div>
+            </section>
+    
+            <section class="pet2 character">
+                <div class="block"></div>
+                <img src="../images/pet3.png" alt=""><span class="huge-text">Niomi</span>
+                <div class="caption">
+                    
+                Meet Sunny, my radiant companion who brightens every moment with chirpy melodies and vibrant plumage. Our bond is a symphony of trust and joy, a feathered friend who fills my world with love and serenity
+                </div>
+                <div class="nickname"><span>Nickname</span>Demon Cyborg</div>
+                <div class="quote">
+                    Can't get over my Niomi!!
+                </div>
+            </section>
+
+            <section class="pet3 character">
+                <div class="block"></div>
+                <img src="../images/pet2.png" alt=""><span class="huge-text">Niomi</span>
+                <div class="caption">
+                    Niomi, My Ever-Devoted Companion: A Tale of Unbreakable Bonds, Shared Moments, and Unspoken Kinship Between Owner and Dog.                </div>
+                <div class="nickname"><span>Nickname</span>Demon Cyborg</div>
+                <div class="quote">
+                    Can't get over my Niomi!!
+                </div>
+            </section>
+        </div>
+        <di id="page3">
+
+        <div class="cInnerContent">
+            <h1 class="header-section gs_reveal ipsType_center">Ready to Add Pawsome Joy to Your Life?<br> Discover Why Adopting a Pet Is the Answer!</h1></h1>
+            
+            <div class="features">
+          
+              <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+                <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromLeft">
+                  <div class="card">
+                    <img width="479" src="../images/pet1.1.png" alt="">
+                  </div>
+                </div>
+          
+                <div class="ipsGrid_span7 ipsType_left">
+                  <h2 class="heading_large gs_reveal">Unconditional Love  <strong>on Tap</strong> </h2>
+                  <p class="gs_reveal"><strong>Furr Real,</strong>  nothing beats the constant purr-fect companionship of a pet. From morning tail wiggles to late-night cuddle sessions, get ready for a daily dose of unconditional love!.</p>
+                </div>
+              </div>
+          
+              <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+                <div class="ipsGrid_span7 ipsType_right">
+                  <h2 class="heading_large gs_reveal">Healthier Heart <strong>inside and</strong> out</h2>
+                  <p class="gs_reveal">Adopting a pet isn't just about gaining a cute companion; it's about gaining a healthier heart too! Studies paw-sitively show that pet owners enjoy reduced stress, lower blood pressure, and an increased daily dose of pawsitivity. So, why wait? Adopt, cuddle, and let the health benefits begin!</p>
+                </div>
+          
+                <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromRight">
+                  <div class="card">
+                    <img width="479" src="../images/pet1.2.png" alt="">
+                  </div>
+                </div>
+              </div>
+          
+              <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+                <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromLeft">
+                  <div class="card">
+                    <img width="479" src="../images/pet1.4.png" alt="">
+                  </div>
+                </div>
+          
+                <div class="ipsGrid_span7 ipsType_left">
+                  <h2 class="heading_large gs_reveal">Ready to Experience the Paw-sitive Vibes of Pet Adoption?  <strong>Let's Dive in</strong> </h2>
+                  <p class="gs_reveal"> Step into a world filled with magic and endless possibilities as we unravel the enchanting journey of pet adoption. Discover the heartwarming stories, the bond that lasts a lifetime, and the paw-sibilities that come with opening your heart and home to a furry friend in need.
+                </p>
+                </div>
+              </div>
+          
+              <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+                <div class="ipsGrid_span7 ipsType_right">
+                  <h2 class="heading_large gs_reveal"><strong>Curious Minds Wanted</strong> Unraveling the Wonders of Pet Adoption Paw-ssibilities</h2>
+                  <p class="gs_reveal">Attract inquisitive minds to unravel the wonders and possibilities that come with pet adoption,Dive into the magical world of pet adoption and discover the endless possibilities it holds</p>
+                </div>
+          
+                <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromRight">
+                  <div class="card">
+                    <img width="479" src="../images/pet1.3.png" alt="">
+                  </div>
+                </div>
+              </div>
+          
+            </div>
+          
+          </div>
+          
+          
+          
+          
+          <!-- <header>
+             <a href="https://greensock.com/scrolltrigger">
+               <img class="greensock-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/scroll-trigger-logo-light.svg" width="200" height="64" />
+            </a> 
+          </header> -->
+        </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/home.js"></script>
 </body>
+
+</html>
+

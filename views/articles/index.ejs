@@ -6,33 +6,46 @@
     <title>Adopet Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font awesome icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="../stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/likes.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   </head>
     <header>
       <!-- %- include('../partials/navbar') %> -->
       <%- include('../partials/flash') %>
-<nav class = "navbar">
-  <div class = "container">
-    <a href = "/" class = "navbar-brand">Adopet Blog</a>
-    <div class = "navbar-nav">
-      <a href = "/donate">Donate</a>
-      <a href = "/adopt">Adopt</a>
-      <a href = "">Get to vet</a>
-      <a href = "/articles">Blog</a>
-      <a href = "/events">events</a>
-      <% if(!currentUser) { %>
-      <a href = "/signup">Sign up</a>
-      <a href = "/login">Log in</a>
-      <% }else{ %>
-      <a href = "/logout">Log out</a>
-      <% } %>
-
+      <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/donate">Donate</a>
+                <a href = "/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/articles">Blog</a>
+                <a href = "/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/signup">Sign up</a>
+                <a href = "/login">Log in</a>
+                <% }else{ %>
+                <a href = "/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
 
       <div class = "banner">
         <div class = "container">
@@ -48,7 +61,12 @@
     <!-- end of header -->
     
     <!-- design -->
+    <form id="searchForm">
+      <input type="text"  name="query" placeholder="Search for a blog">
+      <button>Search</button>
+  </form>
 
+  
     <div class="scroll-tracker"></div>
     <section class = "design" id = "design">
       <div class = "container">
@@ -209,7 +227,69 @@
     
 
   </main>
-  <script src="../js/like.js"></script>
+  <script>
+
+
+
+
+
+
+const form = document.querySelector('#searchForm');
+form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    // console.log(form.elements.querySelector.value);
+// console.dir(form.elements.query.value)
+    const searchTerm = form.elements.query.value;
+    const config = {params: {q: searchTerm}}
+    const res = await axios.get(`http://localhost:3000/articles`, config);
+    console.dir(res.data);
+    form.elements.query.value = '';
+})
+
+const createImages = (shows) => {
+    for(let s of shows){
+        if(s.show.image){
+            const img = document.createElement('IMG');
+            img.src = s.show.image.medium;
+            document.body.append(img);
+        }
+        
+    }
+}
+
+
+const likeButtons = document.querySelectorAll(".like-button");
+
+likeButtons.forEach(button => {
+  const heartIcon = button.querySelector(".heart-icon");
+  // const likesAmountLabel = button.querySelector(".likes-amount");
+  const postId = button.dataset.postId; // Assuming the post ID is stored in a data attribute
+
+  heartIcon.addEventListener("click", async () => {
+    heartIcon.classList.toggle("liked");
+    const isLiked = heartIcon.classList.contains("liked");
+
+    // Make a POST request to the /like route on your server
+    const response = await fetch('/articles', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ isLiked, postId }), // Send the post ID and whether the post is liked in the request body
+    });
+
+    if (!response.ok) {
+      console.error('Error:', response.statusText);
+      return;
+    }
+
+    const data = await response.json();
+
+    // Update the likes amount label with the new likes amount from the server
+    likesAmountLabel.innerHTML = data.likesAmount;
+  });
+}); 
+  </script>
 
     <!-- footer -->
     <!-- end of footer -->

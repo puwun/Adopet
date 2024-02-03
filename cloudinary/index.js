@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     folder: 'Adopet',
-    allowedFormats: ['jpeg', 'png', 'jpg']
+    allowedFormats: ['jpeg', 'png', 'jpg', 'pdf']
 })
 
 

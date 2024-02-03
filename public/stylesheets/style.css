@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Philosopher&family=Ubuntu:wght@300&display=swap');
 
 /* :root{
     --Playfair: 'Playfair Display', serif;
@@ -20,13 +19,11 @@
     animation: color 12s ease-in-out infinite;
     position:relative;
 } */
-body{
-    line-height: 1.4;
-    color: var(--dark);
-    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
-    background-size: 300% 300%;
+body {
+    background: linear-gradient(45deg, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 150% 990%;
     animation: color 12s ease-in-out infinite;
-    position:relative;
+    margin: 0;
 }
 img{
     width: 100%;
@@ -46,42 +43,50 @@ header{
     flex-direction: column;
     justify-content: stretch;
 }
-.navbar{
-    /* background: rgba(0, 0, 0, 0.6); */
-    /* background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6); */
-    background-size: 300% 300%;
-    animation: color 12s ease-in-out infinite;
-    position:relative;
-    padding: 1.2rem;
+#nav {
+    /* height: 100px; */
+    width: 100%;
+    /* background-color: burlywood; */
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px;
 }
-.navbar-brand{
-    color: #fff;
-    font-size: 2rem;
+
+#nav #nav-part2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 12vh; */
+    gap: 40px;
+}
+
+#links {
+    padding: 10px;
+}
+
+#nav-part1 {
+    /* background-color: RED; */
+    height: 82px;
+    overflow: hidden;
+    font-size: 12vh;
+}
+
+#nav-part1 svg {
     display: block;
-    text-align: center;
-    text-decoration: none;
-    font-family: var(--Playfair);
-    letter-spacing: 1px;
 }
-.navbar-nav{
-    padding: 0.8rem 0 0.2rem 0;
-    text-align: center;
-}
-.navbar-nav a{
+
+#nav-part2 #links a {
     text-transform: uppercase;
-    font-family: var(--Roboto);
-    letter-spacing: 1px;
-    font-weight: 500;
-    color: #fff;
     text-decoration: none;
-    display: inline-block;
-    padding: 0.4rem 0.1rem;
-    letter-spacing: 3px;
-    transition: opacity 0.5s ease;
+    color: #333;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 20px;
 }
-.navbar-nav a:hover{
-    opacity: 0.7;
-}
+
 .banner{
     flex: 1;
     display: flex;

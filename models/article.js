@@ -16,7 +16,7 @@ const articleSchema = new Schema({
     },
     cover:{
         type: String,
-        // required: [true, 'Cover image is required'],
+        required: [true, 'Cover image is required'],
     },
     }
     // comments:

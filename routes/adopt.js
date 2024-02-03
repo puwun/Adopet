@@ -32,6 +32,84 @@ router.get('/dogs', catchAsync(adopt.getDogs))
 router.get('/dogs/:id', catchAsync(adopt.getOneDog))
 
 
+router.get('/dogs/search/:key', catchAsync(async(req,res) =>{
+    console.log(req.params.key);
+    const data = await Dog.find({
+        $or: [
+            {name: {$regex: req.params.key}},
+            {breed: {$regex: req.params.key}},
+            {description: {$regex: req.params.key}},
+        ]
+    })
+    console.log(data);
+    res.send(data)
+}))
+//     const result = await Dog.aggregate([
+//         {
+//             "$search": {
+//                 "index": 'search-text',
+//                 "text": {
+//                     "query": req.params.key,
+//                     "path": {
+//                         "wildcard": "*"
+//                     }
+//                 }
+//             }
+        
+//         }
+// ])
+//     console.log(result);
+//     res.send(result)
+// }))
+
+router.get('/cats/search/:key', catchAsync(async(req,res) =>{
+    console.log(req.params.key);
+    const data = await Cat.find({
+        $or: [
+            {name: {$regex: req.params.key}},
+            {breed: {$regex: req.params.key}},
+            {description: {$regex: req.params.key}},
+        ]
+    })
+    console.log(data);
+    res.send(data)
+}))
+router.get('/birds/search/:key', catchAsync(async(req,res) =>{
+    console.log(req.params.key);
+    const data = await Bird.find({
+        $or: [
+            {name: {$regex: req.params.key}},
+            {breed: {$regex: req.params.key}},
+            {description: {$regex: req.params.key}},
+        ]
+    })
+    console.log(data);
+    res.send(data)
+}))
+router.get('/smallandfurries/search/:key', catchAsync(async(req,res) =>{
+    console.log(req.params.key);
+    const data = await Smallandfurry.find({
+        $or: [
+            {name: {$regex: req.params.key}},
+            {breed: {$regex: req.params.key}},
+            {description: {$regex: req.params.key}},
+        ]
+    })
+    console.log(data);
+    res.send(data)
+}))
+router.get('/others/search/:key', catchAsync(async(req,res) =>{
+    console.log(req.params.key);
+    const data = await Other.find({
+        $or: [
+            {name: {$regex: req.params.key}},
+            {breed: {$regex: req.params.key}},
+            {description: {$regex: req.params.key}},
+        ]
+    })
+    console.log(data);
+    res.send(data)
+}))
 
 
 
@@ -72,6 +150,7 @@ router.get('/smallandfurries/:id', catchAsync(adopt.getOneSmallandfurry))
 router.get('/others', catchAsync(adopt.getOthers))
 
 router.get('/others/:id', catchAsync(adopt.getOneOther))
+
 
 
 

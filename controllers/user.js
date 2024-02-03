@@ -1,17 +1,13 @@
 const User = require('../models/user');
-const sendMail = require('./sendMail')
-// const fileUpload = require('express-fileupload')
+const sendMail = require('./sendMail');
+const {storage} = require('../cloudinary/index')
+const fileUpload = require('express-fileupload')
 const Dog = require('../models/pets/dog');
 const Cat = require('../models/pets/cat');
 const Bird = require('../models/pets/bird');
 const Smallandfurry = require('../models/pets/saf');
 const Other = require('../models/pets/other');
-
-
-// router.use(fileUpload({
-//     useTempFiles:true,
-// }))
-
+const cloudinary = require('cloudinary').v2;
 
 
 module.exports.renderEvents = (req, res) => {
@@ -123,8 +119,29 @@ module.exports.renderDonate =(req, res) => {
 }
 
 module.exports.donate = async (req, res) => {
-
-    const {pet, name, breed, description  , age, image ,isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate } = req.body;
+    const photo = req.files.imageFile;
+    const med = req.files.medHistoryFile;
+    const image = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(photo.tempFilePath, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log(result);
+            resolve(result.secure_url);
+          }
+        });
+    });
+    const medHistory = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(med.tempFilePath, (err, result) => {
+            if (err) {
+            reject(err);
+            } else {
+            console.log(result);
+            resolve(result.secure_url);
+            }
+        });
+    });
+    const {pet, name, breed, description  , age,isFullyVaccinated,isGoodWithKids, gender, whyDonate } = req.body;
     // const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
     // dog.owner = req.user._id;
     // await dog.save();

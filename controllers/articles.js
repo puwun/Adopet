@@ -1,6 +1,12 @@
 const Article = require('../models/article');
+const cloudinary = require('cloudinary').v2;
+const {storage} = require('../cloudinary/index')
+const fileUpload = require('express-fileupload')
+
+
 
 module.exports.index = async (req, res) =>{
+
     let aart = await Article.find({})
     // console.log('----------------------')
     // console.log(aart)
@@ -13,22 +19,21 @@ module.exports.getNew = (req, res) =>{
     res.render('../views/articles/new')
 }
 
-module.exports.createNew = async (req, res, next) => {
-    const article = new Article(req.body);
-    article.author = req.user._id;
-    // const resp = res.json(req.files)
-    // console.log(resp)
-    // console.log('----------------------');
-    // console.log(req.body)
-    // console.log('----------------------');
-    // console.log(req.body.cover);
-    // console.log('----------------------');
-    // console.log(req.file);
-    // console.log('----------------------');
-    // console.log(req.files);
-    // console.log('----------------------');
-    // console.log(req.files.cover.name);
-    article.cover = req.body.cover;
+module.exports.createNew = async (req, res) => {
+    const author = req.user._id;
+    const photo = req.files.coverImage;
+    const cover = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(photo.tempFilePath, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log(result);
+            resolve(result.secure_url);
+          }
+        });
+    });
+    const {title, content} = req.body;
+    const article = new Article({title, content,author, cover});
     await article.save();
     req.flash('success', 'Successfully made a new article!');
     res.redirect('/articles')

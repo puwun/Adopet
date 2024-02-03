@@ -58,7 +58,7 @@ module.exports.getBirds = async(req, res) => {
 module.exports.getOneBird = async(req, res) => {
     const { id } = req.params;
     const bird = await Bird.findById(id).populate('owner');
-    //    const bird = await Bird.find({pet: 'dog',_id : id}).populate('owner');
+    //const bird = await Bird.find({pet: 'dog',_id : id}).populate('owner');
     // console.log(bird);
     res.render('../views/adopt/birdies/show', {bird});
 }
