@@ -16,14 +16,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" /> -->
-    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../stylesheets/article.css">
     <link rel="stylesheet" href="/stylesheets/likes.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   </head>
     <header>
-      <!-- %- include('../partials/navbar') %> -->
       <%- include('../partials/flash') %>
       <div id="nav">
         <div id="nav-part1">
@@ -61,10 +60,23 @@
     <!-- end of header -->
     
     <!-- design -->
-    <form id="searchForm">
-      <input type="text"  name="query" placeholder="Search for a blog">
-      <button>Search</button>
-  </form>
+    <section class="container">
+      <form>
+        <i class="fas fa-search"></i>
+        <input type="text" name="" id="search-item" placeholder="Search blogs">
+      </form>
+
+      <div class="product-list">
+        <div class="product">
+          <img src="../images/blue.png" alt="">
+          <div class="p-details">
+            <h2>BLOG TITLE</h2>
+            <h3>description</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
 
   
     <div class="scroll-tracker"></div>

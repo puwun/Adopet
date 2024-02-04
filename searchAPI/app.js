@@ -1,25 +1,25 @@
-const form = document.querySelector('#searchForm');
-form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    // console.log(form.elements.querySelector.value);
-// console.dir(form.elements.query.value)
-    const searchTerm = form.elements.query.value;
-    const config = {params: {q: searchTerm}}
-    const res = await axios.get(`http://api.tvmaze.com/search/shows`, config);
-    createImages(res.data);
-    form.elements.query.value = '';
-})
+// const form = document.querySelector('#searchForm');
+// form.addEventListener('submit', async function (e) {
+//     e.preventDefault();
+//     // console.log(form.elements.querySelector.value);
+// // console.dir(form.elements.query.value)
+//     const searchTerm = form.elements.query.value;
+//     const config = {params: {q: searchTerm}}
+//     const res = await axios.get(`http://api.tvmaze.com/search/shows`, config);
+//     createImages(res.data);
+//     form.elements.query.value = '';
+// })
 
-const createImages = (shows) => {
-    for(let s of shows){
-        if(s.show.image){
-            const img = document.createElement('IMG');
-            img.src = s.show.image.medium;
-            document.body.append(img);
-        }
+// const createImages = (shows) => {
+//     for(let s of shows){
+//         if(s.show.image){
+//             const img = document.createElement('IMG');
+//             img.src = s.show.image.medium;
+//             document.body.append(img);
+//         }
         
-    }
-}
+//     }
+// }
 
 
 
@@ -64,3 +64,29 @@ const createImages = (shows) => {
 //     })
 //   }
   
+
+
+const search = () => {
+    const searchBox = document.getElementById("search-item").value.toUpperCase();
+    const storeitems = document.getElementById("product-list");
+    const product = document.querySelectorAll(".product");
+    const pname = storeitems.getElementsByTagName("h2");
+    
+    for(var i = 0; i < pname.length; i++){
+        let match = product[i].getElementsByTagName("h2")[0];
+
+        if(match){
+            let textvalue = match.textContent || match.innerText
+
+                if(textvalue.toUpperCase().indexOf(searchBox) > -1){
+                    product[i].style.display = "";
+                    // console.log("working", product[i])
+                }else{
+                    product[i].style.display = "none";
+                    // console.log("not working")
+            }
+        }
+
+
+    }
+}

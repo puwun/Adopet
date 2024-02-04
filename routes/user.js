@@ -28,7 +28,7 @@ router.use(fileUpload({
 router.get('/events' , user.renderEvents)
 
 
-router.get('/signup', user.renderSignup)
+router.get('/signup', user.renderSignup)    
 
 //when users register or signup their info is saved in the db but they are required to login again which is kinda clunky so like logout passport provides a method called login() too which takes a user and logs them in and this too requires a callback same as logout does
 router.post('/signup', validateUser, catchAsync(user.signup))
@@ -37,8 +37,10 @@ router.post('/signup', validateUser, catchAsync(user.signup))
 router.get('/login', user.renderLogin)
 
 // using the storeReturnTo middleware to save the returnTo value from session to res.locals brfore passport.authenticate() middleware runs because passport.authenticate logs the user in and clears req.session
-router.post('/login', storeReturnTo, passport.authenticate('local', { failureFlash : true, failureRedirect: '/login' }), user.login)
-
+router.post('/login', 
+    storeReturnTo, 
+    passport.authenticate('local', { failureFlash : true, failureRedirect: '/login' }), 
+    user.login)
 
 // router.post('/login',catchAsync(async (req, res) => {
 //     // res.send(req.body);
