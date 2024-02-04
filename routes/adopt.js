@@ -74,6 +74,7 @@ router.get('/cats/search/:key', catchAsync(async(req,res) =>{
     console.log(data);
     res.send(data)
 }))
+
 router.get('/birds/search/:key', catchAsync(async(req,res) =>{
     console.log(req.params.key);
     const data = await Bird.find({

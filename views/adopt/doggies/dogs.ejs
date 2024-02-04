@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  />
     <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
 </head>
 <body>
     <%- include('../../partials/navbar') %>
-<div class="container">
-    <div class="card__container">
+<section class="container">
+    <form>
+        <i class="fas fa-search"></i>
+        <input type="text" name="" id="search-item" placeholder="Search BLOG" onkeyup="search()">
+    </form>
+    <div class="card__container" id="card-list">
         <%for(let dog of doggies) {%>
        <article class="card__article">
           <img src="../../../images/p1.jpg" alt="image" class="card__img">
@@ -22,6 +27,8 @@
        <% } %>
        </div>
        </div>
-    <div> <%- include('../../partials/footer') %>
+    <section> <%- include('../../partials/footer') %>
+
+<script src="../../../js/search.js"></script>
 </body>
 </html>

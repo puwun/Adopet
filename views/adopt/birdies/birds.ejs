@@ -12,7 +12,11 @@
 <body>
     <%- include('../../partials/navbar') %>
     <div class="container">
-        <div class="card__container">
+        <form>
+            <i class="fas fa-search"></i>
+            <input type="text" name="" id="search-item" placeholder="Search BLOG" onkeyup="search()">
+        </form>
+        <div class="card__container" id="card-list">
             <%for(let bird of birdies) {%>
                 <article class="card__article">
               <img src="../../../images/p1.jpg" alt="image" class="card__img">
@@ -26,6 +30,6 @@
            </div>
            </div>
         <div> <%- include('../../partials/footer') %>
-
+            <script src="../../../js/search.js"></script>
 </body>
 </html>
