@@ -1,6 +1,11 @@
 const Joi = require('joi');
 const Article = require('./models/article');
 const ExpressError = require('./utils/ExpressError');
+const Dog = require('./models/pets/dog');
+const Cat = require('./models/pets/cat');
+const Bird = require('./models/pets/bird');
+const Smallandfurry = require('./models/pets/saf');
+const Other = require('./models/pets/other');
 
 
 
@@ -63,6 +68,8 @@ const validateArticle = (req, res, next) => {
 }
 
 
+
+
 const requireLogin = (req, res, next) => {
     if (!req.session.user_id) {
         res.render('/login');
@@ -82,6 +89,52 @@ const isAuthor = async(req, res, next)=>{
 }   
 
 
+const isDogOwner = async(req, res, next) =>{
+    const {id} = req.params;
+    const dog = await Dog.findById(id);
+    if(!dog.owner.equals(req.user._id)){
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/adopt/dogs/${id}`);
+    }
+    next();
+}
+const isCatOwner = async(req, res, next) =>{
+    const {id} = req.params;
+    const cat = await Cat.findById(id);
+    if(!cat.owner.equals(req.user._id)){
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/adopt/cats/${id}`);
+    }
+    next();
+}
+const isBirdOwner = async(req, res, next) =>{
+    const {id} = req.params;
+    const bird = await Bird.findById(id);
+    if(!bird.owner.equals(req.user._id)){
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/adopt/birds/${id}`);
+    }
+    next();
+}
+const isOtherOwner = async(req, res, next) =>{
+    const {id} = req.params;
+    const other = await Other.findById(id);
+    if(!other.owner.equals(req.user._id)){
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/adopt/others/${id}`);
+    }
+    next();
+}
+const isSmallandfurryOwner = async(req, res, next) =>{
+    const {id} = req.params;
+    const smallandfurry = await Smallandfurry.findById(id);
+    if(!smallandfurry.owner.equals(req.user._id)){
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect(`/adopt/smallandfurrys/${id}`);
+    }
+    next();
+}
+
 
 
 const isAdmin = (req, res, next) => {
@@ -98,5 +151,10 @@ module.exports = {
     validateArticle,
     isAuthor,
     storeReturnTo,
-    isAdmin
+    isAdmin,
+    isDogOwner,
+    isCatOwner,
+    isBirdOwner,
+    isOtherOwner,
+    isSmallandfurryOwner
   };

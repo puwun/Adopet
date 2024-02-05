@@ -12,12 +12,14 @@
 <body>
     <%- include('../../partials/navbar') %>
     <div class="container">
-        <form>
+        <!-- <form> -->
             <i class="fas fa-search"></i>
-            <input type="text" name="" id="search-item" placeholder="Search BLOG" onkeyup="search()">
-        </form>
-        <div class="card__container" id="card-list">
-            <%for(let bird of birdies) {%>
+            <input type="text" name="" id="search-item" placeholder="Search birds" onclick="searchBirds()">
+            <!-- <button onclick="searchBirds()">Search</button> -->
+            <div class="searchResults">
+                <div class="card__container" id="card-list">
+                    <%for(let bird of birdies) {%>
+                        <!-- </form> -->
                 <article class="card__article">
               <img src="../../../images/p1.jpg" alt="image" class="card__img">
               <div class="card__data">
@@ -29,7 +31,28 @@
            <% } %>
            </div>
            </div>
-        <div> <%- include('../../partials/footer') %>
-            <script src="../../../js/search.js"></script>
+        </div>
+     
+            <script>
+                function displaySearchResults(results){
+                    var resultContainer= document.getElementById('searchResults');  
+                    resultContainer.innerHTML= '';
+                    results.forEach(pet => {
+                        var petElem = document.createElement('div');
+                        petElem.textContent = `${pet.name} - ${pet.gender}`;
+                        resultContainer.appendChild(petElem);
+                    })
+                }
+                function searchBirds(){
+                    var gender= document.getElementById('search-item').value;
+                    fetch(`/adopt/birds?gender=${gender}`)
+                    .then((res) => res.json())
+                    .then(data => displaySearchResults(data))
+                    
+
+                }
+            </script>
+            <!-- <script src="../../../js/search.js"></script> -->
+            
 </body>
 </html>

@@ -38,7 +38,12 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <a href="#">Become a shelter provider</a>
+                <form action="/adopt/cats/<%= cat._id  %>" method="post" class="enquiry-btn">
+                    <div class="form-example">
+                        <input type="submit" value="Become a shelter provider" />
+                    </div>
+                </form>
+                <!-- <a href="#">Become a shelter provider</a> -->
             </div>
             </div>
             <div class="description">
@@ -53,6 +58,11 @@
                 </ul>
             </div>
         </div>
+        <% if(currentUser &&cat.owner.equals(currentUser)) {%>
+            <p><a href="/adopt/cats/<%= cat._id%>/edit">Edit</a></p>
+            <form action="/adopt/cats/<%= cat._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <% } %>
+            <a href="/adopt/cats">Go back to all cats</a>
     </div>
 </body>
 </html>

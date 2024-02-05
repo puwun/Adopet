@@ -7,6 +7,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
+const port = 3000;
 const methodOverride = require('method-override');
 const ExpressError = require('express-error-handler');
 const userRouter = require('./routes/user');
@@ -36,7 +37,9 @@ const sendMail = require('./controllers/sendMail')
 const fileUpload = require('express-fileupload')
 const multer = require('multer')
 const upload = multer({dest: 'uploads/'})
-
+//validatePets isOwner middleware is to be made
+//delete all the inital entries which were from seed users
+//or else send delete req using postman
 
 
 
@@ -66,7 +69,8 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //making website MongoInjection proof
 //asnitising HTML w Joi 
 //implementing use of HelmetJs which removes various vulnerabilities like xss(cross-site-scripting), clickjacking, etc
-
+//just before deployment, change all error routes to render 404.ejs 
+//currently first priority is user profile bcoz all the update and delete routes for it are remaining
 
 
 app.set('view engine', 'ejs');
@@ -308,19 +312,20 @@ app.use('/articles', articleRouter);
 //     }
 // )
 
-    // app.get('*', (req, res) => {
-    //     res.send('I dont know this path!!')
-    // })
-
-
-app.use((err, req, res, next)=>{
-    const {statusCode = 500, message = 'Something went wrong'} = err;
-    res.status(statusCode)
-    res.render('error', {err});
-    // res.render('404.ejs');
+app.get('*', (req, res) => {
+    // res.send('I dont know this path!!')
+    res.render('404.ejs');
 })
 
+
+// app.use((err, req, res, next)=>{
+//     const {statusCode = 500, message = 'Something went wrong'} = err;
+//     res.status(statusCode)
+//     // res.render('error', {err});
+//     res.render('404.ejs');
+// })
+
 app.listen(3000, () => {
-    console.log('Server is listening on port 3000!!!')
+    console.log(`Server is listening on port ${port}!!!`)
 });
 

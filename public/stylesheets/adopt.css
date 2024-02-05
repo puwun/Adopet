@@ -71,7 +71,7 @@
     font-size: 25px;
 }
 
-.box .basic-info .options a {
+.box .basic-info .options form {
     color: white;
     background: orange;
     background-size: 300% 300%;
@@ -85,7 +85,7 @@
     border-radius: 5px;
 }
 
-.box .basic-info .options a:hover {
+.box .basic-info .options .enquiry-btn:hover {
     background-color: orangered;
 }
 
@@ -130,12 +130,12 @@
     display: flex;
 }
 
-.box .description .social a {
+.box .description .social form {
     margin-right: 15px;
     color: var(--gray-color);
 }
 
-.box .description .social a:hover {
+.box .description .social form:hover {
     color: var(--secondary-color);
 }
 

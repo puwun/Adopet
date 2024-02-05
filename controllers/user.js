@@ -90,6 +90,7 @@ module.exports.renderProfile = async(req, res) => {
     const myDogs = await Dog.find({owner: currUser._id});
     console.log('----------------------');
     console.log(myDogs);
+    //pass other animals too
     // const cats = await Cat.find({owner: req.user._id});
     // const birds = await Bird.find({owner: req.user._id});
     // const smallandfurries = await Smallandfurry.find({owner: req.user._id});

@@ -22,3 +22,26 @@ const search = () => {
 
     }
 }
+
+
+// async function searchBirds() {
+//     const searchInput = document.getElementById('search-item').value.trim();
+//     const url = `/adopt/birds?search=${encodeURIComponent(searchInput)}`;
+
+//     try {
+//       const response = await fetch(url);
+//       const data = await response.json();
+
+//       // Display search results on the web page
+//       const searchResultsDiv = document.getElementById('searchResults');
+//       searchResultsDiv.innerHTML = '';
+
+//       data.forEach(bird => {
+//         const birdInfo = document.createElement('div');
+//         birdInfo.textContent = `Name: ${bird.name}, Breed: ${bird.breed}, Age: ${bird.age}, Gender: ${bird.gender}`;
+//         searchResultsDiv.appendChild(birdInfo);
+//       });
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   }

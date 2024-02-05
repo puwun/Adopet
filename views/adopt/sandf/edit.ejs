@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Edit page</h1>
+    <form action="/adopt/smallandfurries/<%=smallandfurries._id%>?_method=PUT" method="POST" class="form-example">
+        <div class="form-example">
+            <label for="name">Enter name: </label>
+            <input type="text" name="name" id="name" value="<%=smallandfurries.name%>" required />
+        </div>
+        <label for="age">Enter age: </label>
+        <input type="text" name="age" id="age" value="<%=smallandfurries.age%>" required />
+        <div class="form-example">
+            <label for="breed">Enter breed: </label>
+            <input type="text" name="breed" id="breed" value="<%=smallandfurries.breed%>" required />
+        </div>
+        <div class="form-example">
+            <label for="gender">Enter gender: </label>
+            <input type="text" name="gender" id="gender" value="<%=smallandfurries.gender%>" required />
+        </div>
+        <div class="form-example">
+            <label for="description">Enter description: </label>
+            <input type="text" name="description" id="description" value="<%=smallandfurries.description%>" required />
+        </div>
+        <div class="form-example">
+            <label for="isFullyVaccinated">Enter vaccinated or not: </label>
+            <input type="text" name="isFullyVaccinated" id="isFullyVaccinated" value="<%=smallandfurries.isFullyVaccinated%>" required />
+        </div>
+        <div class="form-example">
+            <label for="image">Enter image: </label>
+            <input type="text" name="image" id="image" value="<%=smallandfurries.image%>" required />
+        </div>
+        <div class="form-example">
+            <label for="medHistory">Enter medHistory: </label>
+            <input type="text" name="medHistory" id="medHistory" value="<%=smallandfurries.medHistory%>" required />
+        </div>
+        <div class="form-example">
+            <label for="isGoodWithKids">Enter whether good with kids or not: </label>
+            <input type="text" name="isGoodWithKids" id="isGoodWithKids" value="<%=smallandfurries.isGoodWithKids%>" required />
+        </div>
+        <div class="form-example">
+            <label for="whyDonate">Enter whyDonate: </label>
+            <input type="text" name="whyDonate" id="whyDonate" value="<%=smallandfurries.whyDonate%>" required />
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Update" />
+        </div>
+    </form>
+    <a href="/adopt/smallandfurries">Back to all smallandfurries</a>
+</body>
+
+</html>

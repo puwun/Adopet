@@ -38,7 +38,12 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <a href="#">Become a shelter provider</a>
+                <form action="/adopt/birds/<%= bird._id  %>" method="POST" class="enquiry-btn">
+                    <div class="form-example">
+                        <input type="submit" value="Become a shelter provider" />
+                    </div>
+                </form>
+                <!-- <a href="#">Become a shelter provider</a> -->
             </div>
             </div>
             <div class="description">
@@ -53,6 +58,11 @@
                 </ul>
             </div>
         </div>
+        <% if(currentUser &&bird.owner.equals(currentUser)) {%>
+            <p><a href="/adopt/birds/<%= bird._id%>/edit">Edit</a></p>
+            <form action="/adopt/birds/<%= bird._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <% } %>
+            <a href="/adopt/birds">Go back to all birds</a>
     </div>
 </body>
 </html>

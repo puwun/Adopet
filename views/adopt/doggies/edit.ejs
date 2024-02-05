@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Edit page</h1>
+    <form action="/adopt/dogs/<%=dog._id%>?_method=PUT" method="POST" class="form-example">
+        <div class="form-example">
+            <label for="name">Enter name: </label>
+            <input type="text" name="name" id="name" value="<%=dog.name%>" required />
+        </div>
+        <label for="age">Enter age: </label>
+        <input type="text" name="age" id="age" value="<%=dog.age%>" required />
+        <div class="form-example">
+            <label for="breed">Enter breed: </label>
+            <input type="text" name="breed" id="breed" value="<%=dog.breed%>" required />
+        </div>
+        <div class="form-example">
+            <label for="gender">Enter gender: </label>
+            <input type="text" name="gender" id="gender" value="<%=dog.gender%>" required />
+        </div>
+        <div class="form-example">
+            <label for="description">Enter description: </label>
+            <input type="text" name="description" id="description" value="<%=dog.description%>" required />
+        </div>
+        <div class="form-example">
+            <label for="isFullyVaccinated">Enter vaccinated or not: </label>
+            <input type="text" name="isFullyVaccinated" id="isFullyVaccinated" value="<%=dog.isFullyVaccinated%>" required />
+        </div>
+        <div class="form-example">
+            <label for="image">Enter image: </label>
+            <input type="text" name="image" id="image" value="<%=dog.image%>" required />
+        </div>
+        <div class="form-example">
+            <label for="medHistory">Enter medHistory: </label>
+            <input type="text" name="medHistory" id="medHistory" value="<%=dog.medHistory%>" required />
+        </div>
+        <div class="form-example">
+            <label for="isGoodWithKids">Enter whether good with kids or not: </label>
+            <input type="text" name="isGoodWithKids" id="isGoodWithKids" value="<%=dog.isGoodWithKids%>" required />
+        </div>
+        <div class="form-example">
+            <label for="whyDonate">Enter whyDonate: </label>
+            <input type="text" name="whyDonate" id="whyDonate" value="<%=dog.whyDonate%>" required />
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Update" />
+        </div>
+    </form>
+    <a href="/adopt/dogs">Back to all Dogs</a>
+</body>
+
+</html>

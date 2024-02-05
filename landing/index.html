@@ -1,196 +1,42 @@
+<!--
+  @project Expanding Flex Cards
+  @author: Jamshid Elmi
+  @created: 2022-03-25 19:13:18
+  @modified: 2022-03-25 19:13:18
+  @tutorial: https://youtu.be/pvjNbaV0Keo
+-->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopet</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Philosopher&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div id="nav">
-        <div id="nav-part1">
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href="/donate">Donate</a>
-                <a href="">Adopt</a>
-                <a href="#">Get to Vet</a>
-                <a href="/articles">Blog</a>
-                <a href="#">Events</a>
-                <a href="/signup">Sign up</a>
-                <a href="/login">Login in</a>
-                <a href="/logout">Login out</a>
-            </div>
-            <div id="icons">
-                <i class="ri-menu-fill"></i>
-                <i class="ri-shopping-cart-2-line"></i>
-            </div>
-        </div>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
+  <title>Adoption Cards</title>
+</head> 
+<div class="container">
+    <div class="panel active">
+      <h3>Go on!......<br><br>tap on each card<br>PS: your heart might get stollen by the cutesss</h3>
     </div>
-    <div id="cursor"></div>
-    <div id="main">
-        
-        <div id="page1">
-            
-            <div id="video-container">
-                <div id="play">PLAY</div>
-                <video autoplay loop muted src="./video.mp4"></video>
-            </div>
-        </div>
-        <!-- <div id="page2">
-            <div id="elem1" class="elem">
-                <img data-scroll data-scroll-speed="1"
-                    src="https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80&w=1851&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <div data-scroll data-scroll-speed="-2" class="dets"></div>
-
-            </div>
-            <div id="elem2" class="elem">
-                <img data-scroll data-scroll-speed="1"
-                    src="https://img.freepik.com/free-photo/woman-cat-pose-picture-together-while-cleaning_176420-8378.jpg?w=360&t=st=1704564361~exp=1704564961~hmac=b330ec84c111146b595f906324fb44e8e3b1878904f03ec7092befafae551e25"
-                    alt="">
-                <div data-scroll data-scroll-speed="-2" class="dets"></div>
-
-            </div>
-            <div id="elem3" class="elem">
-                <img data-scroll data-scroll-speed="1"
-                    src="https://images.unsplash.com/photo-1415369629372-26f2fe60c467?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="">
-                <div data-scroll data-scroll-speed="-2" class="dets"></div>
-            </div>
-
-        </div> -->
-        <!-- <div class="logo">
-            <h1>one<br/>punch<br/>man</h1>
-        </div>
-        <div class="wrapper">
-            <section class="intro">
-                <div class="line"></div>
-            </section>
-            <section class="pet1 character">
-                <div class="block"></div>
-                <img src="pet1.png" alt=""><span class="huge-text">The Naughty One</span>
-                <div class="caption">
-                    Meet Snowy, the purr-fect companion waiting to bring joy and warmth into your home! Snowy is a charming, snow-white feline with eyes that sparkle like diamonds. This fluffy ball of love has a heart as pure as freshly fallen snow and a playful spirit that's bound to melt your heart.
-                    
-                    Snowy's gentle purrs and affectionate nature make every day brighter. Whether he's curled up by the window, basking in the sunlight, or chasing after feather toys, his zest for life is contagious. His soft fur invites cuddles, and his endearing antics are sure to bring laughter to your days.
-                    
-                    This lovable cat craves companionship and longs for a forever home where he can share his love and bring endless happiness. Snowy is not just a pet; he's a loyal friend waiting to make a deep and lasting impression on your life. Adopting Snowy isn't just a choice; it's an opportunity to fill your life with love, warmth, and endless purrs of contentment.</div>
-                <div class="nickname"><span>Nickname</span>The Purr-fecto</div>
-                <div class="quote">My Attitude, My Right</div>
-            </section>
-    
-            <section class="pet1 character">
-                <div class="block"></div>
-                <img src="pet2.png" alt=""><span class="huge-text">The Naughty One</span>
-                <div class="caption">
-                    Meet Snowy, the purr-fect companion waiting to bring joy and warmth into your home! Snowy is a charming, snow-white feline with eyes that sparkle like diamonds. This fluffy ball of love has a heart as pure as freshly fallen snow and a playful spirit that's bound to melt your heart.
-                    
-                    Snowy's gentle purrs and affectionate nature make every day brighter. Whether he's curled up by the window, basking in the sunlight, or chasing after feather toys, his zest for life is contagious. His soft fur invites cuddles, and his endearing antics are sure to bring laughter to your days.
-                    
-                    This lovable cat craves companionship and longs for a forever home where he can share his love and bring endless happiness. Snowy is not just a pet; he's a loyal friend waiting to make a deep and lasting impression on your life. Adopting Snowy isn't just a choice; it's an opportunity to fill your life with love, warmth, and endless purrs of contentment.</div>
-                <div class="nickname"><span>Nickname</span>The Purr-fecto</div>
-                <div class="quote">My Attitude, My Right</div>
-            </section>
-        </div> -->
-
-        <div class="logo">
-            <h1><br/>Adopet<br/></h1>
-        </div>
-    
-        <div class="wrapper">
-            <section class="intro">
-                <div class="line"></div>
-            </section>
-    
-            <section class="pet1 character">
-                <div class="block"></div>
-                <img src="pet1.png" alt=""><span class="huge-text">Snowey</span>
-                <div class="caption">
-                    Meet Snowy, the purr-fect companion waiting to bring joy and warmth into your home! Snowy is a charming, snow-white feline with eyes that sparkle like diamonds. This fluffy ball of love has a heart as pure as freshly fallen snow and a playful spirit that's bound to melt your heart.
-                
-                <!-- Snowy's gentle purrs and affectionate nature make every day brighter. Whether he's curled up by the window, basking in the sunlight, or chasing after feather toys, his zest for life is contagious. His soft fur invites cuddles, and his endearing antics are sure to bring laughter to your days. -->
-                
-                <!-- This lovable cat craves companionship and longs for a forever home where he can share his love and bring endless happiness. Snowy is not just a pet; he's a loyal friend waiting to make a deep and lasting impression on your life. Adopting Snowy isn't just a choice; it's an opportunity to fill your life with love, warmth, and endless purrs of contentment -->
-                </div>
-                <div class="nickname"><span>Nickname</span>Bald cape</div>
-                <div class="quote">
-                    Our Bond is Just Unbreakable
-                </div>
-            </section>
-    
-            <section class="pet2 character">
-                <div class="block"></div>
-                <img src="pet3.png" alt=""><span class="huge-text">Niomi</span>
-                <div class="caption">
-                    
-                Meet Sunny, my radiant companion who brightens every moment with chirpy melodies and vibrant plumage. Our bond is a symphony of trust and joy, a feathered friend who fills my world with love and serenity
-                </div>
-                <div class="nickname"><span>Nickname</span>Demon Cyborg</div>
-                <div class="quote">
-                    Can't get over my Niomi!!
-                </div>
-            </section>
-
-            <section class="pet3 character">
-                <div class="block"></div>
-                <img src="pet2.png" alt=""><span class="huge-text">Niomi</span>
-                <div class="caption">
-                    Niomi, My Ever-Devoted Companion: A Tale of Unbreakable Bonds, Shared Moments, and Unspoken Kinship Between Owner and Dog.                </div>
-                <div class="nickname"><span>Nickname</span>Demon Cyborg</div>
-                <div class="quote">
-                    Can't get over my Niomi!!
-                </div>
-            </section>
-    
-        </div>
-
-
-
-
-        <div id="page3">
-            <div class="child" id="child1">
-                <!-- <img src="https://cdn.sanity.io/images/w8f1ak3c/production/d6a2a4be8e3063d64648773f57f5f447609a93ab-5000x5000.png/Love-Care-Pack-Expanded-Two-Good-Co.png?w=1024&h=1024&auto=format"
-                    alt=""> -->
-                    <h1>Why Shall You Adopt?</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur sint iste, est id, exercitationem impedit voluptatem magni harum, voluptates vero eum mollitia consequuntur illo doloribus praesentium fugiat autem amet officiis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero aspernatur, aliquid corporis quia eaque iure maxime ipsa deserunt necessitatibus iste blanditiis at et amet quaerat in voluptas praesentium. Soluta, quae!</p>
-            </div>
-            <div class="child" id="child2">
-                <img src="https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt="">
-
-            </div>
-            <div class="child" id="child3">
-                <img src="https://images.pexels.com/photos/1462634/pexels-photo-1462634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="">
-
-            </div>
-            <div class="child" id="child4">
-                <img src="https://images.pexels.com/photos/5255164/pexels-photo-5255164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="">
-
-            </div>
-        </div>
+    <div class="panel">
+      <h3>Embrace the companionship of cats or kittens, offering warmth and joy with their affectionate nature. Kittens, with their playful charm, bring laughter and delightful moments to any home.</h3>
+      <div class="card-name">Cuddly Cats</div>
     </div>
+    <div class="panel">
+      <h3>Experience boundless loyalty and unconditional love by adopting a dog or puppy, adding a devoted companion to your family. Puppies, with their energy and enthusiasm, bring exuberance and joy into your daily life.</h3>
+      <div class="card-name">Pawsome Pups<br></div>
 
+      </div>
+      <div class="panel">
+        <h3>Discover the vibrant world of avian companionship by adopting a talkative parrot, filling your home with colorful personalities and charming conversations.</h3>
+        <div class="card-name">talkative Parrots</div>
+        </div>
+      <div class="panel">
+        <h3>Welcome the gentle and affectionate nature of rabbits into your home, adding tranquility and joy to your life. Whether seeking a cuddly companion or a furry friend for quiet moments, adopting a rabbit is the perfect choice.</h3>
+        <div class="card-name">Bunny Buns</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>  </body>
 </html>
-
-

@@ -38,7 +38,11 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <a href="#">Become a shelter provider</a>
+                <form action="/adopt/dogs/<%= dog._id  %>" method="POST" class="enquiry-btn">
+                    <div class="form-example">
+                        <input type="submit" value="Become a shelter provider" />
+                    </div>
+                </form>
             </div>
             </div>
             <div class="description">
@@ -49,10 +53,19 @@
                     <li><i class="fa-solid fa-circle-xmark"></i>Vaccinatated:<%= dog.isFullyVaccinated  %></li>
                     <li><i class="fa-solid fa-circle-check"></i>Good with Kids:<%= dog.isGoodWithKids  %></li>
                     <li><i class="fa-solid fa-circle-xmark"></i>Contact Number: <%= dog.owner.phone  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i> currentUser <%= currentUser  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i> currentUser name: <%= currentUser  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Owner: <%= dog.owner.username %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i><%= dog  %></li>
                     <!-- medHistory view file feature remaining, after clicking the enquiry button a new page, you mail was sent to this pets this owner something like this -->
                 </ul>
             </div>
         </div>
+        <% if(currentUser &&dog.owner.equals(currentUser)) {%>
+            <p><a href="/adopt/dogs/<%= dog._id%>/edit">Edit</a></p>
+            <form action="/adopt/dogs/<%= dog._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <% } %>
+            <a href="/adopt/dogs">Go back to all dogs</a>
     </div>
 </body>
 </html>
