@@ -10,7 +10,27 @@
 
 </head>
 <body>
-    <%- include('../../partials/navbar') %>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vets">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <!-- <form> -->
             <i class="fas fa-search"></i>
@@ -21,11 +41,11 @@
                     <%for(let bird of birdies) {%>
                         <!-- </form> -->
                 <article class="card__article">
-              <img src="../../../images/p1.jpg" alt="image" class="card__img">
+                    <a href="/adopet/adopt/birds/<%= bird.id %>"><img src="../../../images/p1.jpg" alt="image" class="card__img"></a>
               <div class="card__data">
                  <span class="card__description"></span>
                  <h2 class="card__title">Name <%= bird.name%></h2>
-                 <a href="/adopt/birds/<%= bird.id %>" class="card__button">Know More</a>
+                 <a href="/adopet/adopt/birds/<%= bird.id %>" class="card__button">Know More</a>
               </div>
            </article>
            <% } %>
@@ -45,7 +65,7 @@
                 }
                 function searchBirds(){
                     var gender= document.getElementById('search-item').value;
-                    fetch(`/adopt/birds?gender=${gender}`)
+                    fetch(`/adopet/adopt/birds?gender=${gender}`)
                     .then((res) => res.json())
                     .then(data => displaySearchResults(data))
                     

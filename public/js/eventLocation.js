@@ -8,7 +8,7 @@ const eventList = [
       "properties": {
         "name": "India International Pet Trade Fair",
         "address": "5-6 Oct \nBEC Mumbai, Bombay Exhibition Centre, NESCO, Goregaon Mumbai, Maharashtra",
-        "phone": "9876543210"
+        "phone": "9876543210"  // `${9876543210}`
       }
     },
     {

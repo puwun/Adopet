@@ -37,12 +37,8 @@ const sendMail = require('./controllers/sendMail')
 const fileUpload = require('express-fileupload')
 const multer = require('multer')
 const upload = multer({dest: 'uploads/'})
-//validatePets isOwner middleware is to be made
-//delete all the inital entries which were from seed users
-//or else send delete req using postman
-
-
-
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
 // app.use(fileUpload({
 //     useTempFiles:true,
 // }))
@@ -71,6 +67,16 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //implementing use of HelmetJs which removes various vulnerabilities like xss(cross-site-scripting), clickjacking, etc
 //just before deployment, change all error routes to render 404.ejs 
 //currently first priority is user profile bcoz all the update and delete routes for it are remaining
+//validatePets isOwner middleware is to be made
+//delete all the inital entries which were from seed users
+//or else send delete req using postman
+//uncomment all the restrictions in the Joi schemas
+//setup is done but implementation of escapeHTML remains
+//user profile is to be made
+// user profile update routes
+//img display for pets
+//changed email pass to env var so see if it works or not
+
 
 
 app.set('view engine', 'ejs');
@@ -82,7 +88,9 @@ app.use(methodOverride('_method'));
 app.use(cookieParser('thisismysecret'));
 
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(mongoSanitize());   //doesnt allow any $ or . in the query string
+//xss game helps in exploring xss vulnerabilities
+app.use(helmet({contentSecurityPolicy: false}));   //this is a middleware that helps in securing our app by setting various http headers
 
 
 mongoose.connect('mongodb://localhost:27017/pet-adoption')
@@ -156,20 +164,16 @@ app.use((req, res, next) =>{
 // call after redirecting {messages: req.flash('success')}
 //or else simpler way is by using req.locals which omits the second step
 
-app.get('/', (req, res) => {
-    res.render('home');
-    // res.send('THIS IS HOME PAGE text');
-    // res.render('/map/index.html');
-})
+
 
 // app.get('/home', (req, res) => {    
 //     res.render('home');
 // })
 
 
-app.use('/', userRouter);
-app.use('/adopt', petRouter);
-app.use('/articles', articleRouter);
+app.use('/adopet', userRouter);
+app.use('/adopet/adopt', petRouter);
+app.use('/adopet/articles', articleRouter);
 
 
 // app.get('/fakeUser', async(req, res)=>{
@@ -312,18 +316,18 @@ app.use('/articles', articleRouter);
 //     }
 // )
 
-app.get('*', (req, res) => {
-    // res.send('I dont know this path!!')
-    res.render('404.ejs');
-})
-
-
-// app.use((err, req, res, next)=>{
-//     const {statusCode = 500, message = 'Something went wrong'} = err;
-//     res.status(statusCode)
-//     // res.render('error', {err});
+// app.get('*', (req, res) => {
+//     // res.send('I dont know this path!!')
 //     res.render('404.ejs');
 // })
+
+
+app.use((err, req, res, next)=>{
+    const {statusCode = 500, message = 'Something went wrong'} = err;
+    res.status(statusCode)
+    res.render('./views/partials/displayError', {err});
+    // res.render('404.ejs');
+})
 
 app.listen(3000, () => {
     console.log(`Server is listening on port ${port}!!!`)

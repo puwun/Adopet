@@ -38,7 +38,7 @@ module.exports.editOneDog = async(req,res) =>{
     const dog = await Dog.findById(id);
     if(!dog){
         res.flash('error', 'Cannot find that dog!');
-        return res.redirect('/adopt/dogs');
+        return res.redirect('/adopet/adopt/dogs');
     }
     res.render('../views/adopt/doggies/edit', {dog})
 }
@@ -89,13 +89,13 @@ module.exports.searchDog = async(req, res) => {
 module.exports.updateOneDog = async(req, res) =>{
     const { id } = req.params;
     const dog = await Dog.findByIdAndUpdate(id, {...req.body});
-    res.redirect(`/adopt/dogs/${dog._id}`)
+    res.redirect(`/adopet/adopt/dogs/${dog._id}`)
 }
 
 module.exports.deleteOneDog = async(req,res) => {
     const { id } = req.params;
     await Dog.findByIdAndDelete(id);
-    res.redirect('/adopt/dogs'); 
+    res.redirect('/adopet/adopt/dogs'); 
 }
 
 
@@ -124,7 +124,7 @@ module.exports.editOneCat = async(req,res) =>{
     const cat = await Cat.findById(id);
     if(!cat){
         res.flash('error', 'Cannot find that cat!');
-        return res.redirect('/adopt/cats');
+        return res.redirect('/adopet/adopt/cats');
     }
     res.render('../views/adopt/kitties/edit', {cat})
 }
@@ -133,13 +133,13 @@ module.exports.editOneCat = async(req,res) =>{
 module.exports.updateOneCat = async(req, res) =>{
     const { id } = req.params;
     const cat = await Cat.findByIdAndUpdate(id, {...req.body});
-    res.redirect(`/adopt/cats/${cat._id}`)
+    res.redirect(`/adopet/adopt/cats/${cat._id}`)
 }
 
 module.exports.deleteOneCat = async(req,res) => {
     const { id } = req.params;
     await Cat.findByIdAndDelete(id);
-    res.redirect('/adopt/cats'); 
+    res.redirect('/adopet/adopt/cats'); 
 }
 
 
@@ -164,7 +164,7 @@ module.exports.editOneBird = async(req,res) =>{
     const bird = await Bird.findById(id);
     if(!bird){
         res.flash('error', 'Cannot find that bird!');
-        return res.redirect('/adopt/birds');
+        return res.redirect('/adopet/adopt/birds');
     }
     res.render('../views/adopt/birdies/edit', {bird})
 }
@@ -172,13 +172,13 @@ module.exports.editOneBird = async(req,res) =>{
 module.exports.updateOneBird = async(req, res) =>{
     const { id } = req.params;
     const bird = await Bird.findByIdAndUpdate(id, {...req.body});
-    res.redirect(`/adopt/birds/${bird._id}`)
+    res.redirect(`/adopet/adopt/birds/${bird._id}`)
 }
 
 module.exports.deleteOneBird = async(req,res) => {
     const { id } = req.params;
     await Bird.findByIdAndDelete(id);
-    res.redirect('/adopt/birds'); 
+    res.redirect('/adopet/adopt/birds'); 
 }
 
 
@@ -202,7 +202,7 @@ module.exports.editOneSmallandfurry = async(req,res) =>{
     const smallandfurries = await Smallandfurry.findById(id);
     if(!smallandfurries){
         res.flash('error', 'Cannot find that smallandfurry!');
-        return res.redirect('/adopt/smallandfurries');
+        return res.redirect('/adopet/adopt/smallandfurries');
     }
     res.render('../views/adopt/sandf/edit', {smallandfurries})
 }
@@ -210,13 +210,13 @@ module.exports.editOneSmallandfurry = async(req,res) =>{
 module.exports.updateOneSmallandfurry = async(req, res) =>{
     const { id } = req.params;
     const smallandfurries = await Smallandfurry.findByIdAndUpdate(id, {...req.body});
-    res.redirect(`/adopt/smallandfurries/${smallandfurries._id}`)
+    res.redirect(`/adopet/adopt/smallandfurries/${smallandfurries._id}`)
 }
 
 module.exports.deleteOneSmallandfurry = async(req,res) => {
     const { id } = req.params;
     await Smallandfurry.findByIdAndDelete(id);
-    res.redirect('/adopt/smallandfurries'); 
+    res.redirect('/adopet/adopt/smallandfurries'); 
 }
 
 
@@ -237,13 +237,13 @@ module.exports.getOneOther = async(req, res) => {
 module.exports.updateOneOther = async(req, res) =>{
     const { id } = req.params;
     const other = await Other.findByIdAndUpdate(id, {...req.body});
-    res.redirect(`/adopt/others/${other._id}`)
+    res.redirect(`/adopet/adopt/others/${other._id}`)
 }
 
 module.exports.deleteOneOther = async(req,res) => {
     const { id } = req.params;
     await Other.findByIdAndDelete(id);
-    res.redirect('/adopt/others'); 
+    res.redirect('/adopet/adopt/others'); 
 }
 
 
@@ -254,17 +254,17 @@ module.exports.adoptDog = async(req, res) => {
     const ownerEmail = dog.owner.email;
     const ownerPhone = dog.owner.phone;
     sendAdopterMail(req.user.username,req.user.email,"dog",ownerName,ownerEmail,ownerPhone);
-    res.redirect('/adopt');
+    res.redirect('/adopet/adopt');
 }
 
 module.exports.adoptCat = async(req, res) => {
     //username, phone, email, petInfo
-    const cat= await Cat.findById(req.params.id).populate('owner')
+    const cat = await Cat.findById(req.params.id).populate('owner')
     const ownerName = cat.owner.username ;
     const ownerEmail = cat.owner.email;
     const ownerPhone = cat.owner.phone;
     sendAdopterMail(req.user.username,req.user.email,"cat",ownerName,ownerEmail,ownerPhone);
-    res.redirect('/adopt');
+    res.redirect('/adopet/adopt');
 }
 
 module.exports.adoptBird = async(req, res) => {
@@ -274,7 +274,7 @@ module.exports.adoptBird = async(req, res) => {
     const ownerEmail = bird.owner.email;
     const ownerPhone = bird.owner.phone;
     sendAdopterMail(req.user.username,req.user.email,"bird",ownerName,ownerEmail,ownerPhone);
-    res.redirect('/adopt');
+    res.redirect('/adopet/adopt');
 }
 
 module.exports.adoptOther = async(req, res) => {
@@ -284,7 +284,7 @@ module.exports.adoptOther = async(req, res) => {
     const ownerEmail = other.owner.email;
     const ownerPhone = other.owner.phone;
     sendAdopterMail(req.user.username,req.user.email,"other",ownerName,ownerEmail,ownerPhone);
-    res.redirect('/adopt');
+    res.redirect('/adopet/adopt');
 }
 
 module.exports.adoptSmallandfurry = async(req, res) => {
@@ -294,5 +294,5 @@ module.exports.adoptSmallandfurry = async(req, res) => {
     const ownerEmail = smallandfurry.owner.email;
     const ownerPhone = smallandfurry.owner.phone;
     sendAdopterMail(req.user.username,req.user.email,"smallandfurry",ownerName,ownerEmail,ownerPhone);
-    res.redirect('/adopt');
+    res.redirect('/adopet/adopt');
 }

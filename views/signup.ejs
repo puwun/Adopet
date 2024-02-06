@@ -28,29 +28,31 @@
   <h1>Login form</h1>
 
 
-  <nav class = "navbar">
-    <div class = "container">
-      <a href = "/" class = "navbar-brand">Adopet Blog</a>
-      <div class = "navbar-nav">
-        <a href = "/donate">Donate</a>
-        <a href = "/adopt">Adopt</a>
-        <a href = "">Get to vet</a>
-        <a href = "/articles">Blog</a>
-        <a href = "/events">events</a>
-        <% if(!currentUser) { %>
-        <a href = "/signup">Sign up</a>
-        <a href = "/login">Log in</a>
-        <% }else{ %>
-        <a href = "/logout">Log out</a>
-        <% } %>
-
-      </div>
+  <div id="nav">
+    <div id="nav-part1">
+        <!-- <p>logo</p> -->
+        <a href = "/adopet" class = "navbar-brand">Adopet</a>
     </div>
-  </nav>
+    <div id="nav-part2">
+        <div id="links">
+            <a href = "/adopet/donate">Donate</a>
+            <a href = "/adopet/adopt">Adopt</a>
+            <a href = "">Get to vet</a>
+            <a href = "/adopet/articles">Blog</a>
+            <a href = "/adopet/events">events</a>
+            <% if(!currentUser) { %>
+            <a href = "/adopet/signup">Sign up</a>
+            <a href = "/adopet/login">Log in</a>
+            <% }else{ %>
+            <a href = "/adopet/logout">Log out</a>
+            <% } %>
+        </div>
+    </div>
+</div>
     <%- include('./partials/flash') %>
   </div>
   <h1>Signup form</h1>
-  <form action="/signup" method="POST" novalidate class="needs-validation" >
+  <form action="/adopet/signup" method="POST" novalidate class="needs-validation" >
     <!-- <div class="form-example">
       <label for="username">Enter your name: </label>
       <input type="text" name="username" id="username" required />

@@ -3,7 +3,7 @@ const ExpressError = require('../utils/ExpressError');
 
 
 
-const validateUser = (req,res,next)=>{ 
+module.exports.validateUser = (req,res,next)=>{ 
     const userSchema = Joi.object({
     username: Joi.string().required(),
     password: Joi.string()

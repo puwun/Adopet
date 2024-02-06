@@ -7,8 +7,27 @@
     <link rel="stylesheet" href="../../../stylesheets/adopt.css">
 </head>
 <body>
-    <%- include('../../partials/navbar') %>
-
+    <%- include('../../partials/navbar') %>  <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vets">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
 <!-- //we can also access all the cat attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the cat    -->
 
@@ -38,7 +57,7 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <form action="/adopt/cats/<%= cat._id  %>" method="post" class="enquiry-btn">
+                <form action="/adopet/adopt/cats/<%= cat._id  %>" method="post" class="enquiry-btn">
                     <div class="form-example">
                         <input type="submit" value="Become a shelter provider" />
                     </div>
@@ -59,10 +78,10 @@
             </div>
         </div>
         <% if(currentUser &&cat.owner.equals(currentUser)) {%>
-            <p><a href="/adopt/cats/<%= cat._id%>/edit">Edit</a></p>
-            <form action="/adopt/cats/<%= cat._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <p><a href="/adopet/adopt/cats/<%= cat._id%>/edit">Edit</a></p>
+            <form action="/adopet/adopt/cats/<%= cat._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
             <% } %>
-            <a href="/adopt/cats">Go back to all cats</a>
+            <a href="/adopet/adopt/cats">Go back to all cats</a>
     </div>
 </body>
 </html>

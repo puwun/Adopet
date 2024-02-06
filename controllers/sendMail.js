@@ -5,17 +5,17 @@ async function sendFeedbackMail(username,email,subject,feedback)
    //write formalities for submission of feedback like your username has submiites this feedback
    let text = username+" "+subject+" "+feedback;
    let transporter = await nodemailer.createTransport({
-        host:"smtp.gmail.com",
-        port:465,
+        host:process.env.EMAIL_HOST,
+        port:process.env.EMAIL_PORT,
         secure: true,
         auth:{
-            user: 'maddercode69@gmail.com', //use maddercode ka acoount
-            pass: 'bxfeelaiqxnlqeqw',
+            user: process.env.EMAIL_USER, //use maddercode ka acoount
+            pass: process.env.EMAIL_PASSWORD,
         },
    });
    
    let info = await transporter.sendMail({
-    from:'"MadderCode" <maddercode69@gmail.com>',
+    from:'"MadderCode" <maddercode69@gmail.com>', 
     to : receiverMail,
     subject:"Feedback Submission mail",
     text:text,
@@ -28,12 +28,12 @@ async function sendOwnerMail(username,email,subject,feedback)
    //write formalities for submission of feedback like your username has submiites this feedback
    let text = username+" "+subject+" "+feedback;
    let transporter = await nodemailer.createTransport({
-        host:"smtp.gmail.com",
-        port:465,
+        host:process.env.EMAIL_HOST,
+        port:process.env.EMAIL_PORT,
         secure: true,
         auth:{
-            user: 'maddercode69@gmail.com', //use maddercode ka acoount
-            pass: 'bxfeelaiqxnlqeqw',
+            user: process.env.EMAIL_USER, //use maddercode ka acoount
+            pass: process.env.EMAIL_PASSWORD,
         },
    });
    
@@ -51,12 +51,12 @@ async function sendAdopterMail(username,email,pet,ownerName, ownerEmail,ownerPho
    //write formalities for submission of feedback like your username has submiites this feedback
    let text = username+" "+ownerName+" "+ownerPhone+" "+ownerEmail+" "+pet;
    let transporter = await nodemailer.createTransport({
-        host:"smtp.gmail.com",
-        port:465,
+        host:process.env.EMAIL_HOST,
+        port:process.env.EMAIL_PORT,
         secure: true,
         auth:{
-            user: 'maddercode69@gmail.com', //use maddercode ka acoount
-            pass: 'bxfeelaiqxnlqeqw',
+            user: process.env.EMAIL_USER, //use maddercode ka acoount
+            pass: process.env.EMAIL_PASSWORD,
         },
    });
    

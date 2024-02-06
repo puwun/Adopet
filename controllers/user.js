@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const sendMail = require('./sendMail');
+const {sendFeedbackMail} = require('./sendMail');
 const {storage} = require('../cloudinary/index')
 const fileUpload = require('express-fileupload')
 const Dog = require('../models/pets/dog');
@@ -31,7 +31,7 @@ module.exports.signup = async (req, res) => {
         req.login(registeredUser, err =>{
             if(err) return next(err);
             req.flash('success', 'Welcome to Adopet!');
-            res.redirect('/');
+            res.redirect('/adopet');
     })
         // console.log(registeredUser);
         // await user.save();
@@ -40,7 +40,7 @@ module.exports.signup = async (req, res) => {
     } catch (e) {
         // console.log(e.message);
         req.flash('error', e.message);
-        res.redirect('signup');
+        res.redirect('/adopet/signup');
 
         // res.send('error', e.message);
     }
@@ -55,8 +55,8 @@ module.exports.login = (req, res) => {
     req.flash('success', 'Welcome back!');
     // console.log()
     // console.log(req.body.role)
-    const redirectUrl = res.locals.returnTo || '/';
-    res.redirect(redirectUrl);
+    const redirectUrl = res.locals.returnTo || '/adopet';
+    res.redirect(redirectUrl); 
     // console.log(req.user);
     // console.log(req.flash('error'));
     // res.redirect('/');
@@ -71,7 +71,7 @@ module.exports.logout = (req, res) => {
             return next(err);
         }
         req.flash('success', 'Goodbye!');
-        res.redirect('/login');
+        res.redirect('/adopet/login');
     });
 }
 
@@ -106,9 +106,9 @@ module.exports.renderFeedback = (req, res) => {
 module.exports.sendFeedback = async (req, res) => {
     const { subject, feedback } = req.body;
     await User.updateOne({ _id: req.user._id }, { $push: { subject: subject, feedback: feedback } });
-    sendMail(req.user.username,req.user.email,req.body.subject,req.body.feedback)
+    sendFeedbackMail(req.user.username,req.user.email,req.body.subject,req.body.feedback)
     req.flash('success', 'Feedback submitted successfully!');
-    res.redirect('/user/profile');
+    res.redirect('/adopet/user/profile');
 }
 
 module.exports.renderFaq = (req, res) => {
@@ -152,34 +152,39 @@ module.exports.donate = async (req, res) => {
             const dog = new Dog({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 dog.owner = req.user._id;
             await dog.save();
-            res.redirect('/adopt/dogs');
+            req.flash('success', `${dog.name} was added successfully!`);
+            res.redirect('/adopet/adopt/dogs');
             break;
         case 'cat':
             const cat = new Cat({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 cat.owner = req.user._id;
             await cat.save();
-            res.redirect('/adopt/cats');
+            req.flash('success', `${cat.name} was added successfully!`);
+            res.redirect('/adopet/adopt/cats');
             break;
         case 'bird':
             const bird = new Bird({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 bird.owner = req.user._id;
             await bird.save();
-            res.redirect('/adopt/birds');
+            req.flash('success', `${bird.name} was added successfully!`);
+            res.redirect('/adopet/adopt/birds');
             break;
         case 'smallandfurry':
             const smallandfurry = new Smallandfurry({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 smallandfurry.owner = req.user._id;
             await smallandfurry.save();
-            res.redirect('/adopt/smallandfurries');
+            req.flash('success', `${smallandfurry.name} was added successfully!`);
+            res.redirect('/adopet/adopt/smallandfurries');
             break;
         case 'other':
             const other = new Other({pet, name, breed, description, age, image, isFullyVaccinated, medHistory ,isGoodWithKids, gender, whyDonate });
                 other.owner = req.user._id;
             await other.save();
-            res.redirect('/adopt/others');
+            req.flash('success', `${other.name} was added successfully!`);
+            res.redirect('/adopet/adopt/others');
             break;
         default:
-            res.redirect('/adopt');
+            res.redirect('/adopet/adopt');
             break;
     }
 }

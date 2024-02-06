@@ -58,7 +58,7 @@ router.delete('/:id', isLoggedIn,isAuthor, catchAsync(articles.deleteOne))
 router.use((err, req, res, next)=>{
     const {statusCode = 500, message = 'Something went wrong'} = err;
     res.status(statusCode)
-    res.render('error', {err});
+    res.render('../views/partials/displayError', {err});
 })
 
 

@@ -36,7 +36,7 @@ module.exports.createNew = async (req, res) => {
     const article = new Article({title, content,author, cover});
     await article.save();
     req.flash('success', 'Successfully made a new article!');
-    res.redirect('/articles')
+    res.redirect('/adopet/articles')
 }
 
 module.exports.renderOne = async (req, res) => {
@@ -51,7 +51,7 @@ module.exports.editOne = async (req, res) => {
     const article = await Article.findById(id);
     if(!article){
         res.flash('error', 'Cannot find that article!');
-        return res.redirect('/articles');
+        return res.redirect('/adopet/articles');
     }
     res.render('../views/articles/edit', {article})
 }
@@ -64,11 +64,11 @@ module.exports.updateOne = async (req, res) => {
     //  console.log(req.body)
     //  console.log(article)
     //  res.json({article})
-     res.redirect(`/articles/${article._id}`) 
+     res.redirect(`/adopet/articles/${article._id}`) 
 }
 
 module.exports.deleteOne = async (req, res) => {
     const {id} = req.params;
     await Article.findByIdAndDelete(id);
-    res.redirect('/articles');
+    res.redirect('/adopet/articles');
 }

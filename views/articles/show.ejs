@@ -6,7 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-     <%- include('../partials/navbar') %>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
      <%- include('../partials/flash') %>
 
     <h1><%=article.title%></h1>
@@ -16,10 +36,10 @@
     <!-- things will break if we only check for whether cuurentUser is same as the one logged in as guest can be able to access these features -->
     <!-- so we added one more condition, to check first whether currentUser even exists or not -->
     <% if(currentUser && article.author.equals(currentUser)) { %>
-   <p><a href="/articles/<%= article._id%>/edit">Edit</a></p> 
-   <p><form action="/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
+   <p><a href="/adopet/articles/<%= article._id%>/edit">Edit</a></p> 
+   <p><form action="/adopet/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
     <% } %>
-    <a href="/articles">Go back to all blogs</a>
+    <a href="/adopet/articles">Go back to all blogs</a>
         <div> <%- include('../partials/footer') %>
     </div>
 

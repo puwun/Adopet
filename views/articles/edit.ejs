@@ -8,10 +8,30 @@
 </head>
 <body>
     <h1>Edit a article</h1>
-    <%- include('../partials/navbar') %>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
     <%- include('../partials/flash') %>
     <!-- <form action="/articles" method="POST" class="form-example"> -->
-    <form action="/articles/<%=article._id%>?_method=PUT" method="POST" class="form-example">
+    <form action="/adopet/articles/<%=article._id%>?_method=PUT" method="POST" class="form-example">
         <div class="form-example">
             <label for="title">Enter title: </label>
             <input type="text" name="title" id="title" value="<%=article.title%>" required />
@@ -25,7 +45,7 @@
             <input type="submit" value="Update" />
         </div>
     </form>
-    <a href="/articles">Back to all Articles</a>
+    <a href="/adopet/articles">Back to all Articles</a>
     <div> <%- include('../partials/footer') %>
     </div>
 

@@ -24,6 +24,11 @@ router.use(fileUpload({
 }))
 
 
+router.get('/', (req, res) => {
+    res.render('home');
+    // res.send('THIS IS HOME PAGE text');
+    // res.render('/map/index.html');
+})
 
 router.get('/events' , user.renderEvents)
 

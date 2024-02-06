@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="../../../stylesheets/adopt.css">
 </head>
 <body>
-    <%- include('../../partials/navbar') %>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vets">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
 
 <!-- //we can also access all the dog attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the dog    -->
@@ -16,16 +36,16 @@
         <div class="box">
             <div class="images">
                 <div class="img-holder active">
-                    <img src="p1.jpg">
+                    <img src="../../../images/p1.jpg">
                 </div>
                 <div class="img-holder">
-                    <img src="p1.jpg">
+                    <img src="../../../images/p1.jpg">
                 </div>
                 <div class="img-holder">
-                    <img src="p3.jpg">
+                    <img src="../../../images/pet3.png">
                 </div>
                 <div class="img-holder">
-                    <img src="p1.jpg">
+                    <img src="../../../images/p1.jpg">
                 </div>
             </div>
             <div class="basic-info">
@@ -38,7 +58,7 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <form action="/adopt/dogs/<%= dog._id  %>" method="POST" class="enquiry-btn">
+                <form action="/adopet/adopt/dogs/<%= dog._id  %>" method="POST" class="enquiry-btn">
                     <div class="form-example">
                         <input type="submit" value="Become a shelter provider" />
                     </div>
@@ -62,10 +82,10 @@
             </div>
         </div>
         <% if(currentUser &&dog.owner.equals(currentUser)) {%>
-            <p><a href="/adopt/dogs/<%= dog._id%>/edit">Edit</a></p>
-            <form action="/adopt/dogs/<%= dog._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <p><a href="/adopet/adopt/dogs/<%= dog._id%>/edit">Edit</a></p>
+            <form action="/adopet/adopt/dogs/<%= dog._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
             <% } %>
-            <a href="/adopt/dogs">Go back to all dogs</a>
+            <a href="/adopet/adopt/dogs">Go back to all dogs</a>
     </div>
 </body>
 </html>

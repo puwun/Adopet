@@ -10,8 +10,28 @@
 
 <body>
   <h1>Donation form</h1>
-  <%- include('partials/navbar') %>
-  <form action="/donate" method="POST" class="form-example" enctype="multipart/form-data">
+  <div id="nav">
+    <div id="nav-part1">
+        <!-- <p>logo</p> -->
+        <a href = "/adopet" class = "navbar-brand">Adopet</a>
+    </div>
+    <div id="nav-part2">
+        <div id="links">
+            <a href = "/adopet/donate">Donate</a>
+            <a href = "/adopet/adopt">Adopt</a>
+            <a href = "/adopet/vets">Get to vet</a>
+            <a href = "/adopet/articles">Blog</a>
+            <a href = "/adopet/events">events</a>
+            <% if(!currentUser) { %>
+            <a href = "/adopet/signup">Sign up</a>
+            <a href = "/adopet/login">Log in</a>
+            <% }else{ %>
+            <a href = "/adopet/logout">Log out</a>
+            <% } %>
+        </div>
+    </div>
+</div>
+  <form action="/adopet/donate" method="POST" class="form-example" enctype="multipart/form-data">
     <div class="form-example">
        <!-- <label for="pet">Enter type of pet: </label>
       <br> 

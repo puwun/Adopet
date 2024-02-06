@@ -23,7 +23,7 @@ module.exports.signup = async (req, res) => {
         req.login(registeredUser, err =>{
             if(err) return next(err);
             req.flash('success', 'Welcome to Adopet!');
-            res.redirect('/');
+            res.redirect('/adopet');
     })
         // console.log(registeredUser);
         // await user.save();
@@ -32,7 +32,7 @@ module.exports.signup = async (req, res) => {
     } catch (e) {
         // console.log(e.message);
         req.flash('error', e.message);
-        res.redirect('signup');
+        res.redirect('/adopet/signup');
 
         // res.send('error', e.message);
     }
@@ -47,7 +47,7 @@ module.exports.login = (req, res) => {
     req.flash('success', 'Welcome back!');
     // console.log()
     // console.log(req.body.role)
-    const redirectUrl = res.locals.returnTo || '/';
+    const redirectUrl = res.locals.returnTo || '/adopet';
     res.redirect(redirectUrl);
     // console.log(req.user);
     // console.log(req.flash('error'));
@@ -63,7 +63,7 @@ module.exports.logout = (req, res) => {
             return next(err);
         }
         req.flash('success', 'Goodbye!');
-        res.redirect('/login');
+        res.redirect('/adopet/login');
     });
 }
 
@@ -99,7 +99,7 @@ module.exports.sendFeedback = async (req, res) => {
     await User.updateOne({ _id: req.user._id }, { $push: { subject: subject, feedback: feedback } });
     sendMail(req.user.username,req.user.email,req.body.subject,req.body.feedback)
     req.flash('success', 'Feedback submitted successfully!');
-    res.redirect('/user/profile');
+    res.redirect('/adopet/user/profile');
 }
 
 module.exports.renderFaq = (req, res) => {

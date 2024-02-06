@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const BaseJoi = require('joi');
 const Article = require('./models/article');
 const ExpressError = require('./utils/ExpressError');
 const Dog = require('./models/pets/dog');
@@ -6,14 +6,37 @@ const Cat = require('./models/pets/cat');
 const Bird = require('./models/pets/bird');
 const Smallandfurry = require('./models/pets/saf');
 const Other = require('./models/pets/other');
+const sanitizeHTML = require('sanitize-html');
+// const 
 
 
+const extension = (joi) => ({
+    type: 'string',
+    base: joi.string(),
+    messages: {
+        'string.escapeHTML': '{{#label}} must not include HTML!'
+    },
+    rules: {
+        escapeHTML: {
+            validate(value, helpers) {
+                const clean = sanitizeHTML(value, {
+                    allowedTags: [],
+                    allowedAttributes: {},
+            });
+                if (clean !== value) return helpers.error('string.escapeHTML', { value })
+                return clean;
+            }
+        }
+    }
+})
+
+const Joi = BaseJoi.extend(extension)
 
 const isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
         req.flash('error', 'You must be signed in first!');
-        return res.redirect('/login')
+        return res.redirect('/adopet/login')
     }
     next();
 }
