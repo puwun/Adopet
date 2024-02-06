@@ -27,6 +27,7 @@
 <body>
   <h1>Login form</h1>
 
+  <%- include('partials/flash') %>
 
   <div id="nav">
     <div id="nav-part1">
@@ -49,7 +50,6 @@
         </div>
     </div>
 </div>
-  <%- include('partials/flash') %>
   </div>
   <form action="/adopet/login" method="POST" novalidate class="needs-validation" >
     <div class="form-example">

@@ -41,7 +41,7 @@ router.post('/login', storeReturnTo, passport.authenticate('local', { failureFla
 router.get('/logout', user.logout)
 
 
-router.get('/user/profile', catchAsync(user.renderProfile))
+router.get('/user/profile', isLoggedIn,catchAsync(user.renderProfile))
 
 
 router.get('/feedback', isLoggedIn, user.renderFeedback)

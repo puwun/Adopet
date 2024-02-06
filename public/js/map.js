@@ -46,8 +46,8 @@ function onEachFeature(feature, layer) {
 }
 
 var myIcon = L.icon({
-    iconUrl: '../images/blue.png',
-    iconSize: [30, 50]
+    iconUrl: '../images/dog_loc_pin.png',
+    iconSize: [85, 85]
 });
 
 const eventLayer = L.geoJSON(eventList, {
@@ -62,14 +62,14 @@ function flyToEvent(event) {
     const lat = event.geometry.coordinates[1];
     const lng = event.geometry.coordinates[0];
     myMap.flyTo([lat, lng], 15, {
-        duration: 1
+        duration: 2
     });
     setTimeout(() => {
         L.popup({closeButton: false, offset: L.point(0, -8)})
         .setLatLng([lat, lng])
         .setContent(makePopupContent(event))
         .openOn(myMap);
-    }, 3000);
+    }, 2450);
 }
 
 

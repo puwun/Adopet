@@ -27,6 +27,8 @@ main {
 
 .event-list .heading {
     background: blue;
+    /* background: linear-gradient(45deg, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    animation: color 40s ease-in-out infinite; */
     color: #fff;
 }
 

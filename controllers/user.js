@@ -80,11 +80,15 @@ module.exports.renderProfile = async(req, res) => {
     // let users = await User.findById({cuurentUser._id});
     // let users = await User.findById(req.user._id);
     // const user = await User.findById(req.session.user.id);
-    const user = await User.findById(req.session.user_id);
+    const currUser = req.user;
+    if(!currUser){
+        req.flash('error', 'You must be signed in first!');
+        return res.redirect('/adopet/login');
+    }
+    // const user = await User.findById(req.session.user_id);
     // console.log(user);
     // console.log('----------------------');
     // console.log(req.user);
-    const currUser = req.user;
     console.log('----------------------');
     console.log(currUser);
     const myDogs = await Dog.find({owner: currUser._id});
@@ -95,7 +99,7 @@ module.exports.renderProfile = async(req, res) => {
     // const birds = await Bird.find({owner: req.user._id});
     // const smallandfurries = await Smallandfurry.find({owner: req.user._id});
     // const others = await Other.find({owner: req.user._id});
-    res.render('../views/profile', {currUser, myDogs});
+    res.render('../views/profile', {currUser, myDogs});  //other animals and articles, comments need to be added too
 }
 
 
