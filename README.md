@@ -97,5 +97,6 @@ Team MadderCode:
 ## 👨‍🏫Mentors
 
 
+- Ayusha Vinayak Jagtap: avjagtap_b21@ce.vjti.ac.in 
 - Akanksha Giri: akgiri_b21@ce.vjti.ac.in 
-- Ayusha Jagtap: avjagtap_b21@ce.vjti.ac.in 
+
