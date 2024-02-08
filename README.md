@@ -41,7 +41,7 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 ## Media
 
-### You can find additional media related to UniHub below:
+### You can find additional media related to Adopet below:
 
 **Screenshots:**
     
@@ -67,7 +67,7 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 ## Installation
 
-To get started with UniHub, follow these steps:
+To get started with Adopet, follow these steps:
 
 **Clone the repository:**
   ```bash
