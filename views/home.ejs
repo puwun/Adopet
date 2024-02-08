@@ -31,14 +31,15 @@
             <a href = "/adopet/articles">Blog</a>
             <a href = "/adopet/events">events</a>
             <% if(!currentUser) { %>
-            <a href = "/adopet/signup">Sign up</a>
-            <a href = "/adopet/login">Log in</a>
+            <a href = "/adopet/auth">Sign up / Login</a>
             <% }else{ %>
             <a href = "/adopet/logout">Log out</a>
             <% } %>
         </div>
     </div>
 </div>
+<%- include('./partials/flash') %>
+
     <div id="cursor"></div>
     <div id="main">
         

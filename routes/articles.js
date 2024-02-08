@@ -44,10 +44,21 @@ router.post('/new', isLoggedIn, validateArticle, catchAsync(articles.createNew))
 
 //required User so that only a particular user can edit/deletee his article
 router.get('/:id', catchAsync(articles.renderOne))
-
+router.post('/:id', catchAsync(articles.addToFavourite))
 
 router.get('/:id/edit',isLoggedIn, isAuthor, catchAsync(articles.editOne))
 
+router.get('/:id/reviews', catchAsync(async(req,res)=>{
+    const article = await Article.findById(req.params.id)
+    const review = new review(req,body.review)
+    article.reviews.push(review)
+    console.log(reviews)
+    console.log('--------------')
+    console.log(article)
+    await review.save()
+    await article.save()
+    res.redirect(`/articles/${article._id}`)
+}))
 
 router.put('/:id', isLoggedIn, isAuthor, validateArticle, catchAsync(articles.updateOne))
 

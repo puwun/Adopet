@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+  background-color: #FFDDD2;
+  position: relative;
+}
+
+button {
+  background-color: transparent;
+  color: transparent;
+  padding: 1em;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 4;
+  width: 5em;
+  height: 5em;
+  border-radius: 0;
+}
+
+#backgroundImage {
+  position: absolute;
+  background: url('../images/home_logo.png') center/contain no-repeat;
+  width: 200px;
+  height: 200px;
+  z-index: 3;
+  transition: transform 0.5s ease;
+}
+
+#coordinatesDisplay {
+  display: none;
+}
+
+#customImage {
+  position: fixed;
+  width: 300px;
+  height: auto;
+  z-index: -1;
+  transition: left 0.3s, top 0.3s;
+}
+
+#pawPrint {
+  display: none;
+  position: fixed;
+  width: 30px;
+  height: auto;
+  transition: right 0.3s, bottom 0.3s, transform 0.3s;
+  z-index: 1;
+  right: 10px;
+  bottom: 10px;
+}
+
+#customCursor {
+  position: fixed;
+  width: 60px;
+  height: auto;
+  z-index: 3;
+}
+#followCursorImage {
+  z-index: -1;
+}
+#startButton:hover + #backgroundImage {
+  transform: translateY(-100px);
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: #FFDDD2; /* Adjust background color as needed */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+

@@ -18,6 +18,12 @@ const articleSchema = new Schema({
         type: String,
         required: [true, 'Cover image is required'],
     },
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ],
     }
     // comments:
     

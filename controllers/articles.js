@@ -2,7 +2,7 @@ const Article = require('../models/article');
 const cloudinary = require('cloudinary').v2;
 const {storage} = require('../cloudinary/index')
 const fileUpload = require('express-fileupload')
-
+const User = require('../models/user');
 
 
 module.exports.index = async (req, res) =>{
@@ -43,6 +43,18 @@ module.exports.renderOne = async (req, res) => {
     // const { id } = req.params;
     const article = await Article.findById(req.params.id).populate('author');
     res.render('../views/articles/show', {article})
+}
+
+
+module.exports.addToFavourite =  async (req, res) => {
+    const {id} = req.params;
+    const article = await Article.findById(id);
+    await User.updateOne({ _id: req.user._id }, { $push: { favourites: article } });
+    console.log('----------------------')
+    console.log(article)
+    console.log('----------------------')
+    console.log(req.user)
+    res.redirect(`/adopet/articles/${id}`)
 }
 
 module.exports.editOne = async (req, res) => {

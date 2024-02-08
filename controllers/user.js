@@ -2,66 +2,110 @@ const User = require('../models/user');
 const {sendFeedbackMail} = require('./sendMail');
 const {storage} = require('../cloudinary/index')
 const fileUpload = require('express-fileupload')
+const Article = require('../models/article');
 const Dog = require('../models/pets/dog');
 const Cat = require('../models/pets/cat');
 const Bird = require('../models/pets/bird');
 const Smallandfurry = require('../models/pets/saf');
 const Other = require('../models/pets/other');
 const cloudinary = require('cloudinary').v2;
+const passport = require('passport');
 
+
+module.exports.renderHome = (req, res) => {
+    res.render('home');
+    // res.send('THIS IS HOME PAGE text');
+    // res.render('/map/index.html');
+}
 
 module.exports.renderEvents = (req, res) => {
     res.render('../views/event');
 }
 
-module.exports.renderSignup = (req, res) => {
-    res.render('signup')
-}
+// module.exports.renderSignup = (req, res) => {
+//     res.render('signup')
+// }
 
-module.exports.signup = async (req, res) => {
-    try {
+// module.exports.signup = async (req, res) => {
+//     try {
+//         const { username, password, email, phone } = req.body;
+//         const user = new User({ username, email, phone });
+//         const registeredUser = await User.register(user, password); //register() automatically saves the user, we don't need to execute newUser.save() to save it to database.
+//         // console.log('----------------------');
+//         // console.log(registeredUser)
+//         // console.log('----------------------');
+//         // console.log(req.user)
+
+//         req.login(registeredUser, err =>{
+//             if(err) return next(err);
+//             req.flash('success', 'Welcome to Adopet!');
+//             res.redirect('/adopet');
+//     })
+//     } catch (e) {
+//         // console.log(e.message);
+//         req.flash('error', e.message);
+//         res.redirect('/adopet/auth');
+
+//         // res.send('error', e.message);
+//     }
+// }
+
+// module.exports.renderLogin = (req, res) => {
+//     // res.send('THIS IS LOGIN PAGE');
+//     res.render('../views/login');
+// }
+
+// module.exports.login = (req, res) => {
+//     req.flash('success', `Welcome back!`);
+//     // console.log()
+//     // console.log(req.body.role)
+//     const redirectUrl = res.locals.returnTo || '/adopet';
+//     res.redirect(redirectUrl); 
+//     // console.log(req.user);
+//     // console.log(req.flash('error'));
+//     // res.redirect('/');
+
+// }
+
+
+module.exports.auth = async(req, res) => {
+    const { action} = req.body;
+    if (action === 'signup') {
         const { username, password, email, phone } = req.body;
+        try{
         const user = new User({ username, email, phone });
-        const registeredUser = await User.register(user, password); //register() automatically saves the user, we don't need to execute newUser.save() to save it to database.
-        console.log('----------------------');
-        console.log(registeredUser)
-        console.log('----------------------');
-        console.log(req.user)
-
-        req.login(registeredUser, err =>{
-            if(err) return next(err);
+        const registeredUser = await User.register(user, password); 
+            req.login(registeredUser, (err) => {
+            if (err) return next(err);
             req.flash('success', 'Welcome to Adopet!');
             res.redirect('/adopet');
-    })
-        // console.log(registeredUser);
-        // await user.save();
-        // req.session.user_id = user._id;
-        // res.json({ success: true, user });
-    } catch (e) {
-        // console.log(e.message);
-        req.flash('error', e.message);
-        res.redirect('/adopet/signup');
-
-        // res.send('error', e.message);
+        });
+        } catch (e) {
+            req.flash('error', e.message);
+            res.redirect('/adopet/auth');
+        }
+        // res.send('user created', req.body);
+    } else if (action === 'login') {
+        const { username, password } = req.body;
+        try{
+            passport.authenticate('local', { failureFlash : true, failureRedirect: '/adopet/auth' })(req,res,()=>{ //Req, res is used so that the function is called as per middlewares defined
+                // console.log(req.body)
+                // console.log(req.user)
+                // console.log(req.session.user)
+                req.flash('success', 'Welcome back!');
+                const redirectUrl = res.locals.returnTo || '/adopet';
+                res.redirect(redirectUrl);
+            })  
     }
+        catch(e){
+            req.flash('error', e.message);
+            res.redirect('/adopet/auth');
+        }
+        // res.send('user logged in');
+    }
+    // res.redirect('/adopet');
 }
 
-module.exports.renderLogin = (req, res) => {
-    // res.send('THIS IS LOGIN PAGE');
-    res.render('../views/login');
-}
-
-module.exports.login = (req, res) => {
-    req.flash('success', 'Welcome back!');
-    // console.log()
-    // console.log(req.body.role)
-    const redirectUrl = res.locals.returnTo || '/adopet';
-    res.redirect(redirectUrl); 
-    // console.log(req.user);
-    // console.log(req.flash('error'));
-    // res.redirect('/');
-
-}
 
 module.exports.logout = (req, res) => {
     // req.session.user_id = null;
@@ -71,7 +115,7 @@ module.exports.logout = (req, res) => {
             return next(err);
         }
         req.flash('success', 'Goodbye!');
-        res.redirect('/adopet/login');
+        res.redirect('/adopet/auth');
     });
 }
 
@@ -83,7 +127,7 @@ module.exports.renderProfile = async(req, res) => {
     const currUser = req.user;
     if(!currUser){
         req.flash('error', 'You must be signed in first!');
-        return res.redirect('/adopet/login');
+        return res.redirect('/adopet/auth');
     }
     // const user = await User.findById(req.session.user_id);
     // console.log(user);
@@ -94,12 +138,25 @@ module.exports.renderProfile = async(req, res) => {
     const myDogs = await Dog.find({owner: currUser._id});
     console.log('----------------------');
     console.log(myDogs);
+    console.log('----------------------');
+    const myFavArticles = req.user.favourites;
+    console.log(myFavArticles); 
+    const myFavBlogs = myFavArticles.filter((article, index) => myFavArticles.indexOf(article) === index);
+    console.log(myFavBlogs); 
+    const likedArticles = []
+    for (const blog of myFavBlogs) {
+        const article = await Article.findById(blog);
+        likedArticles.push(article);
+    }
+    console.log('----------------------');
+    console.log(likedArticles)
+
     //pass other animals too
     // const cats = await Cat.find({owner: req.user._id});
     // const birds = await Bird.find({owner: req.user._id});
     // const smallandfurries = await Smallandfurry.find({owner: req.user._id});
     // const others = await Other.find({owner: req.user._id});
-    res.render('../views/profile', {currUser, myDogs});  //other animals and articles, comments need to be added too
+    res.render('../views/profile', {currUser, myDogs, likedArticles});  //other animals and articles, comments need to be added too
 }
 
 

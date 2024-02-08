@@ -77,6 +77,8 @@ IMPORTANT -You will be reviewed as a potential adopter based on your profile and
 //img display for pets
 //changed email pass to env var so see if it works or not
 //faq option to be replsced by reviews like in petnest https://thepetnest.com/?gclid=Cj0KCQiAzoeuBhDqARIsAMdH14HXwEquiy-QzD3d9VIorWT7fCfVbpH2VB7aEg1gK0Emrzy-2xdEv5AaAhpPEALw_wcB
+//future scope - signup login with google
+//validating all forms is remaining
 
 
 app.set('view engine', 'ejs');
@@ -166,9 +168,9 @@ app.use((req, res, next) =>{
 
 
 
-// app.get('/home', (req, res) => {    
-//     res.render('home');
-// })
+app.get('/', (req, res) => {    
+    res.render('landing');
+})
 
 
 app.use('/adopet', userRouter);

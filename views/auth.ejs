@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/auth.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Instrument+Serif&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/flash') %>
+
+
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="../navbarr/script.js"></script> -->
+    
+  <div class="cont">
+    <div class="form sign-in">
+        <form action="/adopet/auth" method="POST"  class="needs-validation">
+            <input type="hidden" name="action" value="login">
+      <h2>Login</h2>
+      <label for="username" class="form-label">
+        <span>Username</span>
+        <input type="text" class="form-control" name="username" id="username_login" placeholder="" novalidate autofocus required>
+      </label>
+      <label for="password" class="form-label">
+        <span>Password</span>
+        <input type="password" class="form-control"  name="password" placeholder="password" id="capsLockInput1"  required>
+      </label>
+      <!-- <input type="submit" id="LG" value="Login"> -->
+      <button class="submit" type="submit">Login</button>
+    </form>
+      <!-- <p class="forgot-pass">Forgot Password ?</p> -->
+
+      <div class="social-media">
+        <ul>
+          <li><img src="images/facebook.png"></li>
+          <li><img src="images/twitter.png"></li>
+          <li><img src="images/linkedin.png"></li>
+          <li><img src="images/instagram.png"></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up">
+          <h2>New here?</h2>
+          <p>Sign up and discover great amount of new opportunities!</p>
+        </div>
+        <div class="img-text m-in">
+          <h2>One of us?</h2>
+          <p>If you already has an account, just sign in. We've missed you!</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</span>
+          <span class="m-in">Login</span>
+        </div>
+      </div>
+      <form action="/adopet/auth" method="POST" class="needs-validation">
+          <input type="hidden" name="action" value="signup">
+      <div class="form sign-up">
+        <h2>Sign Up</h2>
+        <label for="username" class="form-label">
+          <span>Username</span>
+          <input type="text" class="form-control" name="username" id="username_signup" autofocus novalidate required>
+        </label>
+        <label for="email" class="form-label">
+          <span>Email</span>
+          <input type="email" class="form-control" name="email" id="email"  required>
+        </label>
+        <label for="password" class="form-label">
+          <span>Password</span>
+          <input type="password" class="form-control" name="password" id="capsLockInput2"  required>
+        </label>
+        <label for="phone" class="form-label">
+          <span>Phone</span>
+          <input type="text" class="form-control" name="phone" id="phone"  required>
+        </label>
+        <button type="submit" class="submit">Sign Up Now</button>
+      </div>
+    </form>
+    </div>
+  </div>
+<script type="text/javascript" src="../js/auth.js"></script>
+
+</body>
+</html>

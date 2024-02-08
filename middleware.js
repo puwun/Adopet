@@ -36,7 +36,7 @@ const isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
         req.flash('error', 'You must be signed in first!');
-        return res.redirect('/adopet/login')
+        return res.redirect('/adopet/auth')
     }
     next();
 }
@@ -95,7 +95,7 @@ const validateArticle = (req, res, next) => {
 
 const requireLogin = (req, res, next) => {
     if (!req.session.user_id) {
-        res.render('/login');
+        res.render('/adopet/auth');
     }
 }
 
@@ -106,7 +106,7 @@ const isAuthor = async(req, res, next)=>{
     const article = await Article.findById(id);
     if(!article.author.equals(req.user._id)) {
            req.flash('error', 'You do  not have permission to do that!');
-           return res.redirect(`/articles/${id}`);
+           return res.redirect(`/adopet/articles/${id}`);
        }
        next();
 }   
@@ -117,7 +117,7 @@ const isDogOwner = async(req, res, next) =>{
     const dog = await Dog.findById(id);
     if(!dog.owner.equals(req.user._id)){
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/adopt/dogs/${id}`);
+        return res.redirect(`/adopet/adopt/dogs/${id}`);
     }
     next();
 }
@@ -126,7 +126,7 @@ const isCatOwner = async(req, res, next) =>{
     const cat = await Cat.findById(id);
     if(!cat.owner.equals(req.user._id)){
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/adopt/cats/${id}`);
+        return res.redirect(`/adopet/adopt/cats/${id}`);
     }
     next();
 }
@@ -135,7 +135,7 @@ const isBirdOwner = async(req, res, next) =>{
     const bird = await Bird.findById(id);
     if(!bird.owner.equals(req.user._id)){
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/adopt/birds/${id}`);
+        return res.redirect(`/adopet/adopt/birds/${id}`);
     }
     next();
 }
@@ -144,7 +144,7 @@ const isOtherOwner = async(req, res, next) =>{
     const other = await Other.findById(id);
     if(!other.owner.equals(req.user._id)){
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/adopt/others/${id}`);
+        return res.redirect(`/adopet/adopt/others/${id}`);
     }
     next();
 }
@@ -153,7 +153,7 @@ const isSmallandfurryOwner = async(req, res, next) =>{
     const smallandfurry = await Smallandfurry.findById(id);
     if(!smallandfurry.owner.equals(req.user._id)){
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/adopt/smallandfurrys/${id}`);
+        return res.redirect(`/adopet/adopt/smallandfurries/${id}`);
     }
     next();
 }
@@ -166,6 +166,8 @@ const isAdmin = (req, res, next) => {
         return
     }next();
 }
+
+
 // Exporting all middleware functions as an object
 module.exports = {
     isLoggedIn,
