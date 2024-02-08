@@ -3,14 +3,6 @@
 <p align="center">
   <img src="https://github.com/puwun/Pet-Adoption/blob/main/logo_fill.png" alt="Adopet">
 </p>
-## Members :
-<div align="center">
-  
-</div>
-
-
-
-
 
 ## Why Adopet?
 
