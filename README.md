@@ -46,11 +46,11 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 <table>
   <tr>
     <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/loginpage.jpg" alt="Login"/> </td>
-    <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/Adoptpage.jpg" alt="Adopt" "/> </td>
+    <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/Adoptpage.jpg" alt="Adoptcategory" "/> </td>
   </tr>
   <tr>
     <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/petpage.jpg" alt="Pet"/> </td>
-    <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/userprofile.jpg" alt="Profile"/> </td>
+    <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/catsadopt.jpg" alt="Adopt"/> </td>
   </tr>
 </table>
 
