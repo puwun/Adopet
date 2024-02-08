@@ -74,7 +74,7 @@ To get started with Adopet, follow these steps:
 
 **Clone the repository:**
   ```bash
-    https://github.com/puwun/Pet-Adoption.git
+     git clone https://github.com/puwun/Pet-Adoption.git
 ```
 
   ```bash
