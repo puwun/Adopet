@@ -44,9 +44,12 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 ### You can find additional media related to Adopet below:
 
 **Screenshots:**
-    
-
-**Video**
+    <img src="https://drive.google.com/file/d/1YobURlwoHu0nchzp-DCn7eB-T9v-U3qT/view?usp=drive_link" alt="Landingpage"/> 
+<table>
+  <tr>
+    <td> <img src="https://drive.google.com/file/d/1YobURlwoHu0nchzp-DCn7eB-T9v-U3qT/view?usp=drive_link" alt="Login"/> </td>
+    <td> <img src="https://github.com/SharanRP/Unishare_Campus/assets/136159249/bfb53ea4-a4a5-403e-b399-5e926ab9238f" alt="Blog" "/> </td>
+  </tr>
 
 
 ## Tech Stack
