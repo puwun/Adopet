@@ -75,9 +75,9 @@ To get started with Adopet, follow these steps:
 
 Team MadderCode:
 - [Pavankumar More](https://github.com/puwun)
-- [Shreyaaaash](https://github.com/Shreyaaaash)
-- [varunrr17](https://github.com/varunrr17)
-- [SuperJPcoder](https://github.com/SuperJPcoder)
+- [Shreyash Nikam](https://github.com/Shreyaaaash)
+- [Varun Rajput](https://github.com/varunrr17)
+- [Priyank Jhaveri](https://github.com/SuperJPcoder)
 
 ## 👨‍🏫Mentors
 
