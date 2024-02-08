@@ -14,10 +14,12 @@
 
 ## Why Adopet?
 
+Adopet is driven by a compassionate mission, connecting loving pet owners with animals in need to reduce pet overpopulation. Our platform offers a seamless experience, making finding the perfect companion effortless and enjoyable. We foster a vibrant community of pet lovers through reviews, blogs, and events, creating a sense of belonging for all users. Accessibility is paramount to us, ensuring that everyone, regardless of ability, can experience the joy of pet ownership. We promote responsible pet ownership and provide support to adopters for happy, healthy homes.
 
 
 ## Project Overview
 
+Adopet aims to revolutionize pet adoption by streamlining the process and promoting responsible ownership. Our platform offers a comprehensive range of features for a smooth adoption experience, from user-friendly interface to detailed pet profiles. Built with HTML, CSS, JavaScript, NodeJS, and MongoDB, our tech stack ensures seamless performance across all devices. Plans for the future include community building, chat functionality, admin empowerment, and continuous updates to enhance user experience. Adopet's impact extends beyond connecting pet owners with animals, fostering happier homes and a more compassionate world for all creatures.
 
 ## Fully Implemented Features
 
