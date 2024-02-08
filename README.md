@@ -77,7 +77,7 @@ To get started with Adopet, follow these steps:
     npm i
 ```
   ```bash
-    nodemon index.js
+    nodemon start
 ```
 
 
