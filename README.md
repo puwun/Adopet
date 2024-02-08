@@ -1,7 +1,7 @@
 <h1 gn="center"><span style="blue">Adopet </span> Connecting Loving Pet Owners with Animals in Need
 </h1>
 <p align="center">
-  <img src="https://drive.google.com/file/d/19hWfIM0t8PM5ikBHSNvNiYiQtnbrF6Uh/view?usp=drive_link" alt="Adopet">
+  <img src="https://github.com/puwun/Pet-Adoption/blob/main/logo_fill.png" alt="Adopet">
 </p>
 ## Members :
 <div align="center">
