@@ -35,8 +35,6 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 - [x] Community: Our Community feature will build like minded communities of pets and pet-parents based on location and pet types to share experiences and spend time together.
 - [x] Chat: A dedicated chat section will be provided for users to interact with each other personally or in groups.
-- [x] Admin: We plan on developing an admin login to facilitate the many updates directly on the website.
-- [x] Updates: Admins and verified users can contribute to the Events, Vet, Blog, Community pages to update Details.
 
 
 ## Media
