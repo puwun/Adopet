@@ -25,8 +25,7 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 ## Future Scope
 
-- [x] Community: Our Community feature will build like minded communities of pets and pet-parents based on location and pet types to share experiences and spend time together.
-- [x] Chat: A dedicated chat section will be provided for users to interact with each other personally or in groups.
+- [x] Our admin user is various type of pet saving organizations so we also need to validate them and options for them to reach out to adopters as well as donators a make website MongoInjection proof.
 
 
 ## Media
