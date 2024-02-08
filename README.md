@@ -49,11 +49,8 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 ## Tech Stack
 
-| ![HTML](https://img.icons8.com/color/36/000000/html-5--v1.png) <div> HTML </div> | ![CSS](https://img.icons8.com/color/36/000000/css3.png)<div> CSS </div>| ![JavaScript](https://img.icons8.com/color/36/000000/javascript--v1.png)<div> JavaScript </div> | ![Node.js](https://img.icons8.com/color/36/000000/nodejs.png) <div> Node.js </div>
-| --- | --- | --- | --- |
-
-| ![Express.js](https://img.icons8.com/color/36/000000/express.png) <div>Express.js</div> | ![MongoDB](https://img.icons8.com/color/36/000000/mongodb.png)<div> MongoDB </div>
-| --- | --- |
+| ![HTML](https://img.icons8.com/color/36/000000/html-5--v1.png) <div> HTML </div> | ![CSS](https://img.icons8.com/color/36/000000/css3.png)<div> CSS </div>| ![JavaScript](https://img.icons8.com/color/36/000000/javascript--v1.png)<div> JavaScript </div> | ![Node.js](https://img.icons8.com/color/36/000000/nodejs.png) <div> Node.js </div> | ![Express.js](https://img.icons8.com/color/36/000000/express.png) <div>Express.js</div>  | ![MongoDB](https://img.icons8.com/color/36/000000/mongodb.png)<div> MongoDB </div> 
+| --- | --- | --- | --- | --- | --- |
 
 
 ## Installation
