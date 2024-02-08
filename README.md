@@ -42,7 +42,7 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 ### You can find additional media related to Adopet below:
 
 **Screenshots:**
-    <img src="https://github.com/puwun/Pet-Adoption/blob/main/landingpage.jpg" alt="Landingpage"/> 
+    <img src="https://github.com/puwun/Pet-Adoption/blob/main/landingpage.png" alt="Landingpage"/> 
 <table>
   <tr>
     <td> <img src="https://github.com/puwun/Pet-Adoption/blob/main/loginpage.jpg" alt="Login"/> </td>
