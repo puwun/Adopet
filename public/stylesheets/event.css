@@ -9,7 +9,8 @@ body {
     background-size: 150% 990%;
     animation: color 40s ease-in-out infinite;
     font-family: 'Oregano';
-    margin: 0;
+    margin:0px;
+    padding: 0px;
 }
 
 main {
@@ -36,7 +37,8 @@ main {
 }
 
 .event-list .heading h2 {
-    padding: 1rem;
+    margin:0;
+    padding: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -95,7 +97,7 @@ main {
 
 .leaflet-popup-content-wrapper h4 {
     padding: 16px;
-    background: blue;
+    background: #ff99c8;
     color: #fff;
     font-size: 16px;
 }

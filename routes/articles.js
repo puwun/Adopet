@@ -17,9 +17,9 @@ const fileUpload = require('express-fileupload')
 //this file is for all the routes that start with /articles but we do not need to write /articles in front of each route
 //we can just write / and it will be assumed that it is /articles, its like treating this file as main page 
 
-router.use(fileUpload({
-    useTempFiles:true,
-}))
+// router.use(fileUpload({
+//     useTempFiles:true,
+// }))
 
 
 
@@ -39,7 +39,7 @@ router.get('/', catchAsync(articles.index))
 router.get('/new',isLoggedIn , articles.getNew)
 
 
-router.post('/new', isLoggedIn, validateArticle, catchAsync(articles.createNew))    
+router.post('/new', isLoggedIn,upload.single('cover'),validateArticle,catchAsync(articles.createNew))    
 
 
 //required User so that only a particular user can edit/deletee his article

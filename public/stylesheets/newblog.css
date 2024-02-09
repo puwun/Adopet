@@ -86,12 +86,10 @@ img {
     }
 }
 
-
-@keyframes oscillate {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(15px);
-    }
+.myImage {
+    max-width: 500px;
+    height: auto;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    transition: transform 1s ease-in-out; /* Smooth transition */
 }

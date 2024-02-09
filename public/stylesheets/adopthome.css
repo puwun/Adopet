@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
 
 * {
@@ -77,7 +76,7 @@ body {
 }
 
 .container .panel:nth-child(2) {
-  background-image: url("https://img.freepik.com/free-photo/cute-stray-cat-walking-streets-rabat-morocco_181624-14450.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
+  background-image: url("https://img.freepik.com/premium-photo/close-up-cat-peeking-out-wall-with-blue-background-generative-ai_97167-8507.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=sph");
 }
 
 .container .panel:nth-child(3) {
@@ -92,6 +91,37 @@ body {
   background-image: url("https://img.freepik.com/premium-photo/three-rabbits-field-with-green-background_865967-39354.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
 }
 
+.container .panel:nth-child(6) {
+  background-image: url("https://img.freepik.com/free-vector/different-pets-concept_23-2148517399.jpg?w=900&t=st=1707486936~exp=1707487536~hmac=db8b66afdf8bdeb311cf8b8769dc73d4576b4dab8d0f1b1c7158c231ba800e0a");
+}
+
+.container .reveal-button {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  min-height: 50px;
+  min-width: 50px;
+  background-color: inherit;
+  color: white;
+  border: 2px solid white;;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  /* border-radius: 50%; */
+  transition: background-color 0.3s ease-in-out;
+}
+.reveal-button:hover {
+  background-color: #000000; /* Replace with your desired contrasting color */
+}
+.panel.active .h3{
+  align-items: center;
+  padding-bottom: 1.2rem;
+}
+.container .panel.active .reveal-button {
+  opacity: 1;
+}
 
 @media (max-width: 480px) {
   .container {

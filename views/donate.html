@@ -23,6 +23,7 @@
       text-align: center;
       color: #007bff;
       border-radius: 5rem;
+      font-size: 3.2rem;
       font-family: 'Oregano', cursive;
     }
 
@@ -41,12 +42,12 @@
     label {
       display: block;
       padding-bottom: 100px;
-      padding-top: 40px;
+      padding-top: 60px;
       border-radius: 5rem;
       font-family: 'Oregano', cursive;
       height: 4rem;
       width: 9rem;
-      /* padding-top: 4rem; */
+      padding-top: 4rem;
     }
 
     input,
@@ -58,7 +59,7 @@
       border-radius: 5rem;
       /* margin-top: 5px; */
       font-size: 2rem;
-
+      
       font-family: 'Oregano';
       background-color: lightyellow;
     }
@@ -98,27 +99,57 @@
   }
 
     .button {
-  flex: 1;
-  padding: 8px;
+  /* flex: 1; */
+  padding: 18px;
   cursor: pointer;
   border: 1px solid #ccc;
   background-color: lightyellow;
   text-align: center;
-  border-radius: 5rem;
   font-family: 'Oregano';
-  margin-right: 1rem; /* Adjust the margin based on your preference */
+  border-radius: 20px;
+  margin-right: 20px;
+  align-items: center;
+   /* Adjust the margin based on your preference */
   transition: transform 0.3s ease-in-out;
 }
-button:click{
-  color: green;
-}
+
+
 
 .button img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 5rem;
-  place-items:  center;
-  margin-right: 0.5rem; /* Adjust the margin based on your preference */
+ width: 150px; 
+  height: 150px;  
+  border-radius: 20px;
+  /* margin-right: 20px; */
+  justify-content: center;
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+.button-group.isGoodWithKids .button{
+  width: 150px;
+  margin-right: 60px;
+}
+
+.button-group.isVaccinated .button {
+  width: 150px; /* Set your desired width */
+  margin-right: 60px;
+
+}
+
+
+.button-group.isVaccinated .button {
+  width: 150px; /* Set your desired width */
+  margin-right: 60px;
+
+}
+
+.button-group.petGender .button {
+  width: 150px; 
+  margin-right: 60px;
+  
+}
+.button-group.areShotsUpToDate .button{
+  width: 150px;
+    margin-right: 60px;
+
 }
 
     .button.selected {
@@ -132,19 +163,22 @@ button:click{
       transform: scale(1.05);
       border-radius: 5rem;
     }
+    .button
 
     input[type="submit"] {
       background-color: #007bff;
       color: #fff;
       cursor: pointer;
       border-radius: 5rem;
-
+      padding-top: 5rem;
     }
+   
 
     input[type="submit"]:hover {
       background-color: #0056b3;
       border-radius: 5rem;
       height: 4rem;
+      padding-top: 5rem;
 
     }
     .green-background {
@@ -183,6 +217,7 @@ button:click{
             <div class="button" onclick="selectPetType('cat')"><img src="https://img.freepik.com/free-vector/cute-cat-with-love-sign-hand-cartoon-illustration-animal-nature-concept-isolated-flat-cartoon-style_138676-3419.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059" alt="Cat"></div>
             <div class="button" onclick="selectPetType('bird')"><img src="https://img.freepik.com/free-vector/cute-bird-waving-hand-with-pilot-hat-cartoon-vector-icon-illustration-animal-nature-icon-isolated_138676-4688.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059" alt="Bird"></div>
             <div class="button" onclick="selectPetType('furry')"><img src="https://img.freepik.com/free-vector/cute-rabbit-with-carrot-bag-cartoon-vector-icon-illustration-animal-education-icon-concept-isolated_138676-5813.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059" alt="Furry"></div>
+            <div class="button" onclick="selectPetType('dog')"><img src="OTHER.png" alt="OTHER"></div>
           </div>
           <input type="hidden" name="petType" id="petType" required />
         </div>
@@ -199,7 +234,7 @@ button:click{
       <textarea name="petDescription" id="petDescription" rows="4" required></textarea>
     </div>
     <div class="form-example">
-      <label for="petAge">Enter pet age (months):</label>
+      <label for="petAge">Enter pet age in months:</label>
       <input type="number" name="petAge" id="petAge" min="0" required />
     </div>
     <div class="form-example">
@@ -244,8 +279,9 @@ button:click{
           <label for="whyDonate">Why donate?</label>
           <textarea name="whyDonate" id="whyDonate" rows="4" required></textarea>
         </div>
-        <div class="form-example">
-          <input type="submit" value="Submit" />
+        <!-- <div class="form-example">
+          <input type="submit" value="Submit" /> -->
+          <div class="button">Submit</div>
         </div>
       </form>
       <div> 
@@ -281,19 +317,19 @@ button:click{
   <input type="text" name="petBreed" id="petBreed" />
 </div>
 <div class="form-example">
-  <label for="petDescription">We would love to know more about your pet:</label>
+  <label for="petDescription">Enter pet description:</label>
   <textarea name="petDescription" id="petDescription" rows="4" required></textarea>
 </div>
 <div class="form-example">
-  <label for="petAge">Mind letting us know their age? (months):</label>
+  <label for="petAge">Enter pet age (months):</label>
   <input type="number" name="petAge" id="petAge" min="0" required />
 </div>
 <div class="form-example">
-  <label for="petImage">We would need a cute photo of your cutiee:</label>
+  <label for="petImage">Choose pet image:</label>
   <input type="file" name="petImage" id="petImage" required />
 </div>
 <div class="form-example">
-  <label for="isGoodWithKids">Must be really good with friends, isn't it?</label>
+  <label for="isGoodWithKids">Is the pet good with kids?</label>
   <div class="button-group isGoodWithKids">
     <div class="button" onclick="setBooleanValue('isGoodWithKids', true)">Yes</div>
     <div class="button" onclick="setBooleanValue('isGoodWithKids', false)">No</div>
@@ -327,7 +363,7 @@ button:click{
 
 
     <div class="form-example">
-      <label for="whyDonate">Any reason for donate?</label>
+      <label for="whyDonate">Why donate?</label>
       <textarea name="whyDonate" id="whyDonate" rows="4" required></textarea>
     </div>
     <div class="form-example">
@@ -367,7 +403,7 @@ button:click{
     });
 
     // Set background color for the selected button
-    const selectedButton = document.getElementById(`${type}Button`);
+    const selectedButton = document.getElementById(${type}Button);
     selectedButton.classList.add('selected');
 
     // Set the selected pet type in the hidden input field

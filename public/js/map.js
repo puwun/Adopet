@@ -36,7 +36,7 @@ function makePopupContent(event) {
         <h4>${event.properties.name}</h4>
         <p>${event.properties.address}</p>
         <div class="phone-number">
-            <a href="tel:${event.properties.date}">${event.properties.date}</a>
+            <a href="tel:${event.properties.phone}">${event.properties.phone}</a>
         </div>
     </div>
   `;

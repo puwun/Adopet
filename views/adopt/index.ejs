@@ -1,10 +1,3 @@
-<!--
-  @project Expanding Flex Cards
-  @author: Jamshid Elmi
-  @created: 2022-03-25 19:13:18
-  @modified: 2022-03-25 19:13:18
-  @tutorial: https://youtu.be/pvjNbaV0Keo
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,34 +8,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
-  <title>Adopet</title>
+  <title></title>
 </head> 
 <body>
-
-
-    <div class="container">
-
+<div>
+    <%- include('../partials/navbar') %>
+</div>
+<div class="container">
     <div class="panel active">
-      <h3>Go on......!<br><br>tap on each card<br>PS: your heart might get stollen by their cutnesss</h3>
+      <h3>Go on!......<br><br>tap on each card<br>PS: your heart might get stollen by the cutesss</h3>
+      <!-- <button class="reveal-button"></button> -->
     </div>
     <div class="panel">
-      <h3>aEmbrace the companionship of cats or kittens, offering warmth and joy with their affectionate nature. Kittens, with their playful charm, bring laughter and delightful moments to any home.</h3>
+      <h3>Embrace the companionship of cats or kittens, offering warmth and joy with their affectionate nature. Kittens, with their playful charm, bring laughter and delightful moments to any home.</h3>
       <div class="card-name">Cuddly Cats</div>
-    </div>
-    <div class="panel">
+      <a href="/adopet/adopt/cats"><button class="reveal-button">Check more info➔</button></a>   
+       </div>
+      <div class="panel">
       <h3>Experience boundless loyalty and unconditional love by adopting a dog or puppy, adding a devoted companion to your family. Puppies, with their energy and enthusiasm, bring exuberance and joy into your daily life.</h3>
       <div class="card-name">Pawsome Pups<br></div>
+      <a href="/adopet/adopt/dogs"><button class="reveal-button">Check more info➔</button></a>     
 
       </div>
       <div class="panel">
         <h3>Discover the vibrant world of avian companionship by adopting a talkative parrot, filling your home with colorful personalities and charming conversations.</h3>
         <div class="card-name">talkative Parrots</div>
+        <a href="/adopet/adopt/birds"><button class="reveal-button">Check more info➔</button></a>    
+
         </div>
       <div class="panel">
-        <h3>Welcome the gentle and affectionate nature of furries into your home, adding tranquility and joy to your life. Whether seeking a cuddly companion or a furry friend for quiet moments, adopting a furry is the perfect choice.</h3>
-        <div class="card-name">Bunny Buns</div>
-        </div>
+        <h3>Welcome the gentle and affectionate nature of rabbits into your home, adding tranquility and joy to your life. Whether seeking a cuddly companion or a furry friend for quiet moments, adopting a rabbit is the perfect choice.</h3>
+        <div class="card-name">Fluffy Furries</div>
+        <a href="/adopet/adopt/smallandfurries"><button class="reveal-button">Checke info➔</button></a>   
+      </div>
+      <div class="panel">
+        <h3>We at adopet believe every animal deserves the privilege of being adopted .</h3>
+        <div class="card-name">Others</div>
+        <a href="/adopet/adopt/others"><button class="reveal-button">Check more info➔</button></a>   
 
-    <script src="../../js/adopthome.js"></script> 
- </body>
+        </div>   
+
+
+    <script src="../../js/adopthome.js"></script>  </body>
 </html>

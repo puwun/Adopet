@@ -3,7 +3,9 @@ const cloudinary = require('cloudinary').v2;
 const {storage} = require('../cloudinary/index')
 const fileUpload = require('express-fileupload')
 const User = require('../models/user');
+const multer = require('multer')
 
+const upload = multer({storage: storage})
 
 module.exports.index = async (req, res) =>{
 
@@ -20,23 +22,14 @@ module.exports.getNew = (req, res) =>{
 }
 
 module.exports.createNew = async (req, res) => {
-    const author = req.user._id;
-    const photo = req.files.coverImage;
-    const cover = await new Promise((resolve, reject) => {
-        cloudinary.uploader.upload(photo.tempFilePath, (err, result) => {
-          if (err) {
-            reject(err);
-          } else {
-            console.log(result);
-            resolve(result.secure_url);
-          }
-        });
-    });
-    const {title, content} = req.body;
-    const article = new Article({title, content,author, cover});
+
+    const article = new Article(req.body);
+    article.images = req.files.map(f => ({url: f.path, filename: f.filename}));
+    article.author = req.user._id;
     await article.save();
+    console.log(article);
     req.flash('success', 'Successfully made a new article!');
-    res.redirect('/adopet/articles')
+    res.redirect(`/adopet/articles/${article._id}`);
 }
 
 module.exports.renderOne = async (req, res) => {

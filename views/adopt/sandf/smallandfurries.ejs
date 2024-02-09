@@ -7,27 +7,8 @@
     <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
 </head>
 <body>
-    <div id="nav">
-        <div id="nav-part1">
-            <!-- <p>logo</p> -->
-            <a href = "/adopet" class = "navbar-brand">Adopet</a>
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href = "/adopet/donate">Donate</a>
-                <a href = "/adopet/adopt">Adopt</a>
-                <a href = "/adopet/vets">Get to vet</a>
-                <a href = "/adopet/articles">Blog</a>
-                <a href = "/adopet/events">events</a>
-                <% if(!currentUser) { %>
-                <a href = "/adopet/signup">Sign up</a>
-                <a href = "/adopet/login">Log in</a>
-                <% }else{ %>
-                <a href = "/adopet/logout">Log out</a>
-                <% } %>
-            </div>
-        </div>
-    </div>
+    <%- include('../../partials/navbar') %>
+
     <%- include('../../partials/flash') %>
 
 <section class="container">
@@ -38,10 +19,10 @@
     <div class="card__container" id="card-list">
         <%for(let smol of smallandfurries) {%>
        <article class="card__article">
-        <a href="/adopet/adopt/smallandfurries/<%= smol.id %>"><img src="../../../images/p1.jpg" alt="image" class="card__img"></a>
+        <a href="/adopet/adopt/smallandfurries/<%= smol.id %>"><img src="<%= smol.image%>" alt="image" class="card__img"></a>
           <div class="card__data">
-             <span class="card__description"></span>
-             <h2 class="card__title">Name <%= smol.name%></h2>
+            <span class="card__description"><%=smol.breed  %></span>
+             <h2 class="card__title"><%= smol.name%></h2>
              <a href="/adopet/adopt/smallandfurries/<%= smol.id %>" class="card__button">Know More</a>
           </div>
        </article>

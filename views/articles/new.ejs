@@ -13,13 +13,28 @@
 <div class="container">
     <div class="form-container">
         <div>
-            <textarea id="title" placeholder="Enter Title"></textarea>
-            <textarea id="blog" placeholder="Enter Blog"></textarea>
-            <input type="file" id="photo" accept="image/*">
+            <form action="/adopet/articles/new" method="POST" class="form-example" enctype="multipart/form-data" >
+            <input type= "text" id="title" placeholder="Enter Title"name="title">
+            <textarea  id="blog" placeholder="Enter content" name="content"></textarea>
+            <input type="file" id="cover" name="cover">
             <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
-    <img src="../../images/newblog.png" class="myImage" alt="Right Image">
+    <img src="../../images/newblog.png" class="myImage" id="oscillatingImage" alt="Right Image">
 </div>
+<script>
+    
+    var img = document.getElementById('oscillatingImage');
+
+    
+    function oscillateImage() {
+        
+        img.style.transform = img.style.transform === 'translateY(15px)' ? 'translateY(0)' : 'translateY(15px)';
+    }
+
+    
+    setInterval(oscillateImage, 2000); 
+</script>
 </body>
 </html>

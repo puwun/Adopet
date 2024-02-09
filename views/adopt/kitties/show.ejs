@@ -7,28 +7,8 @@
     <link rel="stylesheet" href="../../../stylesheets/adopt.css">
 </head>
 <body>
-   <div id="nav">
-        <div id="nav-part1">
-            <!-- <p>logo</p> -->
-            <a href = "/adopet" class = "navbar-brand">Adopet</a>
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href = "/adopet/donate">Donate</a>
-                <a href = "/adopet/adopt">Adopt</a>
-                <a href = "/adopet/vets">Get to vet</a>
-                <a href = "/adopet/articles">Blog</a>
-                <a href = "/adopet/events">events</a>
-                <% if(!currentUser) { %>
-                <a href = "/adopet/signup">Sign up</a>
-                <a href = "/adopet/login">Log in</a>
-                <% }else{ %>
-                <a href = "/adopet/logout">Log out</a>
-                <% } %>
-            </div>
-        </div>
-    </div>
 
+    <%- include('../../partials/navbar') %>
     <%- include('../../partials/flash') %>
 
 <!-- //we can also access all the cat attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the cat    -->
@@ -64,6 +44,9 @@
                         <input type="submit" value="Become a shelter provider" />
                     </div>
                 </form>
+                <div class="options">
+                    <a href="#">Become a shelter provider</a>
+                </div>
                 <!-- <a href="#">Become a shelter provider</a> -->
             </div>
             </div>

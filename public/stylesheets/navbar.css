@@ -8,10 +8,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 25px;
+    margin:0px;
+    /* padding: 25px; */
 }
 
 #nav #nav-part2 {
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,12 +23,14 @@
 }
 
 #links {
-    padding: 10px;
+    padding: 0px 0px 15px ;
 }
 
-#nav-part1 {
+#nav-part1 img{
+    padding : 0; 
     /* background-color: RED; */
-    height: 82px;
+    height: auto;
+    width: 15vh;
     /* overflow:hidden; */
     overflow:visible;
     /* font-size: 12vh; */
@@ -42,7 +46,12 @@
     color: #333;
     font-weight: 500;
     font-size: 24px;
-    margin: 0 20px;
+    margin: 20px;
+    padding: 10px 0px 20px ;
+}
+
+#nav-part2 #links img {
+   margin:25px 20px 0px;
 }
 
 
