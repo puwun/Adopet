@@ -6,51 +6,20 @@
     <title>Adopet Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font awesome icon -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../stylesheets/article.css">
-    <link rel="stylesheet" href="/stylesheets/likes.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <link rel="stylesheet" href="../../stylesheets/blog.css">
   </head>
-    <header>
-      <div id="nav">
-        <div id="nav-part1">
-            <!-- <p>logo</p> -->
-            <a href = "/adopet" class = "navbar-brand">Adopet</a>
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href = "/adopet/donate">Donate</a>
-                <a href = "/adopet/adopt">Adopt</a>
-                <a href = "">Get to vet</a>
-                <a href = "/adopet/articles">Blog</a>
-                <a href = "/adopet/events">events</a>
-                <% if(!currentUser) { %>
-                <a href = "/adopet/signup">Sign up</a>
-                <a href = "/adopet/login">Log in</a>
-                <% }else{ %>
-                <a href = "/adopet/logout">Log out</a>
-                <% } %>
-            </div>
-          </div>
-        </div>
-        
-        <%- include('../partials/flash') %>
+  <body>
+    
+      <main>
+          
+          <!-- header -->
+          <header>
+        <%- include('../partials/navbar') %>
       <div class = "banner">
         <div class = "container">
           <h1 class = "banner-title">
             <span>Blog</span>
-            <img src="../images/banner-bg.jpg" alt="">
           </h1>
           <p>everything that you want to know about your pets</p>
           <!-- <img src = "https://staging.petmag.com/wp-content/uploads/2020/08/category-header-cats.jpg" -->
@@ -59,81 +28,123 @@
     </header>
     <!-- end of header -->
     
-    <!-- design -->
-
- 
-
-  
     <div class="scroll-tracker"></div>
     <section class = "design" id = "design">
       <div class = "container">
         <div class = "title">
-          <h3>Read about Dogs & cats</h3>
+          <h2>Read about Dogs & cats</h2>
           <p>recent arts & designs on the blog</p>
         </div>
-        <form>
-          <i class="fas fa-search"></i>
-          <input type="text" name="" id="search-item" placeholder="Search blogs" onkeyup="search()">
-      </form>
-
-      <div class="article-container" id="card-list">
-      <% for(let art of aart){%>
 
         <div class = "design-content">
+          <!-- item -->
           <div class = "design-item">
-              <div class="card__article">
-
-              <div class="design-img">
-              <a href="/adopet/articles/<%= art._id%>">
-                <img src="https://plus.unsplash.com/premium_photo-1663047910718-c8758a6785e9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="article-image">
-              </a>
+            <div class = "design-img">
+              <img src = "https://plus.unsplash.com/premium_photo-1663047910718-c8758a6785e9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Adopet</span>
             </div>
-           
             <div class = "design-title">
-              <div class="card-content">
-                <h2 class="card-title"><a href="/adopet/articles/<%= art._id%>"><%= art.title%></a></h2>
-                <p class="card-description"><%= art.content%></p>
-                
-              </div>
+              <a href = "#">Jot down pet care blogs</a>
             </div>
           </div>
-          </div>
-          <div class="like-button">
-            <div class="heart-bg">
-              <div class="heart-icon"><button data-post-id="<%= art.id %>"></button></div>
+          <!-- end of item -->
+          <!-- item -->
+          <div class = "design-item">
+            <div class = "design-img">
+              <img src = "https://images.pexels.com/photos/5784092/pexels-photo-5784092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Adopet</span>
             </div>
-            <div class="likes-amount">7</div>
+            <div class = "design-title">
+              <a href = "#">Jot down pet care blogs</a>
+            </div>
           </div>
+          <!-- end of item -->
+          <!-- item -->
+          <div class = "design-item">
+            <div class = "design-img">
+              <img src = "https://images.pexels.com/photos/8298213/pexels-photo-8298213.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Adopet</span>
+            </div>
+            <div class = "design-title">
+              <a href = "#">Jot down pet care blogs</a>
+            </div>
+          </div>
+          <!-- end of item -->
+          <!-- item -->
+          <div class = "design-item">
+            <div class = "design-img">
+              <img src = "images/art-design-4.jpg" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Adopet</span>
+            </div>
+            <div class = "design-title">
+              <a href = "#">Jot down pet care blogs</a>
+            </div>
+          </div>
+          <!-- end of item -->
+          <!-- item -->
+          <div class = "design-item">
+            <div class = "design-img">
+              <img src = "https://images.pexels.com/photos/3361746/pexels-photo-3361746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Art & Design</span>
+            </div>
+            <div class = "design-title">
+              <a href = "#">Jot down pet care blogs</a>
+            </div>
+          </div>
+          <!-- end of item -->
+          <!-- item -->
+          <div class = "design-item">
+            <div class = "design-img">
+              <img src = "https://images.pexels.com/photos/5255164/pexels-photo-5255164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt = "">
+              <span><i class = "far fa-heart"></i> 22</span>
+              <span>Art & Design</span>
+            </div>
+            <div class = "design-title">
+              <a href = "#">Jot down pet care blogs</a>
+            </div>
+          </div>
+          <!-- end of item -->
+        </div>
       </div>
-    </div>
-    
-  </div>
-  <%}%>
-</section>
-
+    </section>
     <!-- end of design -->
 
 
     <!-- blog -->
-    <!-- end of blog -->
-
-
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about-content">
-          <h1>Post your own blog</h1>
-          <div class="content-wrapper">
-            <div>
-              <img src = "images/about-bg.jpg" alt = "">
+    <section class = "blog" id = "blog">
+      <div class = "container">
+        <div class = "title">
+          <h2>Latest Blog</h2>
+          <p>recent blogs about Your favourite pet</p>
+        </div>
+        <div class = "blog-content">
+          <!-- item -->
+          <div class = "blog-item">
+            <div class = "blog-img">
+              <img src = "https://images.pexels.com/photos/3171712/pexels-photo-3171712.jpeg?auto=compress&cs=tinysrgb&w=600" alt = "">
+              <span><i class = "far fa-heart"></i></span>
             </div>
-            <div>
-              <!-- Dynamic upload button -->
+            <div class = "blog-text">
+              <span>20 January, 2020</span>
+              <h2>Lorem ipsum, dolor sit amet consectetur adipisicing</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis libero quas ipsum laudantium nihil! Quaerat.</p>
+              <a href = "#">Read More</a>
+            </div>
+          </div>
+          <!-- end of item -->
+          <!-- item -->
+        
               <label for="image-upload" class="upload-btn">Upload Image</label>
               <input type="file" id="image-upload" accept="image/*" multiple style="display: none;">
             </div>
             <div class="about-text">
               <div class="title">
-                <h3>Anuv jain</h3>
+                <h2>Create your Own Blog</h2>
                 <p></p>
               </div>
               <!-- Text input area -->
@@ -146,13 +157,9 @@
     
 
   </main>
-<script src="../../js/like.js"></script>
-<script src="../../../js/searchBlog.js"></script>
 
-    <!-- footer -->
-    <!-- end of footer -->
+
     
     
-    <%- include('../partials/footer') %>
   </body>
 </html>

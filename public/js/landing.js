@@ -7,8 +7,8 @@ document.getElementById('startButton').addEventListener('click', function () {
 
 document.getElementById('startButton').addEventListener('mouseenter', function () {
   
-folloCursorImage.style.display = 'none';
-folloCursorImage.style.display2 = 'none';
+followCursorImage.style.display = 'none';
+followCursorImage.style.display2 = 'none';
 
 });
 
@@ -31,6 +31,7 @@ followCursorImage.setAttribute('width', '200px');
 followCursorImage.style.position = 'fixed';
 followCursorImage.style.zIndex = '9999';
 document.body.appendChild(followCursorImage);
+followCursorImage.style.display = 'none';
 
 // Create and append the second image that follows the cursor with horizontal mirror effect
 var followCursorImage2 = document.createElement('img');
@@ -41,6 +42,7 @@ followCursorImage2.style.position = 'fixed';
 followCursorImage2.style.zIndex = '9999';
 followCursorImage2.style.transform = 'scaleX(-1)'; // Apply horizontal mirror effect
 document.body.appendChild(followCursorImage2);
+followCursorImage2.style.display = 'none';
 
 // Initially hide the customImage
 customImage.style.display = 'none';
@@ -178,11 +180,11 @@ if(ctr===0){
 
 function changeCustomImageSource(direction) {
   var imageSources = {
-    'North': '../images/4--unscreen.gif',
-    'South': '../images/5--unscreen.gif',
-    'Northwest': '../images/3--unscreen.gif',
-    'Northeast': '../images/2--unscreen.gif',
-    'Southeast': '../images/1--unscreen.gif',
+    'North': '../images/46-4--unscreen.gif',
+    'South': '../images/46-5--unscreen.gif',
+    'Northwest': '../images/46-3--unscreen.gif',
+    'Northeast': '../images/46-2--unscreen.gif',
+    'Southeast': '../images/46-1--unscreen.gif',
     'Southwest': '../images/46-unscreen.gif',
     'East': '../images/26-unscreen.gif',
     'West': '../images/24-unscreen.gif'

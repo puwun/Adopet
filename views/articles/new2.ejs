@@ -1,0 +1,55 @@
+<!-- to post new articles -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Write a new article</h1>
+    <div id="nav">
+        <div id="nav-part1">
+            <!-- <p>logo</p> -->
+            <a href = "/adopet" class = "navbar-brand">Adopet</a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/signup">Sign up</a>
+                <a href = "/adopet/login">Log in</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <!-- <form action="/articles" method="POST" class="form-example"> -->
+    <form action="/adopet/articles/new" method="POST" class="form-example" enctype="multipart/form-data" >
+        <div class="form-example">
+            <label for="title">Enter title: </label>
+            <input type="text" name="title" id="title" required />
+        </div>
+<!-- content input should be of type textarea -->
+        <div class="form-example">
+            <label for="content">Enter content: </label>
+            <textarea  name="content" id="content" required></textarea>
+        </div>
+        <div class="form-example">  
+            <label for="coverImage">Enter cover image for blog: </label>
+            <input type="file" name="coverImage" id="coverImage" required />
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+    <div> <%- include('../partials/footer') %>
+    </div>
+
+</body>
+</html>

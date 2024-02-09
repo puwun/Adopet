@@ -45,7 +45,7 @@ body {
     /* height: 100px; */
     width: 100%;
     /* background-color: burlywood; */
-    position: fixed;
+    position: sticky;
     z-index: 99;
     display: flex;
     align-items: flex-start;
@@ -58,6 +58,7 @@ body {
     align-items: center;
     justify-content: center;
     /* font-size: 12vh; */
+    /* position: relative; */
     gap: 40px;
 }
 
@@ -109,7 +110,7 @@ body {
 #page1 h1 {
     font-size: 15.8vw;
     text-transform: uppercase;
-    font-family: futura;
+    font-family: 'Oregano', cursive;
     line-height: 14vw;
     letter-spacing: -8px;
 }
@@ -135,7 +136,7 @@ body {
     font-size: 1.3vw;
     position: fixed;
     text-transform: uppercase;
-    font-family: futura;
+    font-family: 'Oregano', cursive;
     border-radius: 50%;
     opacity: 0;
     scale: 0;

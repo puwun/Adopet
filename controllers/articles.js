@@ -48,12 +48,16 @@ module.exports.renderOne = async (req, res) => {
 
 module.exports.addToFavourite =  async (req, res) => {
     const {id} = req.params;
-    const article = await Article.findById(id);
+    const article = await Article.findById(id).populate('author');
+    //set a var to something and then when after we like it set it to something else 
+    //or else the same logic as /auth action if else
     await User.updateOne({ _id: req.user._id }, { $push: { favourites: article } });
     console.log('----------------------')
     console.log(article)
     console.log('----------------------')
     console.log(req.user)
+    console.log('----------------------')
+    console.log(article.author)
     res.redirect(`/adopet/articles/${id}`)
 }
 

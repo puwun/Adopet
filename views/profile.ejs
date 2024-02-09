@@ -8,8 +8,243 @@
     <title>Profile Page</title>
     <!-- <link rel="stylesheet" href="../stylesheets/profile.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../stylesheets/profile.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+        background-size: 300% 300%;
+        animation: color 12s ease-in-out infinite;
+        position: relative;
+    margin-top: 20px;
+}
+
+.ui-w-80 {
+    width : 100px !important;
+    height: auto;
+
+}
+
+.btn-default {
+    border-color: rgba(24, 28, 33, 0.1);
+    background  : rgba(0, 0, 0, 0);
+    color       : #4E5155;
+    font-family: 'Oregano', cursive;
+}
+
+label.btn {
+    margin-bottom: 0;
+    font-family: 'Oregano';
+}
+.form-label{
+  font-size: 28px;
+}
+
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background  : transparent;
+    color       : #26B4FF;
+    font-family: 'Oregano', cursive;
+}
+
+.btn {
+    cursor: pointer;
+    font-family: 'Oregano', cursive;
+}
+
+.text-light {
+    color: #babbbc !important;
+    font-family: 'Oregano', cursive;
+}
+
+.btn-facebook {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #3B5998;
+    color       : #fff;
+}
+
+.btn-instagram {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #000;
+    color       : #fff;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012);
+    font-family: 'Oregano';
+    font-size: 1.9rem;
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    font-family: 'Oregano', cursive;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+    font-family: 'Oregano', cursive;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+    font-family: 'Oregano', cursive;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+    font-family: 'Oregano', cursive;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+    font-family: 'Oregano', cursive;
+}
+
+.material-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+    font-family: 'Oregano', cursive;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+    font-family: 'Oregano', cursive;
+}
+
+.dark-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+    font-family: 'Oregano', cursive;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+    color: #fff !important;
+    font-family: 'Oregano', cursive;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+    font-family: 'Oregano', cursive;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.9rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+    font-family: 'Oregano', cursive;
+}
+
+.main{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+  }
+  
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  
+  .btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+  
+  .btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cards_item {
+    display: flex;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 40rem) {
+    .cards_item {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    .cards_item {
+      width: 33.3333%;
+    }
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .card_content {
+    padding: 1.9rem;
+    background: linear-gradient(to bottom left, #f3d13c 80%, #414194 20%);
+  }
+  
+  .card_title {
+    color: #bb6e6e;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  
+  .card_text {
+    color: #c02e2e;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;    
+    font-weight: 400;
+  }
+  .made_by{
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 35px;
+    text-align: center;
+  }
+</style>
 </head>
 
 <body>
@@ -28,7 +263,7 @@
                         <!-- <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-change-password">Change password</a> -->
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-info">Info</a>
+                            href="#account-pets">My Pets</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-social-links">My Favourite Pets</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
@@ -98,46 +333,66 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="tab-pane fade" id="account-info">
-                            <div class="card-body pb-2">
-                                <div class="form-group">
-                                    <label class="form-label">Bio</label>
-                                    <textarea class="form-control"
-                                        rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Date of Birth</label>
-                                    <input type="text" class="form-control" value="May 4, 2004">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">State</label>
-                                    <select class="custom-select">
-                                        <option>Madhya Pradesh</option>
-                                        <option selected>Maharashtra</option>
-                                        <option>Delhi</option>
-                                        <option>Rajasthan</option>
-                                        <option>Haryana</option>
-                                        <option>Punjab</option>
-                                        <option>Tamil Nadu</option>
-                                        <option>Kerala</option>
-                                        <option>Karnataka</option>
-                                        <option>Telengana</option>
-                                        <option>Andhra Pradesh</option>
+                        <div class="tab-pane fade" id="account-pets">
 
-                                    </select>
-                                </div>
-                            </div>
-                            <hr class="border-light m-0">
-                            <div class="card-body pb-2">
-                                <h6 class="mb-4">Contacts</h6>
-                                <div class="form-group">
-                                    <label class="form-label">Phone</label>
-                                    <input type="text" class="form-control" value="9876543210">
-                                </div>
-                                <div class="form-group">
-
-                                </div>
-                            </div>
+                          <div class="card-body pb-2">
+                            <div class="main">
+                                <h1>Your pets that are closest to your heart are waiting for you</h1>
+                                <ul class="cards">
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p3.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title">Olivert</h2>
+                                        <p class="card_text">Breed: Siamese<br>Age: 3 years</p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p4.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title">Luna</h2>
+                                        <p class="card_text">Breed:Ragdoll</p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p7.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title">Charlie</h2>
+                                        <p class="card_text"> Breed:Bengal</p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p9.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title">Bella</h2>
+                                        <p class="card_text">Breed: Abyssinian</p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p8.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title">Simba</h2>
+                                        <p class="card_text">Breed:British Shorthair</p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                
+                              </div>
+                        </div>
+                   
                         </div>
 
 
@@ -205,17 +460,22 @@
                           <div class="main">
                             <h1>My Favourite Blogs</h1>
                             <ul class="cards">
-                              <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="./assets/img/p6.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">How to take care of pets |THE ULTIMATE SOLUTION</h2>
-                                    <p class="card_text"><p> By Arun Pandey</p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="cards_item">
+                              <% for(let lA of likedArticles){%>
+                           
+                                  <div><h3><%= lA %>  </h3></div>
+                                  <!-- <div><h1>Dogs:</h1></div> -->
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src="./assets/img/p6.jpg"></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title"><%= lA.title %></h2>
+                                        <p class="card_text"><p> By <%= lA.author.username %></p>
+                                        <button class="btn card_btn">Read More</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                 <% } %>
+                              <!-- <li class="cards_item">
                                 <div class="card">
                                   <div class="card_image"><img src="./assets/img/p4.jpg"></div>
                                   <div class="card_content">
@@ -264,23 +524,24 @@
                                     <button class="btn card_btn">Read More</button>
                                   </div>
                                 </div>
-                              </li>
+                              </li> -->
                             </ul>
                           </div>
                         </div> 
 
                         <!-- yeh niche ka kuch kaam ka nai aapne liye, uda do  -->
 
+                        <h2><%= myDogs %></h2>
+                        <h2>-----------------------------</h2>
+                        <h2><%= myCats %></h2>
+                        <h2><%= myBirds %></h2>
+                        <h2><%= myOthers %></h2>
+                        <h2><%= mySafs %></h2>
 
 
 
 
-                        <div><h1>Favourites:</h1></div>
-                        <% for(let lA of likedArticles){%>
-                          <h1><%= lA  %></h1>
-                            <div><h3><%= lA.title %> | <%= lA.content %> | <%= lA.author.username %></h3></div>
-                            <!-- <div><h1>Dogs:</h1></div> -->
-                        <% } %>
+                 
                     </div>
                 </div>
             </div>

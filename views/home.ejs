@@ -18,27 +18,9 @@
 </head>
 
 <body>
-  <div id="nav">
-    <div id="nav-part1">
-        <!-- <p>logo</p> -->
-        <a href = "/adopet" class = "navbar-brand">Adopet</a>
-    </div>
-    <div id="nav-part2">
-        <div id="links">
-            <a href = "/adopet/donate">Donate</a>
-            <a href = "/adopet/adopt">Adopt</a>
-            <a href = "">Get to vet</a>
-            <a href = "/adopet/articles">Blog</a>
-            <a href = "/adopet/events">events</a>
-            <% if(!currentUser) { %>
-            <a href = "/adopet/auth">Sign up / Login</a>
-            <% }else{ %>
-            <a href = "/adopet/logout">Log out</a>
-            <% } %>
-        </div>
-    </div>
-</div>
-<%- include('./partials/flash') %>
+
+<%- include('./partials/navbar') %>
+<!-- <- include('./partials/flash') %> -->
 
     <div id="cursor"></div>
     <div id="main">
@@ -163,14 +145,15 @@
           </div>
           
           
-          
-          
+
           <!-- <header>
              <a href="https://greensock.com/scrolltrigger">
                <img class="greensock-icon" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/scroll-trigger-logo-light.svg" width="200" height="64" />
             </a> 
           </header> -->
         </div>
+
+        <%- include('./partials/scroll') %>
 
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
@@ -181,6 +164,8 @@
         integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/home.js"></script>
+
+    <footer>  <%- include('./partials/footer') %></footer>
 </body>
 
 </html>

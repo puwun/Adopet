@@ -1,0 +1,108 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Oregano', regular;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+  position:relative;}
+
+.container {
+  display: flex;
+  width: 100vw;
+}
+
+.container .panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  /* color: rgb(0, 0, 0); */
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: all 1200ms ease-in;
+  /* opacity: 0.5; */
+}
+
+.container .panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+  text-transform: capitalize;
+}
+
+.container .panel.active {
+  flex: 5;
+  opacity:1;
+}
+
+ .container .panel.active h3 { 
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+  color: white;
+  font-size: 2.4rem;
+}
+.container .card-name{
+  color: #fff;
+  transform:rotate(-90deg);
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+  margin-bottom: 100%;
+  margin-top: 500px;
+  z-index: 0;
+}
+
+
+.container .panel:nth-child(1) {
+  background-image: url("https://www.thesprucepets.com/thmb/x-PpNAnbIgDPx6BRb0ZNafdywqc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/DogAndCat461331121-56a9c1f25f9b58b7d0febc84.jpg");
+  color: black;
+}
+
+.container .panel:nth-child(2) {
+  background-image: url("https://img.freepik.com/free-photo/cute-stray-cat-walking-streets-rabat-morocco_181624-14450.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
+}
+
+.container .panel:nth-child(3) {
+  background-image: url("https://img.freepik.com/free-photo/cute-puppy-sitting-grass-enjoying-nature-playful-beauty-generated-by-artificial-intelligence_188544-84973.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
+}
+
+.container .panel:nth-child(4) {
+  background-image: url("https://img.freepik.com/free-photo/closeup-shot-orange-green-parrots-cage_181624-61607.jpg?w=360&t=st=1707079645~exp=1707080245~hmac=a0e2dfe48d7c2bfa8d18bb34ed33ac49dcb82d30782da4e540441691d2a996b1");
+}
+
+.container .panel:nth-child(5) {
+  background-image: url("https://img.freepik.com/premium-photo/three-rabbits-field-with-green-background_865967-39354.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .container .panel:nth-child(4),
+  .container .panel:nth-child(5) {
+    display: none;
+  }
+  .card-name{
+    padding-top: 900px;
+  }
+}

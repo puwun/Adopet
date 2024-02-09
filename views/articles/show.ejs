@@ -5,33 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="/stylesheets/likes.css">
+
 <body>
-    <div id="nav">
-        <div id="nav-part1">
-            <!-- <p>logo</p> -->
-            <a href = "/adopet" class = "navbar-brand">Adopet</a>
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href = "/adopet/donate">Donate</a>
-                <a href = "/adopet/adopt">Adopt</a>
-                <a href = "">Get to vet</a>
-                <a href = "/adopet/articles">Blog</a>
-                <a href = "/adopet/events">events</a>
-                <% if(!currentUser) { %>
-                <a href = "/adopet/signup">Sign up</a>
-                <a href = "/adopet/login">Log in</a>
-                <% }else{ %>
-                <a href = "/adopet/logout">Log out</a>
-                <% } %>
-            </div>
-        </div>
-    </div>
+
+     <%- include('../partials/navbar') %>
      <%- include('../partials/flash') %>
 
     <h1><%=article.title%></h1>
     <h2><%=article.content%></h2>
     <h3>Wriiten by <%=article.author.username%> </h3>  
+
+    <div class="like-button">
+        <div class="heart-bg">
+          <div class="heart-icon"></div>
+        </div>
+        <div class="likes-amount">7</div>
+      </div>
+  </div>
 
     <!-- things will break if we only check for whether cuurentUser is same as the one logged in as guest can be able to access these features -->
     <!-- so we added one more condition, to check first whether currentUser even exists or not -->
@@ -42,14 +33,19 @@
     <a href="/adopet/articles">Go back to all blogs</a> 
 
 
-    <div class="options">
-        <form action="/adopet/articles/<%= article._id  %>" method="POST" class="enquiry-btn">
-            <div class="form-example">
-                <input type="submit" value="Add to favourites"/>
-            </div>
-        </form>
-    </div>
+    <div class="like-button">
+        <div class="heart-bg">
+            <form action="/adopet/articles/<%= article._id  %>" method="POST" >
+            <div class="heart-icon">
+                <div class="form-example">
+                    <input type="submit" />
+                </div>
+                </div>
 
+        </form>
+        </div>
+    </div>
+<!-- 
         <h2>Leave a review</h2>
         <form action="" class="mb-3">
             <div class="mb-3">
@@ -61,7 +57,8 @@
                 <textarea name="review[body]" class="form-control" id="body" cols="30" rows="3"></textarea>
             </div>
             <button class="btn btn-success">Submit</button>
-        </form>
+        </form> -->
+        <script src="../../js/like.js"></script>
 
         <div> <%- include('../partials/footer') %>
     </div>

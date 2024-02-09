@@ -1,52 +1,39 @@
-<!-- <div id="nav">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../../stylesheets/navbar.css">
+</head>
+<body>
+  <div id="nav">
     <div id="nav-part1">
+      <a href = "/adopet" class = "navbar-brand"><img src="../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+        <!-- <p>logo</p> -->
     </div>
     <div id="nav-part2">
         <div id="links">
-            <a href="/donate">Donate</a>
-            <a href="#">Adopt</a>
-            <a href="#">Get to Vet</a>
-            <a href="/articles">Blog</a> 
-            < <a href="/articles/index">Blog</a>  -->
-            <!-- <a href="#">Events</a>
-            < if(!currentUser) { %>
-            <a href="/signup">Sign up</a>
-            <a href="/login">Log in</a>
-            < }else{ %>
-            <a href="/logout">Log out</a>
-            < } %>
+            <a href = "/adopet/donate">Donate</a>
+            <a href = "/adopet/adopt">Adopt</a>
+            <a href = "/adopet/vet">Get to vet</a>
+            <a href = "/adopet/articles">Blog</a>
+            <a href = "/adopet/events">events</a>
+            <% if(!currentUser) { %>
+            <a href = "/adopet/auth">Sign up / Login</a>
+            <% }else{ %>
+            <a href = "/adopet/logout">Log out</a>
+            <% } %>
         </div>
-
     </div>
-</div>  -->
-
-
-
-
-<nav class = "navbar">
-    <div class = "container">
-      <a href = "/" class = "navbar-brand">Adopet Blog</a>
-      <div class = "navbar-nav">
-        <a href = "/donate">Donate</a>
-        <a href = "/adopt">Adopt</a>
-        <a href = "">Get to vet</a>
-        <a href = "/articles">Blog</a>
-        <a href = "/events">events</a>
-        <% if(!currentUser) { %>
-        <a href = "/signup">Sign up</a>
-        <a href = "/login">Log in</a>
-        <% }else{ %>
-        <a href = "/logout">Log out</a>
-        <% } %>
-
-      </div>
-    </div>
-  </nav>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+</div>
+</body>
+</html>
+<!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
     integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
     integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <!-- <script src="../navbarr/script.js"></script> -->

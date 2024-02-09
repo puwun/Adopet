@@ -97,6 +97,8 @@ router.get('/logout', user.logout)
 router.get('/user/profile', catchAsync(user.renderProfile))
 
 
+router.get('/vet', user.renderVet)
+
 router.get('/feedback', isLoggedIn, user.renderFeedback)
 
 
@@ -105,6 +107,7 @@ router.post('/feedback', isLoggedIn,catchAsync(user.sendFeedback))
 
 router.get('/faq', user.renderFaq)
 
+router.get('/termsandconditions', user.renderTandC)
 
 router.get('/donate', isLoggedIn, user.renderDonate)
 

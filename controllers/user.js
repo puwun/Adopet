@@ -136,6 +136,10 @@ module.exports.renderProfile = async(req, res) => {
     console.log('----------------------');
     console.log(currUser);
     const myDogs = await Dog.find({owner: currUser._id});
+    const myCats = await Cat.find({owner: currUser._id});
+    const myBirds = await Bird.find({owner: currUser._id});
+    const myOthers = await Other.find({owner: currUser._id});
+    const mySafs = await Smallandfurry.find({owner: currUser._id});
     console.log('----------------------');
     console.log(myDogs);
     console.log('----------------------');
@@ -144,8 +148,8 @@ module.exports.renderProfile = async(req, res) => {
     const myFavBlogs = myFavArticles.filter((article, index) => myFavArticles.indexOf(article) === index);
     console.log(myFavBlogs); 
     const likedArticles = []
-    for (const blog of myFavBlogs) {
-        const article = await Article.findById(blog);
+    for (let blog of myFavBlogs) {
+        const article = await Article.findById(blog).populate('author');
         likedArticles.push(article);
     }
     console.log('----------------------');
@@ -156,12 +160,22 @@ module.exports.renderProfile = async(req, res) => {
     // const birds = await Bird.find({owner: req.user._id});
     // const smallandfurries = await Smallandfurry.find({owner: req.user._id});
     // const others = await Other.find({owner: req.user._id});
-    res.render('../views/profile', {currUser, myDogs, likedArticles});  //other animals and articles, comments need to be added too
+    res.render('../views/profile', {currUser, myDogs, myCats, myBirds,myOthers,mySafs,likedArticles});  //other animals and articles, comments need to be added too
 }
 
 
 module.exports.renderFeedback = (req, res) => {
     res.render('feedback.ejs');
+}
+
+
+module.exports.renderTandC = (req, res) => {
+    res.render('tnc.ejs');
+
+}
+
+module.exports.renderVet = (req, res) => {
+    res.render('vet.ejs');
 }
 
 module.exports.sendFeedback = async (req, res) => {

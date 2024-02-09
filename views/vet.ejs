@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vet Page</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
+<link rel="stylesheet" href="../stylesheets/vet.css">
+<style>
+
+</style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+<header>
+    <h1>LOVE YOUR PET? KNOW YOUR VET</h1>
+    <p>Providing specialized care for your beloved pets</p>
+</header>
+
+<div class="vet-cards-container">
+    <div class="vet-card">
+        <div class="square square-1"></div>
+        <div class="vet-image vet1"></div>
+        <h2>Dr. Vinod Gupta</h2>
+        <p>Specializes in dogs and cats.</p>
+        <p>Address: 123 Kandivali</p>
+        <p>Phone: 123-456-7890</p>
+        <p>Email: drvinod@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-2"></div>
+        <div class="vet-image vet2"></div>
+        <h2>Dr. Akshay Patil</h2>
+        <p>Exotic pet specialist.</p>
+        <p>Address: 456 Andheri</p>
+        <p>Phone: 987-654-3210</p>
+        <p>Email: drakshay@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-3"></div>
+        <div class="vet-image vet3"></div>
+        <h2>Dr. Sahil Shah</h2>
+        <p>Expert in pet nutrition.</p>
+        <p>Address: 789 Dombivali</p>
+        <p>Phone: 789-123-4567</p>
+        <p>Email: drsahil@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-4"></div>
+        <div class="vet-image vet4"></div>
+        <h2>Dr. Winit Gala</h2>
+        <p>Behavioral consultant.</p>
+        <p>Address: 101 Kalyan</p>
+        <p>Phone: 101-010-1010</p>
+        <p>Email: drwinit@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-5"></div>
+        <div class="vet-image vet5"></div>
+        <h2>Dr. Payal Iyer</h2>
+        <p>Avian and reptile specialist.</p>
+        <p>Address: 111 Thane</p>
+        <p>Phone: 111-222-3333</p>
+        <p>Email: drpayal@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-6"></div>
+        <div class="vet-image vet6"></div>
+        <h2>Dr. Pari Nikam</h2>
+        <p>Emergency care and surgery.</p>
+        <p>Address: 333 Borivali</p>
+        <p>Phone: 333-444-5555</p>
+        <p>Email: drpari@example.com</p>
+    </div>
+</div>
+<div id="map"></div>
+<div class="vet-cards-container">
+    <!-- New row for adoption centers -->
+    <div class="vet-card">
+        <div class="square square-7"></div>
+        <div class="vet-image vet7"></div>
+        <h2>Paws for Love Adoption Center</h2>
+        <p>Address: 789 Powai</p>
+        <p>Phone: 456-789-0123</p>
+        <p>Email: adoption@pawsforlove.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-8"></div>
+        <div class="vet-image vet8"></div>
+        <h2>Whisker Haven Adoption Center</h2>
+        <p>Address: 222 Bandra</p>
+        <p>Phone: 987-654-3210</p>
+        <p>Email: whiskerhaven@example.com</p>
+    </div>
+    <div class="vet-card">
+        <div class="square square-9"></div>
+        <div class="vet-image vet9"></div>
+        <h2>Forever Friends Adoption Center</h2>
+        <p>Address: 333 Malad</p>
+        <p>Phone: 321-654-9870</p>
+        <p>Email: foreverfriends@example.com</p>
+    </div>
+</div>
+
+<!-- Text boxes container -->
+<div class="scroll-text-container">
+    <div class="scroll-text">
+        <p>"The best doctor in the world is the veterinarian. They can't ask their patients what is the matter- they've got to just know."</p>
+    </div>
+    <div class="scroll-text">
+        <p>"Veterinarians don't just treat animals, they treat the people who love them."</p>
+    </div>
+    <div class="scroll-text">
+        <p>"Veterinarians are the only doctors allowed to prescribe medicine to more than one species of patient."</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Adopet. All rights reserved.</p>
+</footer>
+
+<script>
+// JavaScript for scroll animation
+window.addEventListener('scroll', function() {
+    const scrollText = document.querySelectorAll('.scroll-text')[1]; // Targeting the second text box
+    const position = scrollText.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+    if (position < screenHeight * 0.95) {
+        scrollText.classList.add('appear');
+        setTimeout(() => {
+            const allScrollTexts = document.querySelectorAll('.scroll-text');
+            allScrollTexts.forEach((text, index) => {
+                if (index === 0) { // First text box
+                    setTimeout(() => {
+                        text.classList.add('appear');
+                    }, 250); // Delay the appearance by 250 ms
+                } else if (index === 2) { // Third text box
+                    setTimeout(() => {
+                        text.classList.add('appear');
+                    }, 500); // Delay the appearance by 500 ms
+                }
+            });
+        }, 250); // Trigger after 1 second
+    }
+});
+var map = L.map("map").setView([19.076, 72.8777], 13);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    minzoom:10,
+    attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+var docIcon = L.icon({
+    iconUrl: "../images/doc_pin.png",
+    iconSize: [70, 55],
+    iconAnchor: [22, 94],
+});
+var houseIcon = L.icon({
+    iconUrl: "../images/house_pin.png",
+    iconSize: [70, 55],
+    iconAnchor: [22, 94],
+});
+L.marker([19.1235, 72.9152],{icon:houseIcon}).addTo(map).bindPopup("<h2>Paws for Love Adoption Center</h2><p>Address: 789 Powai</p><p>Phone: 456-789-0123</p><p>Email: adoption@pawsforlove.com</p>");
+L.marker([19.0544, 72.8403],{icon:houseIcon}).addTo(map).bindPopup("<h2>Whisker Haven Adoption Center</h2><p>Address: 222 Bandra</p><p>Phone: 987-654-3210</p><p>Email: whiskerhaven@example.com</p>");
+L.marker([19.1866, 72.8486],{icon:houseIcon}).addTo(map).bindPopup("<h2>Forever Friends Adoption Center</h2><p>Address: 333 Malad</p><p>Phone: 321-654-9870</p><p>Email: foreverfriends@example.com</p>");
+L.marker([19.2294,72.8594],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Pari Nikam</h2><p>Emergency care and surgery.</p><p>Address: 333 Borivali</p><p>Phone: 333-444-5555</p><p>Email: drpari@example.com</p>");
+L.marker([19.1861,72.9758],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Payal Iyer</h2><p>Avian and reptile specialist.</p><p>Address: 111 Thane</p><p>Phone: 111-222-3333</p><p>Email: drpayal@example.com</p>");
+L.marker([19.2477,73.1355],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Winit Gala</h2><p>Behavioral consultant.</p><p>Address: 101 Kalyan</p><p>Phone: 101-010-1010</p><p>Email: drwinit@example.com</p>");
+L.marker([19.2167,73.0833],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Sahil Shah</h2><p>Expert in pet nutrition.</p><p>Address: 789 Dombivali</p><p>Phone: 789-123-4567</p><p>Email: drsahil@example.com</p>");
+L.marker([19.1170,72.8258],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Akshay Patil</h2><p>Exotic pet specialist.</p><p>Address: 456 Andheri</p><p>Phone: 987-654-3210</p><p>Email: drakshay@example.com</p>");
+L.marker([19.2088,72.8378],{icon:docIcon}).addTo(map).bindPopup("<h2>Dr. Vinod Gupta</h2><p>Specializes in dogs and cats.</p><p>Address: 123 Kandivali</p><p>Phone: 123-456-7890</p><p>Email: drvinod@example.com</p>");
+</script>
+
+<%- include('./partials/footer') %>
+<%- include('./partials/scroll') %>
+</body>
+</html>

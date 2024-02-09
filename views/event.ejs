@@ -12,27 +12,8 @@
     <title>Events Page</title>
 </head>
 <body>
-    <div id="nav">
-        <div id="nav-part1">
-            <!-- <p>logo</p> -->
-            <a href = "/adopet" class = "navbar-brand">Adopet</a>
-        </div>
-        <div id="nav-part2">
-            <div id="links">
-                <a href = "/adopet/donate">Donate</a>
-                <a href = "/adopet/adopt">Adopt</a>
-                <a href = "">Get to vet</a>
-                <a href = "/adopet/articles">Blog</a>
-                <a href = "/adopet/events">events</a>
-                <% if(!currentUser) { %>
-                <a href = "/adopet/signup">Sign up</a>
-                <a href = "/adopet/login">Log in</a>
-                <% }else{ %>
-                <a href = "/adopet/logout">Log out</a>
-                <% } %>
-            </div>
-        </div>
-    </div>
+    <%- include('./partials/navbar') %>
+
 
     <main>
         <div class="event-list">
@@ -50,6 +31,8 @@
         crossorigin=""></script>
     <script src="../js/eventLocation.js"></script>
     <script src="../js/map.js"></script>
+    
+
 </body>
 
 </html>
