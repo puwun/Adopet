@@ -24,7 +24,7 @@ module.exports.getNew = (req, res) =>{
 module.exports.createNew = async (req, res) => {
 
     const article = new Article(req.body);
-    article.images = req.files.map(f => ({url: f.path, filename: f.filename}));
+    console.log(req.body)
     article.author = req.user._id;
     await article.save();
     console.log(article);

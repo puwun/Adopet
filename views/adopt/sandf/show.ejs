@@ -7,8 +7,27 @@
     <link rel="stylesheet" href="../../../stylesheets/adopt.css">
 </head>
 <body>
-    <%- include('../../partials/navbar') %>
-
+    <div id="nav">
+        <div id="nav-part1">
+          <a href = "/adopet" class = "navbar-brand"><img src="../../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+            <!-- <p>logo</p> -->
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vet">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/auth">Sign up / Login</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <a href="/adopet/user/profile"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SI-L2k-71vMCT2XPh1B8eYRwVsw6cJq4EtXvOLXLfQ&s" alt="user" style="height: 65px; width: 55px; border-radius:50%"></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
     <%- include('../../partials/flash') %>
 
@@ -18,9 +37,9 @@
         <div class="box">
             <div class="images">
                 <div class="img-holder active">
-                    <img src="p1.jpg">
+                    <img src="<%= smallandfurries.image%>">
                 </div>
-                <div class="img-holder">
+                <!-- <div class="img-holder">
                     <img src="p1.jpg">
                 </div>
                 <div class="img-holder">
@@ -28,7 +47,7 @@
                 </div>
                 <div class="img-holder">
                     <img src="p1.jpg">
-                </div>
+                </div> -->
             </div>
             <div class="basic-info">
                 <h1><%= smallandfurries.name  %></h1>

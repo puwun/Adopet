@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oregano', cursive;
+    font-style: normal;
+    font-weight: 400;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(45deg, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 150% 990%;
+    animation: color 12s ease-in-out infinite;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items:start;
+    /* align-items:center; */
+    height: 100vh;
+    position:relative;
+}
+
+.form-container {
+    background-color: transparent;
+    border-radius: 0px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    margin-top: 80px;
+    margin-left: 80px;
+    margin-bottom:60px;
+    
+}
+
+#title {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    resize: none;
+    background-color: rgba(255,255,255,0.8);
+}
+
+#blog {
+    width: 80%;
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    background-color: rgba(255,255,255,0.8);
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+img {
+    max-width: 500px;
+    height: auto;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    animation: oscillate 2s infinite alternate;
+}
+
+@keyframes color {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.myImage {
+    max-width: 500px;
+    height: auto;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    transition: transform 1s ease-in-out; /* Smooth transition */
+}
+
+#image1 #image2 #image3 #image4 #image5{
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.miniImage:hover {
+    transform: scale(1.1);
+}

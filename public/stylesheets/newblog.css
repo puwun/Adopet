@@ -20,8 +20,9 @@ html, body {
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items:start;
+    /* align-items:center; */
+    /* height: 100vh;    */
     position:relative;
 }
 
@@ -33,11 +34,13 @@ html, body {
     margin-top: 80px;
     margin-left: 80px;
     margin-bottom:60px;
+    margin-right: 40px;
 }
 
 #title {
-    width: 80%;
+    width: 120%;
     margin-bottom: 10px;
+    margin-right: 40px;
     padding: 10px;
     border-radius: 25px;
     border: 1px solid #ccc;
@@ -46,35 +49,100 @@ html, body {
 }
 
 #blog {
-    width: 80%;
+    width: 120%;
     height: 200px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-right: 40px;
     padding: 10px;
     border-radius: 15px;
     border: 1px solid #ccc;
     resize: vertical;
     background-color: rgba(255,255,255,0.8);
 }
+.photo-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 05px; /* Reduced gap */
+    margin-top: 10px; /* Adjusted margin */
+    margin-bottom: 30px; /* Adjusted margin */
+    align-items: center; /* Center items */
+}
 
+.photo-input {
+    display: none;
+}
+
+.photo-button {
+    width: 300px; /* Increased button size */
+    height: 300px; /* Increased button size */
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid transparent; /* Black border initially */
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 24px; /* Increased font size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Position relative for overlay effect */
+    overflow: hidden; /* Hide overflow to ensure the image is fully visible */
+    transition: transform 0.3s, border-radius 0.5s; /* Smooth transition for transform and border radius */
+}
+
+.photo-button:hover {
+background-color: transparent;
+border-radius: 65px; /* Change border radius on hover */
+transform: scale(1.1); /* Scale to 1.1 on hover */
+}
 input[type="submit"] {
-    padding: 10px 20px;
+    padding: 15px 40px; /* Increased padding */
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    /*margin-top: 20px; /* Added margin top */
+    margin-bottom: 20px; /* Added margin bottom */
+    font-size: 20px; /* Increased font size */
+transition: transform 0.3s;
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #05468d;
+transform: scale(1.1);
+}
+.myImage {
+    max-width: 500px;
+        height: auto;
+        margin-right: 20px;
+        margin-bottom: 0px;
+        margin-left: 140px;
+        transition: transform 1s ease-in-out; /* Smooth transition */
+}
+.choose-photos {
+    text-align: center;
+    margin-top: 50px; /* Increased margin top */
+    margin-bottom: 20px; /* Added margin bottom */
+    font-size: 36px; /* Increased font size */
 }
 
-img {
-    max-width: 500px;
-    height: auto;
-    margin-right: 60px;
-    margin-bottom: 40px;
-    animation: oscillate 2s infinite alternate;
+.photo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.image-square {
+    width: 300px; /* Adjusted square size */
+    height: 300px; /* Adjusted square size */
+    overflow: hidden; /* Hide overflow */
+    position: absolute; /* Position absolute for stacking */
+}
+
+.image-square img {
+    width: 100%; /* Ensure image fills square */
+    height: 100%; /* Ensure image fills square */
+    object-fit: cover; /* Maintain aspect ratio */
 }
 
 @keyframes color {
@@ -84,12 +152,4 @@ img {
     100% {
         background-position: 100% 50%;
     }
-}
-
-.myImage {
-    max-width: 500px;
-    height: auto;
-    margin-right: 60px;
-    margin-bottom: 40px;
-    transition: transform 1s ease-in-out; /* Smooth transition */
 }

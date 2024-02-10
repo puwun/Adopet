@@ -59,7 +59,7 @@ p {
 
 .footer-distributed h3 span {
     color: #000000;
-    font-size: 16px;;
+    font-size: 16px;
 }
 
 /* Footer links */
@@ -102,15 +102,16 @@ p {
     vertical-align: middle;
 }
 
-.footer-distributed .footer-center i.fa-solid {
-    font-size: 17px;
-    line-height: 38px;
-
+.footer-distributed .footer-center i.ri-map-pin-line {
+    font-size: 14px;
+    line-height: 28px;
+  
 }
-.footer-distributed .footer-center i.fa-envelope {
+
+
+.footer-distributed .footer-center i.ri-phone-fill {
     font-size: 17px;
     line-height: 38px;
-
 }
 .footer-distributed .footer-center i.fa-envelope {
     font-size: 17px;

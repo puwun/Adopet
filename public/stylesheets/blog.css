@@ -8,8 +8,8 @@
     --exDark: #2b2b2b;
 } */
 *{
-    padding: 0;
-    margin: 0;
+    /* padding: 0;
+    margin: 0; */
     font-family: 'Oregano', cursive;
    
 }
@@ -32,7 +32,7 @@ body{
 }
 img{
     width: 100%;
-    display: block;
+    display: flex;
 }
 /* .container{
     max-width: 1320px;
@@ -48,6 +48,9 @@ header{
     flex-direction: column;
     justify-content: stretch;
 }
+
+
+
 #nav {
     /* height: 100px; */
     width: 100%;
@@ -76,7 +79,7 @@ header{
 #nav-part1 {
     /* background-color: RED; */
     height: 82px;
-    overflow:visible;
+    overflow: hidden;
     font-size: 12vh;
 }
 
@@ -87,11 +90,72 @@ header{
 #nav-part2 #links a {
     text-transform: uppercase;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-weight: 500;
     font-size: 24px;
     margin: 0 20px;
 }
+
+
+#nav-part2 #links img {
+    margin:0px 20px 25px 0px;
+ } 
+
+
+
+
+
+
+
+/* 
+#nav {
+    width: 100%;
+    position: sticky;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px 0px;
+    margin: 0px;
+}
+
+#nav #nav-part2 {
+    display: flex ;
+    align-items:center;
+    justify-content: space-evenly;
+    position: relative;
+    gap: 40px;
+}   
+
+#links {
+    padding: 0px 0px 15px;
+}
+
+#nav-part1 img{
+    padding-bottom: 1.2rem;
+    height: auto;
+    width: 15vh;
+    overflow:visible;
+
+}
+
+
+
+#nav-part2 #links a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 10px;
+    padding: 10px 0px 20px;
+}
+
+#nav-part2 #links img {
+    margin:25px 20px 0px;
+ } */
+
+
 .banner{
     flex: 1;
     display: flex;
@@ -173,6 +237,10 @@ header{
     text-align: center;
     padding: 1rem 0;
 }
+.main-title{
+    text-align: center;
+    padding: 1rem 0;
+}
 .title h2{
     font-family: var(--Playfair);
     font-size: 2.4rem;
@@ -185,12 +253,18 @@ header{
 .main-title h2{
     font-family: var(--Playfair);
     padding: 1rem 0;
-    /* padding-left: 50px; */
-    font-size: 2rem;
+    /* padding-left: 50px; */   
+    font-size: 2.4rem;
     font-weight: 500;
+    /* margin-left: 34rem; */
+    /* display: inline; */
+    /* align-items: center;
+     */
+     /* justify-content: center; */
 }
 .main-title p{
     text-transform: uppercase;
+    /* margin-left: 50%; */
     padding: 0.6rem 0;
 }
 .design-content{

@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+    border-radius: 5rem;
+    font-size: 3.2rem;
+    font-family: 'Oregano', cursive;
+    margin-bottom: 20px; /* Increased gap */
+    margin-top: 20px; /* Increased gap */
+  }
+
+  .form-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Increased width */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+    border-radius: 20px;
+  }
+
+  .form-example {
+    margin-bottom: 30px; /* Increased gap */
+    border-radius: 5rem;
+    font-family: 'Oregano', cursive;
+    font-size: 2.4rem;
+    width: 100%; /* Make the form full width */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative; /* Ensure relative positioning for z-index */
+    z-index: 1; /* Ensure form elements are above the background */
+    margin-top: 20px; /* Increased gap */
+  }
+
+  label {
+    display: block;
+    padding-bottom: 0px; /* Decreased padding */
+    border-radius: 5rem;
+    font-family: 'Oregano', cursive;
+    height: 4rem;
+    width: 100%; /* Increased width */
+    padding-top: 2rem; /* Decreased padding */
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px; /* Increased padding */
+    box-sizing: border-box;
+    border-radius: 2.5rem;
+    margin-top: 0px; /* Increased margin */
+    font-size: 2rem;
+    font-family: 'Oregano';
+    background-color: lightyellow;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: flex-start; /* Adjusted alignment */
+    margin-top: 10px;
+    font-family: 'Oregano';
+  }
+
+  .button {
+    padding: 10px; /* Adjusted padding */
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: lightyellow;
+    text-align: center;
+    font-family: 'Oregano';
+    border-radius: 15px;
+    margin-right: 20px; /* Increased margin */
+  }
+
+  .button img {
+    width: 80px; /* Adjusted image size */
+    height: 80px; /* Adjusted image size */
+    border-radius: 15px;
+  }
+
+  .button.selected {
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 15px;
+    font-family: 'Oregano', cursive;
+  }
+
+  .button:hover {
+    transform: scale(1.05);
+    border-radius: 25px; /* Adjusted border radius */
+  }
+
+  .center-button {
+    margin: 0 auto;
+    display: block;
+  }
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5rem;
+    padding-top: 1.5rem; /* Adjusted padding */
+    padding-bottom: 1.5rem; /* Adjusted padding */
+    margin-top: 30px; /* Increased margin */
+    width: auto;
+    padding: 12px 30px; /* Adjusted padding */
+    font-size: 2.4rem;
+    transition: background-color 0.3s ease-in-out;
+    border: 1px solid transparent;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .green-background {
+    background-color: #4caf50;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  @media (min-width: 600px) {
+    .form-example {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+
+  @keyframes color {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  input[type="range"] {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: red;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #EDF6F9;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="range"]::-ms-thumb {
+    width: 18px;
+    height: 18px;
+    background: #EDF6F9;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="file"] {
+    width: 100%;
+    margin-top: 10px; /* Increased margin */
+    font-size: 1.6rem;
+    border-radius: 5rem;
+  }
+
+  .form-example input[type="file"]::-webkit-file-upload-button,
+  .form-example input[type="file"]::-moz-file-upload-button,
+  .form-example input[type="file"]::-ms-browse {
+    width: 20px;
+    height: 10px;
+  }

@@ -6,7 +6,7 @@ const router = express.Router();
 const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 const Joi = require('joi');
-const { validateArticle, isLoggedIn, isAuthor} = require('../middleware');
+const { validateArticle, isLoggedIn, isAuthor, storeReturnTo} = require('../middleware');
 const multer = require('multer')
 const {storage} = require('../cloudinary/index')
 const upload = multer({storage})
@@ -44,7 +44,7 @@ router.post('/new', isLoggedIn,upload.single('cover'),validateArticle,catchAsync
 
 //required User so that only a particular user can edit/deletee his article
 router.get('/:id', catchAsync(articles.renderOne))
-router.post('/:id', catchAsync(articles.addToFavourite))
+router.post('/:id' , storeReturnTo,isLoggedIn, catchAsync(articles.addToFavourite))
 
 router.get('/:id/edit',isLoggedIn, isAuthor, catchAsync(articles.editOne))
 

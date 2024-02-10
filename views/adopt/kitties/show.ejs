@@ -8,18 +8,38 @@
 </head>
 <body>
 
-    <%- include('../../partials/navbar') %>
     <%- include('../../partials/flash') %>
 
+    <div id="nav">
+        <div id="nav-part1">
+          <a href = "/adopet" class = "navbar-brand"><img src="../../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+            <!-- <p>logo</p> -->
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vet">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/auth">Sign up / Login</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <a href="/adopet/user/profile"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SI-L2k-71vMCT2XPh1B8eYRwVsw6cJq4EtXvOLXLfQ&s" alt="user" style="height: 65px; width: 55px; border-radius:50%"></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
 <!-- //we can also access all the cat attributes like breed medHistory and display it in proper format and even option to view and contact the user assosiated in donating the cat    -->
 
     <div class="container">
         <div class="box">
             <div class="images">
                 <div class="img-holder active">
-                    <img src="p1.jpg">
+                    <img src="<%= cat.image%>">
                 </div>
-                <div class="img-holder">
+                <!-- <div class="img-holder">
                     <img src="p1.jpg">
                 </div>
                 <div class="img-holder">
@@ -27,7 +47,7 @@
                 </div>
                 <div class="img-holder">
                     <img src="p1.jpg">
-                </div>
+                </div> -->
             </div>
             <div class="basic-info">
                 <h1><%= cat.name  %></h1>
@@ -38,17 +58,16 @@
                     <i class="filled fas fa-star"></i>
                     <i class="filled fas fa-star"></i>
                 </div>
-            <div class="options">
-                <form action="/adopet/adopt/cats/<%= cat._id  %>" method="post" class="enquiry-btn">
-                    <div class="form-example">
-                        <input type="submit" value="Become a shelter provider" />
-                    </div>
-                </form>
+                <!-- <div class="options">
+                    <a href="">Become a shelter provider</a>
+                </div> -->
                 <div class="options">
-                    <a href="#">Become a shelter provider</a>
+                    <form action="/adopet/adopt/dogs/<%= cat._id  %>" method="POST" class="enquiry-btn">
+                        <div class="form-example">
+                            <input type="submit" value="Become a shelter provider" />
+                        </div>
+                    </form>
                 </div>
-                <!-- <a href="#">Become a shelter provider</a> -->
-            </div>
             </div>
             <div class="description">
                 <p><%= cat.description  %></p>

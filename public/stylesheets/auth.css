@@ -170,7 +170,7 @@
     top: 0;
     width: 900px;
     height: 100%;
-    background-image: url('https://img.freepik.com/free-photo/cute-puppy-group-sitting-looking-camera-indoors-generated-by-artificial-intelligence_188544-113182.jpg?t=st=1705497729~exp=1705501329~hmac=8c438dab79cfed6c7fdf16957ed3876936c0644b45a857de757a046bcf3ecaac&w=1380');
+    background-image: url('https://img.freepik.com/free-photo/cute-puppy-group-sitting-looking-camera-indoors-generated-by-artificial-intelligence_188544-113182.jpg?t=st=1707544176~exp=1707547776~hmac=17adfa4d0a4ec2b5740d43042dcec604ed3866a32806b5dec70a674784a821e4&w=1380');
     background-size: cover;
     transition: -webkit-transform 2.9s ease-in-out;
     transition: transform 2.9s ease-in-out, -webkit-transform 2.9s ease-in-out;
@@ -198,6 +198,7 @@
     top: 50px;
     width: 100%;
     padding: 0 20px;
+    font-size: 20px;
     text-align: center;
     color: #fff;
     -webkit-transition:-webkit-transform 2.9s ease-in-out;
@@ -208,10 +209,11 @@
   .img-text h2{
     margin-bottom: 10px;
     font-weight: normal;
+    font-size: 35pxpx;
   }
   
   .img-text p{
-    font-size: 14px;
+    font-size: 29px;
     line-height: 1.5;
   }
   

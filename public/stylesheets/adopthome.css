@@ -7,7 +7,7 @@
 
 body {
   font-family: "Muli", sans-serif;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -21,6 +21,7 @@ body {
 .container {
   display: flex;
   width: 100vw;
+  padding-top: 2.5rem;
 }
 
 .container .panel {
@@ -76,7 +77,7 @@ body {
 }
 
 .container .panel:nth-child(2) {
-  background-image: url("https://img.freepik.com/premium-photo/close-up-cat-peeking-out-wall-with-blue-background-generative-ai_97167-8507.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=sph");
+  background-image: url("https://img.freepik.com/free-photo/close-up-gray-kitten-nature_167946-121.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais");
 }
 
 .container .panel:nth-child(3) {
@@ -84,7 +85,7 @@ body {
 }
 
 .container .panel:nth-child(4) {
-  background-image: url("https://img.freepik.com/free-photo/closeup-shot-orange-green-parrots-cage_181624-61607.jpg?w=360&t=st=1707079645~exp=1707080245~hmac=a0e2dfe48d7c2bfa8d18bb34ed33ac49dcb82d30782da4e540441691d2a996b1");
+  background-image: url("https://img.freepik.com/free-photo/macaw-perching-branch-showcasing-vibrant-colors-nature-generated-by-artificial-intelligence_25030-67048.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais_ai_generated");
 }
 
 .container .panel:nth-child(5) {
@@ -92,7 +93,7 @@ body {
 }
 
 .container .panel:nth-child(6) {
-  background-image: url("https://img.freepik.com/free-vector/different-pets-concept_23-2148517399.jpg?w=900&t=st=1707486936~exp=1707487536~hmac=db8b66afdf8bdeb311cf8b8769dc73d4576b4dab8d0f1b1c7158c231ba800e0a");
+  background-image: url("https://img.freepik.com/premium-photo/picture-dog-some-birds-with-one-them-has-dog-it_910054-2130.jpg?w=740");
 }
 
 .container .reveal-button {
@@ -105,8 +106,10 @@ body {
   min-width: 50px;
   background-color: inherit;
   color: white;
-  border: 2px solid white;;
-  padding: 15px 30px;
+  border: 2px solid white;
+  padding-left: 17px;
+  padding-right: 17px;
+  /* padding: 15px 30px; */
   cursor: pointer;
   font-size: 1.2rem;
   /* border-radius: 50%; */

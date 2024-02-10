@@ -45,9 +45,9 @@
 
 .box .images {
     grid-area: images;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: auto 1fr;
+    /* display: grid; */
+    grid-template-columns: repeat(1, auto);
+    /* grid-template-rows: auto 1fr; */
     grid-template-areas: 
     "active active active"
     "idle idle idle";

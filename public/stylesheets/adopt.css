@@ -1,11 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
 
 
+#nav {
+    /* height: 100px; */
+    width: 100%;
+    /* background-color: burlywood; */
+    position: sticky;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin:0px;
+    /* padding: 25px; */
+}
+
+#nav #nav-part2 {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 12vh; */
+    /* position: relative; */
+    gap: 40px;
+}
+
+#links {
+    padding: 0px 0px 15px ;
+}
+
+#nav-part1 img{
+    padding : 0; 
+    /* background-color: RED; */
+    height: auto;
+    width: 15vh;
+    /* overflow:hidden; */
+    overflow:visible;
+    /* font-size: 12vh; */
+}
+
+/* #nav-part1 svg {
+    display: block;
+} */
+
+#nav-part2 #links a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 20px;
+    padding: 10px 0px 20px ;
+}
+
+#nav-part2 #links img {
+   margin:25px 20px 0px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: linear-gradient(45deg, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 150% 990%;
+    animation: color 12s ease-in-out infinite;
+    margin: 0;
+}
+
+
+
 
 .container {
-    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
     background-size: 300% 300%;
-    animation: color 12s ease-in-out infinite;
     position:relative;
     min-height: 100vh;
     display: flex;
@@ -20,16 +87,16 @@
     padding: 45px;
     margin: 15px 0;
     width: 950px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: grid; 
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas: 
     "images info"
     "images description";
-    grid-gap: 35px;
+    /* /* grid-gap: 35px; */
 }
 
-.box .images {
+/* .box .images {
     grid-area: images;
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -38,7 +105,19 @@
     "active active active"
     "idle idle idle";
     grid-gap: 5px;
+} */
+
+.box .images {
+    grid-area: images;
+    /* display: grid; */
+    grid-template-columns: repeat(1, auto);
+    /* grid-template-rows: auto 1fr; */
+    grid-template-areas: 
+    "active active active"
+    "idle idle idle";
+    grid-gap: 5px;
 }
+
 
 .box .images .img-holder img {
     width: 100%;
@@ -69,7 +148,7 @@
     font-size: 25px;
 }
 
-.box .basic-info .options form {
+.box .basic-info .options a {
     color: white;
     background: orange;
     background-size: 300% 300%;
@@ -83,7 +162,42 @@
     border-radius: 5px;
 }
 
-.box .basic-info .options .enquiry-btn:hover {
+
+
+.options{
+    justify-content: center;
+}
+
+
+input[type="submit"] {
+    background-color: orange; /* Button color */
+    color: white;    
+    border: none; /* Removes default border */
+    border-radius: 5px;
+    padding: 10px 15px; /* Button size */
+    text-align: center;
+    text-decoration: none;
+    background-size: 300% 300%;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 4px 2px;
+    cursor: pointer;
+    animation: color 12s ease-in-out infinite;
+    
+    
+}
+
+
+
+
+
+
+input[type="submit"]:hover {
+    background-color: orangered; /* Button color on hover */
+}
+
+.box .basic-info .options a:hover {
     background-color: orangered;
 }
 

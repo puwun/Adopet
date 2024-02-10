@@ -37,7 +37,7 @@
 
 label.btn {
     margin-bottom: 0;
-    font-family: 'Oregano';
+    font-family: 'Oregano', cursive;
 }
 .form-label{
   font-size: 28px;
@@ -269,12 +269,12 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                     <div class="list-group list-group-flush account-settings-links">
                         <a class="list-group-item list-group-item-action active" data-toggle="list"
                             href="#account-general">General</a>
-                        <!-- <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-change-password">Change password</a> -->
                         <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-pets">My Pets</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-social-links">My Blogs</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-connections">My Favourite Blogs
+                            href="#account-connections">Favourites
                             <link rel="preconnect" href="https://fonts.googleapis.com">
                             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                             <link href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap" rel="stylesheet">
@@ -289,8 +289,9 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                             <div class="card-body media align-items-center">
                                 <!-- <img src="https://img.freepik.com/free-photo/female-model-photo-session-casting_114579-13335.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais" alt
                                     class="d-block ui-w-90"> -->
-                                    <img src="https://img.freepik.com/free-photo/female-model-photo-session-casting_114579-13335.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais" alt=""
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SI-L2k-71vMCT2XPh1B8eYRwVsw6cJq4EtXvOLXLfQ&s" alt=""
                                     class="img-fluid rounded-circle"> 
+                                    <!-- class="img-fluid rounded-circle">  -->
                                 <div class="media-body ml-4">
                                     <label class="btn btn-outline-primary">
                                         Upload new photo
@@ -324,152 +325,52 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="tab-pane fade" id="account-change-password">
-                            <div class="card-body pb-2">
-                                <div class="form-group">
-                                    <label class="form-label">Current password</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">New password</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Repeat new password</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="tab-pane fade" id="account-pets">
-
                           <div class="card-body pb-2">
                             <div class="main">
-                                <h1>Your pets that are closest to your heart are waiting for you</h1>
-                                <% for (let mD of myDogs) {%>
+                                <h1>My Pets</h1>
+                                <% for (let mP of myPets) {%>
                                 <ul class="cards">
                                   <li class="cards_item">
                                     <div class="card">
-                                      <div class="card_image"><img src=<%= mD.image %>></div>
+                                      <div class="card_image"><img src=<%= mP.image %>></div>
                                       <div class="card_content">
-                                        <h2 class="card_title"><%= mD.name%></h2>
-                                        <p class="card_text">Breed: <%= mD.breed %><br>Age: <%= mD.age %></p>
-                                        <button class="btn card_btn">Read More</button>
+                                        <h2 class="card_title"><%= mP.name%></h2>
+                                        <p class="card_text">Breed: <%= mP.breed %><br>Age: <%= mP.age %></p>
+                                        <a href="/adopet/adopt/<%= mP.pet%>s/<%=mP.id %>"><button class="btn card_btn">Read More</button></a>
                                       </div>
                                     </div>
                                   </li>
+                                  <%}%>
                                 </ul>
-                                <%}%>
-                                  
-                           
-                                  <!-- <li class="cards_item">
-                                    <div class="card">
-                                      <div class="card_image"><img src="./assets/img/p4.jpg"></div>
-                                      <div class="card_content">
-                                        <h2 class="card_title">Luna</h2>
-                                        <p class="card_text">Breed:Ragdoll</p>
-                                        <button class="btn card_btn">Read More</button>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="cards_item">
-                                    <div class="card">
-                                      <div class="card_image"><img src="./assets/img/p7.jpg"></div>
-                                      <div class="card_content">
-                                        <h2 class="card_title">Charlie</h2>
-                                        <p class="card_text"> Breed:Bengal</p>
-                                        <button class="btn card_btn">Read More</button>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="cards_item">
-                                    <div class="card">
-                                      <div class="card_image"><img src="./assets/img/p9.jpg"></div>
-                                      <div class="card_content">
-                                        <h2 class="card_title">Bella</h2>
-                                        <p class="card_text">Breed: Abyssinian</p>
-                                        <button class="btn card_btn">Read More</button>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="cards_item">
-                                    <div class="card">
-                                      <div class="card_image"><img src="./assets/img/p8.jpg"></div>
-                                      <div class="card_content">
-                                        <h2 class="card_title">Simba</h2>
-                                        <p class="card_text">Breed:British Shorthair</p>
-                                        <button class="btn card_btn">Read More</button>
-                                      </div>
-                                    </div>
-                                  </li>
-                                 -->
                               </div>
+                          </div>
                         </div>
-                   
-                        </div>
-
-
-
                         <div class="tab-pane fade" id="account-social-links">
                             <div class="card-body pb-2">
                                 <div class="main">
-                                    <h1>Your pets that are closest to your heart are waiting for you</h1>
+                                    <h1>My Blogs</h1>
                                     <ul class="cards">
-                                      <li class="cards_item">
-                                        <div class="card">
-                                          <div class="card_image"><img src="./assets/img/p3.jpg"></div>
-                                          <div class="card_content">
-                                            <h2 class="card_title">Olivert</h2>
-                                            <p class="card_text">Breed: Siamese<br>Age: 3 years</p>
-                                            <button class="btn card_btn">Read More</button>
+                                      <% for(let mB of myBlogs){%>
+                                        <!-- <div><h3>  </h3></div> -->
+                                        <!-- <div><h1>Dogs:</h1></div> -->
+                                        <li class="cards_item">
+                                          <div class="card">
+                                            <div class="card_image"><img src=<%= mB.cover%>></div>
+                                            <div class="card_content">
+                                              <h2 class="card_title"><%= mB.title %></h2>
+                                              <a href="/adopet/articles/<%=mB.id %>"><button class="btn card_btn">Read More</button></a>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </li>
-                                      <li class="cards_item">
-                                        <div class="card">
-                                          <div class="card_image"><img src="./assets/img/p4.jpg"></div>
-                                          <div class="card_content">
-                                            <h2 class="card_title">Luna</h2>
-                                            <p class="card_text">Breed:Ragdoll</p>
-                                            <button class="btn card_btn">Read More</button>
-                                          </div>
-                                        </div>
-                                      </li>
-                                      <li class="cards_item">
-                                        <div class="card">
-                                          <div class="card_image"><img src="./assets/img/p7.jpg"></div>
-                                          <div class="card_content">
-                                            <h2 class="card_title">Charlie</h2>
-                                            <p class="card_text"> Breed:Bengal</p>
-                                            <button class="btn card_btn">Read More</button>
-                                          </div>
-                                        </div>
-                                      </li>
-                                      <li class="cards_item">
-                                        <div class="card">
-                                          <div class="card_image"><img src="./assets/img/p9.jpg"></div>
-                                          <div class="card_content">
-                                            <h2 class="card_title">Bella</h2>
-                                            <p class="card_text">Breed: Abyssinian</p>
-                                            <button class="btn card_btn">Read More</button>
-                                          </div>
-                                        </div>
-                                      </li>
-                                      <li class="cards_item">
-                                        <div class="card">
-                                          <div class="card_image"><img src="./assets/img/p8.jpg"></div>
-                                          <div class="card_content">
-                                            <h2 class="card_title">Simba</h2>
-                                            <p class="card_text">Breed:British Shorthair</p>
-                                            <button class="btn card_btn">Read More</button>
-                                          </div>
-                                        </div>
-                                      </li>
-                                    
+                                        </li>
+                                       <% } %>
+                                      </ul>
                                   </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="account-connections">
-                          <div class="main">
+                          <div class="card-body pb-2">
+                            <div class="main">
                             <h1>My Favourite Blogs</h1>
                             <ul class="cards">
                               <% for(let lA of likedArticles){%>
@@ -477,7 +378,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                                   <!-- <div><h1>Dogs:</h1></div> -->
                                   <li class="cards_item">
                                     <div class="card">
-                                      <div class="card_image"><img src=./assets/img/p4.jpg></div>
+                                      <div class="card_image"><img src=<%= lA.cover%>></div>
                                       <div class="card_content">
                                         <h2 class="card_title"><%= lA.title %></h2>
                                         <p class="card_text"><p> By <%= lA.author.username %></p>
@@ -485,81 +386,11 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                                       </div>
                                     </div>
                                   </li>
-                                 <% } %>
-                              <!-- <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="./assets/img/p4.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">Managing Pets with Kids <br></h2>
-                                    <p class="card_text"><p> By Divya Sharma</p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="assets/img/p5.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">Card Grid Layout</h2>
-                                    <p class="card_text"><p>By Neha </p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="./assets/img/p1.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">Tutorial for first time Adopters</h2>
-                                    <p class="card_text"><p> By Amogh Deshpande</p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="./assets/img/p2.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">Work and Pets</h2>
-                                    <p class="card_text"><p> By Atharva Patel</p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="cards_item">
-                                <div class="card">
-                                  <div class="card_image"><img src="./assets/img/p3.jpg"></div>
-                                  <div class="card_content">
-                                    <h2 class="card_title">The ultimate Guide to Adoption</h2>
-                                    <p class="card_text"><p>By Suresh</p>
-                                    <button class="btn card_btn">Read More</button>
-                                  </div>
-                                </div>
-                              </li> -->
-                            </ul>
+                                 <% } %>  
+                              </ul>
                           </div>
-                        </div> 
-
-                        <!-- yeh niche ka kuch kaam ka nai aapne liye, uda do  -->
-
-                        <h2><%= myDogs %></h2>
-                        <h2>-----------------------------</h2>
-                        <h2><%= myCats %></h2>
-                        <h2>-----------------------------</h2>
-                        <h2><%= myBirds %></h2>
-                        <h2>-----------------------------</h2>
-                        <h2><%= myOthers %></h2>
-                        <h2>-----------------------------</h2>
-                        <h2><%= mySafs %></h2>
-
-
-
-
-                 
-                    </div>
-                </div>
-            </div>
-        </div>
+                      </div>
+                  </div>
 
 
 
@@ -578,10 +409,10 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 
 
-        <div class="text-right mt-3">
+        <!-- <div class="text-right mt-3">
             <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
             <button type="button" class="btn btn-default">Cancel</button>
-        </div>
+        </div> -->
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

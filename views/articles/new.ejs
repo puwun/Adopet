@@ -9,20 +9,53 @@
 <body>
     <%- include('../partials/navbar') %>
     <%- include('../partials/flash') %>
-    <h1 style="text-align: center; margin-top: 30px;  font-size: 66px;">Create your own blog!</h1>
-<div class="container">
-    <div class="form-container">
-        <div>
-            <form action="/adopet/articles/new" method="POST" class="form-example" enctype="multipart/form-data" >
-            <input type= "text" id="title" placeholder="Enter Title"name="title">
-            <textarea  id="blog" placeholder="Enter content" name="content"></textarea>
-            <input type="file" id="cover" name="cover">
-            <input type="submit" value="Submit">
+    
+    <form action="/adopet/articles/new" method="POST" class="form-example" >
+        <h1 style="text-align: center; margin-top: 60px; margin-bottom: 40px;  font-size: 66px;" class="choose-photos">Create your own blog!</h1>
+        <h1 style="text-align: center; margin-top: 60px; margin-bottom: 40px;  font-size: 40px;" class="choose-photos">Select cover image for your blog</h1>            
+            <label for="image"></label>
+            <!--<br>-->
+            <div class="photo-container">
+                <label class="photo-button">
+                    <input type="radio" id="image1" name="cover" class="photo-input" value="https://www.mypet.com/wp-content/uploads/sites/352/2022/12/Teach-your-kids-pet-parents.jpg">
+                    <div class="image-square"><img src="https://www.mypet.com/wp-content/uploads/sites/352/2022/12/Teach-your-kids-pet-parents.jpg" alt="photo-img"></div><br>
+                </label> 
+                <label class="photo-button">   
+                    <input type="radio" id="image2" name="cover" class="photo-input" value="https://www.petplan.com.au/blog/wp-content/uploads/2018/01/cat-climbing.jpg">
+                    <div class="image-square"><img src="https://www.petplan.com.au/blog/wp-content/uploads/2018/01/cat-climbing.jpg" alt="photo-img"></div><br>
+                </label>
+                <label class="photo-button">
+                    <input type="radio" id="image3" name="cover" class="photo-input" value="https://images.squarespace-cdn.com/content/v1/5784e6021b631b042073fcee/0a17f73b-e927-42cc-828d-ecafc54aa19d/dog+that+can+jump.jpg">
+                    <div class="image-square"><img src="https://images.squarespace-cdn.com/content/v1/5784e6021b631b042073fcee/0a17f73b-e927-42cc-828d-ecafc54aa19d/dog+that+can+jump.jpg" alt="photo-img"></div><br>
+                </label>
+                <label class="photo-button">
+                    <input type="radio" id="image4" name="cover" class="photo-input" value="https://cdn.shopify.com/s/files/1/2422/3327/t/11/assets/description_image_talking-bird.jpg?4184619211778095248">
+                    <div class="image-square"><img src="https://cdn.shopify.com/s/files/1/2422/3327/t/11/assets/description_image_talking-bird.jpg?4184619211778095248" alt="photo-img"></div><br>
+                </label>
+                <label class="photo-button">    
+                    <input type="radio" id="image5" name="cover" class="photo-input" value="https://www.pbs.org/wnet/nature/files/2020/04/2-rabbits-eating-grass-at-daytime-33152.jpg">
+                    <div class="image-square"><img src="https://www.pbs.org/wnet/nature/files/2020/04/2-rabbits-eating-grass-at-daytime-33152.jpg" alt="photo-img"></div><br>
+                </label> 
+            </div>
+            <h1 style="text-align: center; margin-top: 60px; margin-bottom: 40px;  font-size: 40px;">Write down your blog!</h1>
+    <div class="container">
+        <div class="form-container">
+            <div>
+                <input type= "text" id="title" placeholder="Enter Title"name="title">    
+                <textarea  id="blog" placeholder="Enter content" name="content"></textarea>
+            </div>    
+        </div>  
+        <img src="../../images/newblog.png" class="myImage" id="oscillatingImage" alt="Right Image">
+    </div>
+        
+            <div style="text-align: center;">
+                <input type="submit" value="Submit">
+            </div>
+
             </form>
         </div>
     </div>
-    <img src="../../images/newblog.png" class="myImage" id="oscillatingImage" alt="Right Image">
-</div>
+    
 <script>
     
     var img = document.getElementById('oscillatingImage');
@@ -35,6 +68,18 @@
 
     
     setInterval(oscillateImage, 2000); 
+    var photoButtons = document.querySelectorAll('.photo-button');
+    photoButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove black border from all buttons
+            photoButtons.forEach(btn => {
+                btn.style.borderColor = 'transparent';
+            });
+            // Add black border to clicked button
+            button.style.borderColor = 'white';
+            //button.style.borderWidth = '10px';
+        });
+    });
 </script>
 </body>
 </html>
