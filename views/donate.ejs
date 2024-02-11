@@ -17,92 +17,128 @@
 
 
 <!-- no redirection to donate page after any operation so no need to include flash -->
-  <form action="/adopet/donate" method="POST" class="form-example" enctype="multipart/form-data">
-    <div class="form-example">
-       <!-- <label for="pet">Enter type of pet: </label>
-      <br> 
-      <input type="text" name="pet" id="pet" required /> -->
-      <label for="pet">Enter type of pet:</label>
-      <select name="pet" id="pet">
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="bird">Bird</option>
-        <option value="smallandfurry">Small & Furry</option>
-        <option value="other">Other</option>
-        <!-- Add more options as needed -->
-       </select>
-    </div>
-    <div class="form-example">
-        <label for="name">Enter pet name: </label>
-        <br>
+  <div class="card-container">
+    <div class="card">
+      <h1>Donation form</h1>
+      <div class="form-background"></div>
+      <form action="/adopet/donate" method="POST" class="form-example" enctype="multipart/form-data">
+        <div class="form-example">
+        <!-- <label for="pet">Enter type of pet: </label>
+        <br> 
+        <input type="text" name="pet" id="pet" required /> -->
+          <label for="pet">Select pet type:</label>
+          <div class="button-group petType">
+            <input type="radio" id="dog" name="petType" value="dog" class="button" />
+            <label for="dog"><img src="../images/dog_donate.png" alt="Dog"></label>
+            <input type="radio" id="cat" name="petType" value="cat" class="button" />
+            <label for="cat"><img src="../images/cat_donate.png" alt="Cat"></label>
+            <input type="radio" id="bird" name="petType" value="bird" class="button" />
+            <label for="bird"><img src="../images/bird_donate.png" alt="Bird"></label>
+            <input type="radio" id="furry" name="petType" value="smallandfurry" class="button" />
+            <label for="furry"><img src="../images/rabbit_donate.png" alt="Furry"></label>
+            <input type="radio" id="other" name="petType" value="other" class="button" />
+            <label for="other"><img src="../images/question_mark-removebg-preview.png" alt="OTHER"></label>
+          </div>
+        </div>
+      <div class="form-example">
+        <label for="name">Enter pet name:</label>
         <input type="text" name="name" id="name" required />
-    </div>
+      </div>
+      <div class="form-example">
+        <label for="breed">Enter pet breed:</label>
+        <input type="text" name="breed" id="breed" required/>
+      </div>
+      <div class="form-example">
+        <label for="description">Enter pet description:</label>
+        <input type="textarea" name="description" id="description" rows="4" required />
+      </div>
+      <div class="form-example">
+        <label for="age">Enter pet age in months:</label>
+        <input type="number" name="age" id="age" min="0" required />
+      </div>
     <div class="form-example">
-      <label for="breed">Enter pet breed: </label>
-      <br>
-      <input type="text" name="breed" id="breed"/>
-    </div>
-    <div class="form-example">
-        <label for="description">Enter pet description: </label>
-        <br>
-        <input type="text" name="description" id="description" required />
-    </div>
-    <div class="form-example">
-      <label for="age">Enter pet age: </label>
-      <br>
-      <input type="text" name="age" id="age" required />
-    </div>
-    <div class="form-example">
-      <label for="imageFile">Enter pet image: </label>
-      <br>
+      <label for="imageFile">Upload pet image:</label>
       <input type="file" name="imageFile" id="imageFile" required />
-      <!-- <input type="text" name="image" id="image" required /> -->
-    </div>
-    <div>
-        <label for="isFullyVaccinated">Are shots up to date?</label>
-        <br>
-        <!-- <input type="radio" id="yesVacc" name="isFullyVaccinated" value="true" required />
-        <label for="isFullyVaccinated">Yes</label>
-        <input type="radio" id="noVacc" name="isFullyVaccinated" value="false" required/>
-        <label for="isFullyVaccinated">No</label> -->
-        <input type="text" name="isFullyVaccinated" id="isFullyVaccinated" required />
-        <!-- Make it boolean -->
     </div>
     <div class="form-example">
-      <label for="medHistoryFile">Enter pet medical history: </label>
-      <br>
+      <label for="medHistoryFile">Upload pet's medical history:</label>
       <input type="file" name="medHistoryFile" id="medHistoryFile" required />
-      <!-- <input type="text" name="medHistory" id="medHistory" required /> -->
-
     </div>
-    <div>
-        <label for="isGoodWithKids">Is the pet good with kids?</label>
-        <br>
-        <input type="text" name="isGoodWithKids" id="isGoodWithKids" required />
+    <div class="form-example">
+      <label for="isGoodWithKids" class="slider-container">Is the pet good with kids?</label>
+      <span class="slider-value" id="sliderValue">😕You can say so</span>
+      <input type="range" id="isGoodWithKids" name="isGoodWithKids" min="0" max="1" step="0.01" oninput="updateSliderValue()" />
+    </div>
+    <div style="display: none;">
+      <label for="goodWithKids">Is the pet good with kids?</label>
+         <br>
+         <input type="text" name="goodWithKids" id="goodWithKids" required />
+ </div>
  
-        <!-- <input type="radio" id="yesKids" name="isGoodWithKids" value="true" required/>
-        <label for="isGoodWithKids1">Yes</label>
-        <input type="radio" id="noKids" name="isGoodWithKids" value="false" required/>
-        <label for="isGoodWithKids">No</label> -->
-        <!-- Make it boolean -->
+ 
+    <div class="form-example">
+      <label for="isFullyVaccinated">Is the pet vaccinated?</label>
+      <div class="button-group isFullyVaccinated">
+        <input type="radio" id="vaccinatedYes" name="isFullyVaccinated" value="yes" class="button" />
+        <label for="vaccinatedYes">Yes</label>
+        <input type="radio" id="vaccinatedNo" name="isFullyVaccinated" value="no" class="button" />
+        <label for="vaccinatedNo">No</label>
+      </div>
+    </div>
+
+    
+    
+    <div class="form-example">
+      <label for="gender">Select pet gender:</label>
+      <div class="button-group petGender">
+        <input type="radio" id="male" name="gender" value="male" class="button" />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" class="button" />
+        <label for="female">Female</label>
+      </div>
     </div>
     <div class="form-example">
-        <label for="gender">Enter pet gender: </label>
-        <br>
-        <input type="text" name="gender" id="gender" required />
+      <label for="whyDonate">Why donate?</label>
+      <input type="textarea" name="whyDonate" id="whyDonate" rows="4" required />
     </div>
     <div class="form-example">
-        <label for="whyDonate">Why donate? </label>
-        <br>
-        <input type="text" name="whyDonate" id="whyDonate" required />
-    </div>
-    <div class="form-example">
-        <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" class="button center-button" />
     </div>
 </form>
-  <div> <%- include('./partials/footer') %>
   </div>
+  <%- include('./partials/footer') %>
+  <%- include('./partials/scroll') %>
 
+
+
+<script>
+  function updateSliderValue() {
+    var slider = document.getElementById("isGoodWithKids");
+    var sliderValue = document.getElementById("sliderValue");
+    var goodWithKidsInput = document.getElementById("goodWithKids");
+    var value = parseFloat(slider.value);
+
+    if (value <= 0.1) {
+      sliderValue.innerText = "😟No";
+      goodWithKidsInput.value = "No";
+    } else if (value <= 0.3) {
+      sliderValue.innerText = "😔Not much";
+      goodWithKidsInput.value = "Not much";
+    } else if (value <= 0.5) {
+      sliderValue.innerText = "😐Maybe";
+      goodWithKidsInput.value = "Maybe";
+    } else if (value <= 0.7) {
+      sliderValue.innerText = "🙂You can say so";
+      goodWithKidsInput.value = "You can say so";
+    } else if (value <= 0.9) {
+      sliderValue.innerText = "😊Quite a lot";
+      goodWithKidsInput.value = "Quite a lot";
+    } else {
+      sliderValue.innerText = "😄Yes very much";
+      goodWithKidsInput.value = "Yes very much";
+    }
+  }
+</script>
 
 </body>
 

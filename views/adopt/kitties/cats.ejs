@@ -1,43 +1,141 @@
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats</title>
     <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
+    <style>
+        /* Additional styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px;
+            margin-top: 20px;
+        }
 
+        .search-container i {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-text {
+            text-align: center;
+            font-size: 25px;
+            color: #333;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
-
 <body>
-
-    <%- include('../../partials/navbar') %>
-    <%- include('../../partials/flash') %>
-
-        <section class="container">
-            <form>
-                <i class="fas fa-search"></i>
-                <input type="text" name="" id="search-item" placeholder="Search BLOG" onkeyup="search()">
-            </form>
-            <div class="card__container" id="card-list">
-                <%for(let cat of kitties) {%>
-                    <article class="card__article">
-                        <a href="/adopet/adopt/cats/<%= cat.id %>"><img src="<%= cat.image%>" alt="image"
-                                class="card__img"></a>
-                        <div class="card__data">
-                            <span class="card__description"><%=cat.breed  %></span>
-                            <h2 class="card__title"> <%= cat.name%>
-                            </h2>
-                            <a href="/adopet/adopt/cats/<%= cat.id %>" class="card__button">Know More</a>
-                        </div>
-                    </article>
-                    <% } %>
+    <div id="nav">
+        <div id="nav-part1">
+          <a href="/adopet" class="navbar-brand"><img src="../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href="/adopet/donate">Donate</a>
+                <a href="/adopet/adopt">Adopt</a>
+                <a href="/adopet/vet">Get to vet</a>
+                <a href="/adopet/articles">Blog</a>
+                <a href="/adopet/events">Events</a>
+                <% if(!currentUser) { %>
+                <a href="/adopet/auth">Sign up / Login</a>
+                <% } else { %>
+                <a href="/adopet/logout">Log out</a>
+                <% } %>
             </div>
-            </div>
-        </section>
-        <script src="../../../js/search.js"></script>
-        <%- include('../../partials/flash') %>
+        </div>
+    </div>
 
+    <%- include('../../partials/scroll') %>
+
+    <h1>Find the Cat you want!</h1>
+    
+    <div class="search-container">
+        <form>
+            <i class="fas fa-search"></i>
+            <input type="text" name="" id="search-item" placeholder="Search pets" onkeyup="searchCats()">
+        </form>
+    </div>   
+
+    <div class="search-text">Type to search for your perfect pet!</div>
+
+    <section class="container">
+        <div class="card__container" id="card-list">
+            <% for(let cat of kitties) { %>
+            <article class="card__article">
+                <a href="/adopet/adopt/cats/<%= cat.id %>"><img src="<%= cat.image %>" alt="image" class="card__img"></a>
+                <div class="card__data">
+                    <span class="card__description"><%= cat.breed %></span>
+                    <h2 class="card__title"><%= cat.name %></h2>
+                    <a href="/adopet/adopt/cats/<%= cat.id %>" class="card__button">Know More</a>
+                </div>
+            </article>
+            <% } %>
+        </div>
+    </section>
+
+    <%- include('../../partials/scroll') %>
+
+    <script>
+        function displaySearchResults(results){
+            var resultContainer = document.getElementById('card-list');  
+            resultContainer.innerHTML = '';
+            results.forEach(cat => {
+                var catElem = document.createElement('article');
+                catElem.className = 'card__article';
+                var link = document.createElement('a');
+                link.href = `/adopet/adopt/cats/${cat.id}`;
+                var img = document.createElement('img');
+                img.src = cat.image;
+                img.alt = 'image';
+                img.className = 'card__img';
+                link.appendChild(img);
+                var data = document.createElement('div');
+                data.className = 'card__data';
+                var description = document.createElement('span');
+                description.className = 'card__description';
+                description.textContent = cat.breed;
+                var title = document.createElement('h2');
+                title.className = 'card__title';
+                title.textContent = cat.name;
+                var button = document.createElement('a');
+                button.href = `/adopet/adopt/cats/${cat.id}`;
+                button.className = 'card__button';
+                button.textContent = 'Know More';
+                data.appendChild(description);
+                data.appendChild(title);
+                data.appendChild(button);
+                catElem.appendChild(link);
+                catElem.appendChild(data);
+                resultContainer.appendChild(catElem);
+            });
+        }
+
+        function searchCats(){
+            var gender = document.getElementById('search-item').value;
+            fetch(`/adopet/adopt/cats?gender=${gender}`)
+            .then(res => res.json())
+            .then(data => displaySearchResults(data));
+        }
+    </script>
 </body>
-
 </html>

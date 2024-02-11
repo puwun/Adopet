@@ -20,15 +20,16 @@ body {
 
   .form-background {
     position: absolute;
-    top: 0;
+    top: 110px; /* Adjusted position from the top */
     left: 50%;
     transform: translateX(-50%);
-    width: 80%; /* Increased width */
+    width: 80%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     z-index: -1;
     border-radius: 20px;
   }
+  
 
   .form-example {
     margin-bottom: 30px; /* Increased gap */
@@ -47,7 +48,7 @@ body {
 
   label {
     display: block;
-    padding-bottom: 0px; /* Decreased padding */
+    padding-bottom: 10px; /* Decreased padding */
     border-radius: 5rem;
     font-family: 'Oregano', cursive;
     height: 4rem;
@@ -71,12 +72,16 @@ body {
   .button-group {
     display: flex;
     justify-content: flex-start; /* Adjusted alignment */
-    margin-top: 10px;
+    margin-top: 0px;
     font-family: 'Oregano';
   }
 
   .button {
-    padding: 10px; /* Adjusted padding */
+    display: none; /* Hide the buttons */
+  }
+
+  .button + label {
+    padding: 0px 15px; /* Adjusted padding */
     cursor: pointer;
     border: 1px solid #ccc;
     background-color: lightyellow;
@@ -85,22 +90,26 @@ body {
     border-radius: 15px;
     margin-right: 20px; /* Increased margin */
   }
-
-  .button img {
-    width: 80px; /* Adjusted image size */
-    height: 80px; /* Adjusted image size */
-    border-radius: 15px;
+ /* .button-group label {
+   // padding: 3px 40px; }*/
+   .button + label img {
+    width: 100%; /* Adjusted width */
+    height: 100%; /* Adjusted height */
+    object-fit: cover; /* Ensures the entire image is visible within the button */
+    border-radius: inherit; /* Inherits the border-radius from the button */
   }
+  
+  
 
-  .button.selected {
+  .button:checked + label {
     background-color: #4caf50;
     color: #fff;
     border-radius: 15px;
     font-family: 'Oregano', cursive;
   }
 
-  .button:hover {
-    transform: scale(1.05);
+  .button + label:hover {
+    transform: scale(1.1);
     border-radius: 25px; /* Adjusted border radius */
   }
 
@@ -117,15 +126,17 @@ body {
     padding-top: 1.5rem; /* Adjusted padding */
     padding-bottom: 1.5rem; /* Adjusted padding */
     margin-top: 30px; /* Increased margin */
+    margin-bottom:30px;
     width: auto;
     padding: 12px 30px; /* Adjusted padding */
     font-size: 2.4rem;
-    transition: background-color 0.3s ease-in-out;
+    transition: transform 0.3s, background-color 0.3s ease-in-out;
     border: 1px solid transparent;
   }
 
   input[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
   }
 
   .green-background {
@@ -164,7 +175,7 @@ body {
     appearance: none;
     width: 18px;
     height: 18px;
-    background: red;
+    background: orange;
     cursor: pointer;
     border-radius: 50%;
   }

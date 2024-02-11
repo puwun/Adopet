@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
+
+
+
+body {
+    font-family: 'Oregano', cursive;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+    position: relative;
+}
+
+.faq-container {
+    max-width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.faq-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.faq-item {
+    width: 45%;
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.question-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question {
+    color: #333;
+}
+
+.toggle-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    color: #555;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.clickable {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.help-and-advice {
+    margin-top: 40px;
+}
+
+.url-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.url {
+    margin: 10px;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+}
+
+@keyframes color {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* New styles for animation */
+.scroll-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.appear {
+    opacity: 1;
+    transform: translateY(0);
+}

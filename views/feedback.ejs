@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Instrument+Serif&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c32adfdcda.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../stylesheets/feedback.css"/>
 </head>
@@ -11,77 +14,29 @@
   <%- include('./partials/navbar') %>
   <section>
     <div class="container">
-      <h2>Contact Us</h2>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <h2>Your Feedback is valuable</h2>
+      <p>We at adopet are always looking to improve our platform and your feedback helps us achieve that.</p>
     </div>
-  </div>
   
-  <div class="container">
-    <div class="row">
-      
-      <div class="contact-info">
-        <div class="contact-info-item">
-          <div class="contact-info-icon">
-            <i class="fas fa-home"></i>
-          </div>
-          
-          <div class="contact-info-content">
-            <h4>Address</h4>
-            <p>CS/IT Department,<br/> VJTI, Mumbai, <br/>40001</p>
-          </div>
+    <div class="contact-form">
+      <h2 style="text-align: center;">Have any feedback for us?</h2>
+      <form action="/adopet/feedback" method="POST" id="contact-form">
+        <div class="input-box">
+          <input type="text" class="subject" name="subject" placeholder="Enter subject" required>
         </div>
-        
-        <div class="contact-info-item">
-          <div class="contact-info-icon">
-            <i class="fas fa-phone"></i>
-          </div>
           
-          <div class="contact-info-content">
-            <h4>Phone</h4>
-            <p>571-457-2321</p>
-          </div>
+        <div class="input-box">
+          <textarea name="feedback" id="feedback" placeholder="Feedback" required></textarea>
         </div>
-        
-        <div class="contact-info-item">
-          <div class="contact-info-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
           
-          <div class="contact-info-content">
-            <h4>Email</h4>
-           <p>maddercode69@gmail.com</p>
-          </div>
+        <div class="input-box">
+          <input type="submit" value="Submit" />
         </div>
-      </div>
-      
-      <div class="contact-form">
-        <form action="/adopet/feedback" id="contact-form">
-          <h2>Have any feedback for us?</h2>
-          <div class="input-box">
-            <input type="text" name="subject" id="subject">
-            <span>Subject</span>
-          </div>
-          
-          
-          <div class="input-box">
-            <input type="text" name="feedback" id="feedback" required name="" required/>
-            <span>Type your Feedback...</span>
-          </div>
-          
-          <div class="input-box">
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
-      </div>
-      
+      </form>
     </div>
-  </div>
-
   </section>
 
-      <%- include('./partials/scroll') %>
-       <%- include('./partials/footer') %>
-      
-  
-    </body>
+  <%- include('./partials/scroll') %>
+  <%- include('./partials/footer') %>
+</body>
 </html>

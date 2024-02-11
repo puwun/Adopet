@@ -6,33 +6,97 @@
     <title>Dogs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"  />
     <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
+    <style>
+        /* Beautiful styling for the search bar */
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px; /* Decreased margin */
+            margin-top: 0px; /* Decreased margin */
+        }
+        
+        .search-container i {
+            margin-right: 10px;
+            color: #666;
+        }
+        
+        .search-container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Styling for the search text */
+        .search-text {
+            text-align: center;
+            font-size: 25px; /* Increased font size */
+            color: #333;
+            margin-bottom: 5px; /* Increased margin */
+            margin-top: 20px; /* Increased margin */
+        }
+
+        /* Increased font size and margin below h1 */
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
 
-    <%- include('../../partials/navbar') %>
-
+    <div id="nav">
+        <div id="nav-part1">
+          <a href = "/adopet" class = "navbar-brand"><img src="../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+            <!-- <p>logo</p> -->
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href = "/adopet/donate">Donate</a>
+                <a href = "/adopet/adopt">Adopt</a>
+                <a href = "/adopet/vet">Get to vet</a>
+                <a href = "/adopet/articles">Blog</a>
+                <a href = "/adopet/events">events</a>
+                <% if(!currentUser) { %>
+                <a href = "/adopet/auth">Sign up / Login</a>
+                <% }else{ %>
+                <a href = "/adopet/logout">Log out</a>
+                <!-- <a href="/adopet/user/profile"><img src="../../images/user.jpg" alt="user" style="height: 50px; width: 50px; border-radius:50%"></a> -->
+                <% } %>
+            </div>
+        </div>
+    </div>
 
     <%- include('../../partials/flash') %>
-   
-<section class="container">
-    <form>
-        <i class="fas fa-search"></i>
-        <input type="text" name="" id="search-item" placeholder="Search BLOG" onkeyup="search()">
-    </form>
-    <div class="card__container" id="card-list">
-        <%for(let dog of doggies) {%>
-       <article class="card__article">
-          <a href="/adopet/adopt/dogs/<%= dog.id %>"><img src="<%= dog.image%>" alt="image" class="card__img"></a>
-          <div class="card__data">
-            <span class="card__description"><%=dog.breed %></span>
-            <h2 class="card__title"><%= dog.name%></h2>
-             <a href="/adopet/adopt/dogs/<%= dog.id %>" class="card__button">Know More</a>
-          </div>
-       </article>
-       <% } %>
-       </div>
-       </div>
-    </section> <%- include('../../partials/footer') %>
+    <h1>Find the Dog you want!</h1>
+    
+    <div class="search-container">
+        <form>
+            <i class="fas fa-search"></i>
+            <input type="text" name="" id="search-item" placeholder="Search pets" onkeyup="search()">
+        </form>
+    </div>   
+    <div class="search-text">Type to search for your perfect pet!</div>
+    <section class="container">
+        <div class="card__container" id="card-list">
+            <%for(let dog of doggies) {%>
+            <article class="card__article">
+                <a href="/adopet/adopt/dogs/<%= dog.id %>"><img src="<%= dog.image%>" alt="image" class="card__img"></a>
+                <div class="card__data">
+                    <span class="card__description"><%=dog.breed %></span>
+                    <h2 class="card__title"><%= dog.name%></h2>
+                    <a href="/adopet/adopt/dogs/<%= dog.id %>" class="card__button">Know More</a>
+                </div>
+            </article>
+            <% } %>
+        </div>
+    </section>
+    <%- include('../../partials/footer') %>
+    <%- include('../../partials/scroll') %>
 
 <script src="../../../js/search.js"></script>
 </body>

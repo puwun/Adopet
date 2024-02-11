@@ -20,8 +20,10 @@
     animation: color 12s ease-in-out infinite;
     position:relative;
 } */
-body {
-    background: linear-gradient(45deg, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+body {background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+    position:relative;
     background-size: 150% 990%;
     animation: color 12s ease-in-out infinite;
     margin: 0;

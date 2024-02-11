@@ -318,17 +318,17 @@ app.use('/adopet/articles', articleRouter);
 //     }
 // )
 
-// app.get('*', (req, res) => {
-//     // res.send('I dont know this path!!')
-//     res.render('404.ejs');
-// })
+app.get('*', (req, res) => {
+    // res.send('I dont know this path!!')
+    res.render('404.ejs');
+})
 
 
 app.use((err, req, res, next)=>{
     const {statusCode = 500, message = 'Something went wrong'} = err;
     res.status(statusCode)
-    res.render('./partials/displayError', {err});
-    // res.render('404.ejs');
+    // res.render('./partials/displayError', {err});
+    res.render('404.ejs');
 })
 
 app.listen(3000, () => {

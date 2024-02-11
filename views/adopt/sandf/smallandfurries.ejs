@@ -5,32 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="../../../stylesheets/adoptall.css">
+    <style>
+        /* Additional styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px;
+            margin-top: 20px;
+        }
+
+        .search-container i {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-text {
+            text-align: center;
+            font-size: 25px;
+            color: #333;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-    <%- include('../../partials/navbar') %>
+    <div id="nav">
+        <div id="nav-part1">
+          <a href="/adopet" class="navbar-brand"><img src="../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href="/adopet/donate">Donate</a>
+                <a href="/adopet/adopt">Adopt</a>
+                <a href="/adopet/vet">Get to vet</a>
+                <a href="/adopet/articles">Blog</a>
+                <a href="/adopet/events">Events</a>
+                <% if(!currentUser) { %>
+                <a href="/adopet/auth">Sign up / Login</a>
+                <% } else { %>
+                <a href="/adopet/logout">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
     <%- include('../../partials/flash') %>
 
+    <h1>Find the Pet you want!</h1>
+    
+    <div class="search-container">
+        <form>
+            <i class="fas fa-search"></i>
+            <input type="text" name="" id="search-item" placeholder="Search pets" onkeyup="search()">
+        </form>
+    </div>   
+
+    <div class="search-text">Type to search for your perfect pet!</div>
+
 <section class="container">
-    <form>
-        <i class="fas fa-search"></i>
-        <input type="text" name="" id="search-item" placeholder="Search" onkeyup="search()">
-    </form>
     <div class="card__container" id="card-list">
-        <%for(let smol of smallandfurries) {%>
-       <article class="card__article">
-        <a href="/adopet/adopt/smallandfurries/<%= smol.id %>"><img src="<%= smol.image%>" alt="image" class="card__img"></a>
-          <div class="card__data">
-            <span class="card__description"><%=smol.breed  %></span>
-             <h2 class="card__title"><%= smol.name%></h2>
-             <a href="/adopet/adopt/smallandfurries/<%= smol.id %>" class="card__button">Know More</a>
-          </div>
-       </article>
-       <% } %>
-       </div>
-       </div>
-       </section>
-       <script src="../../../js/search.js"></script>
+        <% for(let smol of smallandfurries) { %>
+        <article class="card__article">
+            <a href="/adopet/adopt/smallandfurries/<%= smol.id %>"><img src="<%= smol.image %>" alt="image" class="card__img"></a>
+            <div class="card__data">
+                <span class="card__description"><%= smol.breed %></span>
+                <h2 class="card__title"><%= smol.name %></h2>
+                <a href="/adopet/adopt/smallandfurries/<%= smol.id %>" class="card__button">Know More</a>
+            </div>
+        </article>
+        <% } %>
+    </div>
+</section>
+
+<%- include('../../partials/scroll') %>
+<%- include('../../partials/footer') %>
+<script src="../../../js/search.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/stylesheets/likes.css">
+
+<body>
+
+     <%- include('../partials/navbar') %>
+     <%- include('../partials/flash') %>
+    <h1><img src="<%= article.cover %>"alt=""><h1>
+    <h1><%=article.title%></h1>
+    <h2><%=article.content%></h2>
+    <h3>Wriiten by <%=article.author.username%> </h3>  
+
+    <div class="like-button">
+        <div class="heart-bg">
+          <div class="heart-icon"></div>
+        </div>
+        <div class="likes-amount">7</div>
+      </div>
+  </div>
+
+    <!-- things will break if we only check for whether cuurentUser is same as the one logged in as guest can be able to access these features -->
+    <!-- so we added one more condition, to check first whether currentUser even exists or not -->
+   
+    <% if(currentUser && article.author.equals(currentUser)) { %>
+        <p><a href="/adopet/articles/<%= article._id%>/edit">Edit</a></p> 
+        <p><form action="/adopet/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
+         <% } %>
+
+
+    <div class="like-button">
+        <div class="heart-bg">
+            <form action="/adopet/articles/<%= article._id  %>" method="POST" >
+            <div class="heart-icon">
+                <div class="form-example">
+                    <input type="submit" />
+                </div>
+                </div>
+
+        </form>
+        </div>
+    </div>
+
+
+
+<!-- 
+        <h2>Leave a review</h2>
+        <form action="" class="mb-3">
+            <div class="mb-3">
+                <label class="form-label" for="rating" >Rating</label>
+                <input class="form-range" type="range" min="1" max="5" id="rating" name="review[rating]">
+            </div>
+            <div class="mb-3">
+                <label for="form-label" for="body">Review</label>
+                <textarea name="review[body]" class="form-control" id="body" cols="30" rows="3"></textarea>
+            </div>
+            <button class="btn btn-success">Submit</button>
+        </form> -->
+        <script src="../../js/like.js"></script>
+
+        
+    </div>
+
+</body>
+</html>

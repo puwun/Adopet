@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="../../../stylesheets/adopt.css">
-
 </head>
 <body>
-
-
     <div id="nav">
         <div id="nav-part1">
           <a href = "/adopet" class = "navbar-brand"><img src="../../../images/logo_fill.png" alt="logo" width="220" height="150"></a>
@@ -26,11 +23,12 @@
                 <a href = "/adopet/auth">Sign up / Login</a>
                 <% }else{ %>
                 <a href = "/adopet/logout">Log out</a>
-                <a href="/adopet/user/profile"><img src="https://imgs.search.brave.com/AoYAbUNs7hX9dSbTEhL8ULRCU6cdYPReza_v5dhByKQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1Lzc2LzY5LzY3/LzM2MF9GXzU3NjY5/Njc1MV9zb2NXTXRl/aEVXcDRTeXZEbEp0/c3RJQWtCYWtrR1RW/ay5qcGc" alt="user" style="height: 65px; width: 55px; border-radius:50%"></a>
+                <a href="/adopet/user/profile"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SI-L2k-71vMCT2XPh1B8eYRwVsw6cJq4EtXvOLXLfQ&s" alt="user" style="height: 65px; width: 55px; border-radius:50%"></a>
                 <% } %>
             </div>
         </div>
     </div>
+
     <%- include('../../partials/flash') %>
 
 
@@ -45,8 +43,7 @@
    
             </div>
             <div class="basic-info">
-                <h1 style="text-align: center;">Name:  <%= bird.name  %></h1>
-
+                <h1>Name:  <%= bird.name  %></h1>
                 <div class="rate">
                     <i class="filled fas fa-star"></i>
                     <i class="filled fas fa-star"></i>
@@ -55,35 +52,33 @@
                     <i class="filled fas fa-star"></i>
                 </div>
             <div class="options">
-                <% if(currentUser && !bird.owner.equals(currentUser)) { %>
                 <form action="/adopet/adopt/birds/<%= bird._id  %>" method="POST" class="enquiry-btn">
-                    <div class="form-example" style="text-align: center;">
+                    <div class="form-example">
                         <input type="submit" value="Become a shelter provider" />
                     </div>
                 </form>
-                <% } %>
+                <!-- <a href="#">Become a shelter provider</a> -->
             </div>
             </div>
             <div class="description">
-                <p style="text-align: center;"> Description:  <%= bird.description  %></p>
+                <p><%= bird.description  %></p>
                 <ul class="features">
-                    <li><i class="fa-solid fa-circle-check"></i>Age:  <%= bird.age  %> months</li>
-                    <li><i class="fa-solid fa-circle-check"></i>Gender:  <%= bird.gender  %></li>
-                    <li><i class="fa-solid fa-circle-xmark"></i>Vaccinated:  <%= bird.isFullyVaccinated  %></li>
-                    <li><i class="fa-solid fa-circle-check"></i>Good with Kids:  <%= bird.isGoodWithKids  %></li>
-                    <li><i class="fa-solid fa-circle-xmark"></i>Contact Number:  <%= bird.owner.phone  %></li>
-                    <li><i class="fa-solid fa-circle-xmark"></i>Donated by:  <%= bird.owner.username  %></li>
-                    <li><i class="fa-solid fa-circle-xmark"></i>Reason for donation:  <%= bird.whyDonate  %></li>
+                    <li><i class="fa-solid fa-circle-check"></i>Age: <%= bird.age  %> months</li>
+                    <li><i class="fa-solid fa-circle-check"></i>Gender:<%= bird.gender  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Vaccinatated:<%= bird.isFullyVaccinated  %></li>
+                    <li><i class="fa-solid fa-circle-check"></i>Good with Kids:<%= bird.isGoodWithKids  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Contact Number: <%= bird.owner.phone  %></li>
+                    <li><i class="fa-solid fa-circle-xmark"></i>Reason for donation:<%= bird.whyDonate  %></li>
+
+                    <!-- medHistory view file feature remaining, after clicking the enquiry button a new page, you mail was sent to this pets this owner something like this -->
                 </ul>
-                <div style="text-align: center;">
-                    <% if(currentUser && bird.owner.equals(currentUser)) { %>
-                    <form action="/adopet/adopt/birds/<%= bird._id%>?_method=DELETE" method="POST"><button class="delete-button">Delete</button></form>
-                    <% } %>
-                </div>
             </div>
-            
-            
         </div>
+        <% if(currentUser &&bird.owner.equals(currentUser)) {%>
+            <p><a href="/adopet/adopt/birds/<%= bird._id%>/edit">Edit</a></p>
+            <form action="/adopet/adopt/birds/<%= bird._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
+            <% } %>
+            <a href="/adopet/adopt/birds">Go back to all birds</a>
     </div>
 </body>
 </html>

@@ -250,10 +250,13 @@ module.exports.deleteOneOther = async(req,res) => {
 module.exports.adoptDog = async(req, res) => {
     //username, phone, email, petInfo
     const dog = await Dog.findById(req.params.id).populate('owner')
-    const ownerName = dog.owner.username ;
+    const ownerName = dog.owner.username;
+    const petName = dog.name;
     const ownerEmail = dog.owner.email;
     const ownerPhone = dog.owner.phone;
-    sendAdopterMail(req.user.username,req.user.email,"dog",ownerName,ownerEmail,ownerPhone);
+    sendOwnerMail(ownerName,ownerEmail,"dog",petName,req.user.username,req.user.email,req.user.phone);
+    sendAdopterMail(req.user.username,req.user.email,"dog",petName,ownerName,ownerEmail,ownerPhone);
+    req.flash('success', 'Successfully, started your adoption process!');
     res.redirect('/adopet/adopt');
 }
 
@@ -261,9 +264,12 @@ module.exports.adoptCat = async(req, res) => {
     //username, phone, email, petInfo
     const cat = await Cat.findById(req.params.id).populate('owner')
     const ownerName = cat.owner.username ;
+    const petName = cat.name;
     const ownerEmail = cat.owner.email;
     const ownerPhone = cat.owner.phone;
-    sendAdopterMail(req.user.username,req.user.email,"cat",ownerName,ownerEmail,ownerPhone);
+    sendOwnerMail(ownerName,ownerEmail,"cat",petName,req.user.username,req.user.email,req.user.phone);
+    sendAdopterMail(req.user.username,req.user.email,"cat",petName,ownerName,ownerEmail,ownerPhone);
+    req.flash('success', 'Successfully, started your adoption process!');
     res.redirect('/adopet/adopt');
 }
 
@@ -271,9 +277,12 @@ module.exports.adoptBird = async(req, res) => {
     //username, phone, email, petInfo
     const bird = await Bird.findById(req.params.id).populate('owner')
     const ownerName = bird.owner.username ;
+    const petName = bird.name;
     const ownerEmail = bird.owner.email;
     const ownerPhone = bird.owner.phone;
-    sendAdopterMail(req.user.username,req.user.email,"bird",ownerName,ownerEmail,ownerPhone);
+    sendOwnerMail(ownerName,ownerEmail,"bird",petName,req.user.username,req.user.email,req.user.phone);
+    sendAdopterMail(req.user.username,req.user.email,"bird",petName,ownerName,ownerEmail,ownerPhone);
+    req.flash('success', 'Successfully, started your adoption process!');
     res.redirect('/adopet/adopt');
 }
 
@@ -281,9 +290,12 @@ module.exports.adoptOther = async(req, res) => {
     //username, phone, email, petInfo
     const other = await Other.findById(req.params.id).populate('owner')
     const ownerName = other.owner.username ;
+    const petName = other.name;
     const ownerEmail = other.owner.email;
     const ownerPhone = other.owner.phone;
-    sendAdopterMail(req.user.username,req.user.email,"other",ownerName,ownerEmail,ownerPhone);
+    sendOwnerMail(ownerName,ownerEmail,"other",petName,req.user.username,req.user.email,req.user.phone);
+    sendAdopterMail(req.user.username,req.user.email,"other",petName,ownerName,ownerEmail,ownerPhone);
+    req.flash('success', 'Successfully, started your adoption process!');
     res.redirect('/adopet/adopt');
 }
 
@@ -291,8 +303,11 @@ module.exports.adoptSmallandfurry = async(req, res) => {
     //username, phone, email, petInfo
     const smallandfurry = await Smallandfurry.findById(req.params.id).populate('owner')
     const ownerName = smallandfurry.owner.username ;
+    const petName = smallandfurry.name;
     const ownerEmail = smallandfurry.owner.email;
     const ownerPhone = smallandfurry.owner.phone;
-    sendAdopterMail(req.user.username,req.user.email,"smallandfurry",ownerName,ownerEmail,ownerPhone);
+    sendOwnerMail(ownerName,ownerEmail,"smallandfurry",petName,req.user.username,req.user.email,req.user.phone);
+    sendAdopterMail(req.user.username,req.user.email,"smallandfurry",petName,ownerName,ownerEmail,ownerPhone);
+    req.flash('success', 'Successfully, started your adoption process!');
     res.redirect('/adopet/adopt');
 }

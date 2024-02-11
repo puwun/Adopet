@@ -83,8 +83,12 @@ header{
     font-size: 12vh;
 }
 
-#nav-part1 svg {
-    display: block;
+#nav-part1 img{
+    padding-bottom: 1.2rem;
+    height: auto;
+    width: 15vh;
+    overflow:visible;
+
 }
 
 #nav-part2 #links a {

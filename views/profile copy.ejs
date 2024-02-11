@@ -218,13 +218,11 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    
   }
   
   .card_content {
     padding: 1.9rem;
     background: linear-gradient(to bottom left, #f3d13c 80%, #414194 20%);
-    
   }
   
   .card_title {
@@ -255,7 +253,6 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     text-decoration: none;
   
   }
-  
 </style>
 </head>
 
@@ -292,7 +289,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                             <div class="card-body media align-items-center">
                                 <!-- <img src="https://img.freepik.com/free-photo/female-model-photo-session-casting_114579-13335.jpg?size=626&ext=jpg&ga=GA1.1.859314401.1704564059&semt=ais" alt
                                     class="d-block ui-w-90"> -->
-                                    <img src="https://imgs.search.brave.com/AoYAbUNs7hX9dSbTEhL8ULRCU6cdYPReza_v5dhByKQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1Lzc2LzY5LzY3/LzM2MF9GXzU3NjY5/Njc1MV9zb2NXTXRl/aEVXcDRTeXZEbEp0/c3RJQWtCYWtrR1RW/ay5qcGc" alt=""
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SI-L2k-71vMCT2XPh1B8eYRwVsw6cJq4EtXvOLXLfQ&s" alt=""
                                     class="img-fluid rounded-circle"> 
                                     <!-- class="img-fluid rounded-circle">  -->
                                 <div class="media-body ml-4">
@@ -330,89 +327,69 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                         </div>
                         <div class="tab-pane fade" id="account-pets">
                           <div class="card-body pb-2">
-                              <div class="main">
-                                  <h1>My Pets</h1>
-                                  <ul class="cards">
-                                      <% for (let i = 0; i < myPets.length; i++) { %>
-                                      <% if (i % 3 === 0) { %>
-                                      <div class="row">
-                                      <% } %>
-                                      <li class="cards_item col-md-4">
-                                          <div class="card">
-                                              <div class="card_image"><img src=<%= myPets[i].image %>></div>
-                                              <div class="card_content">
-                                                  <h2 class="card_title"><%= myPets[i].name %></h2>
-                                                  <p class="card_text">Breed: <%= myPets[i].breed %><br>Age: <%= myPets[i].age %></p>
-                                                  <a href="/adopet/adopt/<%= myPets[i].pet %>s/<%= myPets[i].id %>"><button class="btn card_btn">Read More</button></a>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <% if ((i + 1) % 3 === 0 || i === myPets.length - 1) { %>
+                            <div class="main">
+                                <h1>My Pets</h1>
+                                <% for (let mP of myPets) {%>
+                                <ul class="cards">
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src=<%= mP.image %>></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title"><%= mP.name%></h2>
+                                        <p class="card_text">Breed: <%= mP.breed %><br>Age: <%= mP.age %></p>
+                                        <a href="/adopet/adopt/<%= mP.pet%>s/<%=mP.id %>"><button class="btn card_btn">Read More</button></a>
                                       </div>
-                                      <% } %>
-                                      <% } %>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                      
-                        <div class="tab-pane fade" id="account-social-links">
-                          <div class="card-body pb-2">
-                              <div class="main">
-                                  <h1>My Blogs</h1>
-                                  <ul class="cards">
-                                      <% for(let i = 0; i < myBlogs.length; i++) { %>
-                                      <% if (i % 3 === 0) { %>
-                                      <div class="row">
-                                      <% } %>
-                                      <li class="cards_item col-md-4">
-                                          <div class="card">
-                                              <div class="card_image"><img src=<%= myBlogs[i].cover %>></div>
-                                              <div class="card_content">
-                                                  <h2 class="card_title"><%= myBlogs[i].title %></h2>
-                                                  <a href="/adopet/articles/<%= myBlogs[i]._id %>"><button class="btn card_btn">Read More</button></a>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <% if ((i + 1) % 3 === 0 || i === myBlogs.length - 1) { %>
-                                      </div>
-                                      <% } %>
-                                      <% } %>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                      
-                        <div class="tab-pane fade" id="account-connections">
-                          <div class="card-body pb-2">
-                              <div class="main">
-                                  <h1>My Favourite Blogs</h1>
-                                  <ul class="cards">
-                                      <% for(let i = 0; i < likedArticles.length; i++) { %>
-                                      <% if (i % 3 === 0) { %>
-                                      <div class="row">
-                                      <% } %>
-                                      <li class="cards_item col-md-4">
-                                          <div class="card">
-                                              <div class="card_image"><img src=<%= likedArticles[i].cover %>></div>
-                                              <div class="card_content">
-                                                  <h2 class="card_title"><%= likedArticles[i].title %></h2>
-                                                  <p class="card_text">By <%= likedArticles[i].author.username %></p>
-                                                  <a href="/adopet/articles/<%= likedArticles[i]._id %>"><button class="btn card_btn">Read More</button></a>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <% if ((i + 1) % 3 === 0 || i === likedArticles.length - 1) { %>
-                                      </div>
-                                      <% } %>
-                                      <% } %>
-                                  </ul>
+                                    </div>
+                                  </li>
+                                  <%}%>
+                                </ul>
                               </div>
                           </div>
                         </div>
-                      
-                      
-                      
+                        <div class="tab-pane fade" id="account-social-links">
+                            <div class="card-body pb-2">
+                                <div class="main">
+                                    <h1>My Blogs</h1>
+                                    <ul class="cards">
+                                      <% for(let mB of myBlogs){%>
+                                        <!-- <div><h3>  </h3></div> -->
+                                        <!-- <div><h1>Dogs:</h1></div> -->
+                                        <li class="cards_item">
+                                          <div class="card">
+                                            <div class="card_image"><img src=<%= mB.cover%>></div>
+                                            <div class="card_content">
+                                              <h2 class="card_title"><%= mB.title %></h2>
+                                              <a href="/adopet/articles/<%=mB.id %>"><button class="btn card_btn">Read More</button></a>
+                                            </div>
+                                          </div>
+                                        </li>
+                                       <% } %>
+                                      </ul>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-connections">
+                          <div class="card-body pb-2">
+                            <div class="main">
+                            <h1>My Favourite Blogs</h1>
+                            <ul class="cards">
+                              <% for(let lA of likedArticles){%>
+                                  <!-- <div><h3><%= lA %>  </h3></div> -->
+                                  <!-- <div><h1>Dogs:</h1></div> -->
+                                  <li class="cards_item">
+                                    <div class="card">
+                                      <div class="card_image"><img src=<%= lA.cover%>></div>
+                                      <div class="card_content">
+                                        <h2 class="card_title"><%= lA.title %></h2>
+                                        <p class="card_text"><p> By <%= lA.author.username %></p>
+                                        <a href="/adopet/articles/<%=lA.id %>"><button class="btn card_btn">Read More</button></a>
+                                      </div>
+                                    </div>
+                                  </li>
+                                 <% } %>  
+                              </ul>
+                          </div>
+                      </div>
                   </div>
 
 

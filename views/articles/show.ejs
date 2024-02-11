@@ -3,68 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Article Blog</title>
+
+    <!-- font awesome icons cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+    <!-- swiper slider css file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.css" integrity="sha512-m3pAvNriL711NMlhkZHK6K4Tu2/RjtrzyjxZU8mlAbxxoDoURy27KajN1LGTLeEEPvaN12mKAgSCrYEwF9y0jA==" crossorigin="anonymous" />
+
+    <!-- custom style.css file -->
+    <link rel="stylesheet" href="../../stylesheets/viewblog.css">
+
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 3em;
+        }
+    </style>
+
 </head>
-<link rel="stylesheet" href="/stylesheets/likes.css">
-
 <body>
+    
+    <%- include('../partials/navbar') %>
+    <%- include('../partials/flash') %>
 
-     <%- include('../partials/navbar') %>
-     <%- include('../partials/flash') %>
-    <h1><img src="<%= article.cover %>"alt=""><h1>
-    <h1><%=article.title%></h1>
-    <h2><%=article.content%></h2>
-    <h3>Wriiten by <%=article.author.username%> </h3>  
+    <!-- Main Site -->
+       <main id="site-main">
 
-    <div class="like-button">
-        <div class="heart-bg">
-          <div class="heart-icon"></div>
-        </div>
-        <div class="likes-amount">7</div>
-      </div>
-  </div>
+            <!-- Post Content -->
+                <section class="container">
+                    <article id="post">
+                        <!-- article heading -->
+                        <div class="headings text-center">
+                            <div class="category">
+                            </div>
 
-    <!-- things will break if we only check for whether cuurentUser is same as the one logged in as guest can be able to access these features -->
-    <!-- so we added one more condition, to check first whether currentUser even exists or not -->
-    <% if(currentUser && article.author.equals(currentUser)) { %>
-   <p><a href="/adopet/articles/<%= article._id%>/edit">Edit</a></p> 
-   <p><form action="/adopet/articles/<%= article._id%>?_method=DELETE" method="POST"><button>Delete</button></form></p> 
-    <% } %>
-    <a href="/adopet/articles">Go back to all blogs</a> 
+                            <div class="title">
+                                <h2 class="text-title text-dark display-1"><h1><%=article.title%></h1></h2>
+                            </div>
+
+                            
+
+                        </div>
+                        <div class="post-footer mb-3">
+
+                        <!-- thumbnail  -->
+                        <div class="thumbnail mt-3">
+                            <img src="<%= article.cover %>"alt="">
+                        </div>
+
+                        <!-- content -->
+                        <div class="content text-dark display-2 secondary-title mt-3">
+                           <p> <h2><%=article.content%></h2></p>
+                        </div>
+                    </article>
+
+                    <!-- post footer -->
+                 
+
+                        <div class="post-author text-center">
+                            <div class="author-avatar">
+                                <img src="./assets/face/face1.jpg" class="rounded" alt="">
+                            </div>
+
+                            <div class="author-info py-2">
+                                <h3 class="text-dark"><%=article.author.username%></h3>
+
+                                <p class="text-secondary secondary-title">
+                                    Hello there,<br/>
+
+<p>I'm  <%=article.author.username%>, and I'm thrilled to share a bit about myself, especially when it comes to my deep love for pets. You see, my journey in life has been beautifully enriched by the pitter-patter of little paws and the unconditional love that our furry friends bring into our lives.
+
+From a young age,</p> <p> I found myself drawn to the world of animals, and over time, my affection blossomed into a genuine passion. Now, as a part of my identity, my love for pets is something that I hold close to my heart. The joy and comfort they bring are beyond words, and I'm endlessly grateful for the companionship they offer.</p>
+
+                                <div class="post-tags d-flex flex-wrap justify-content-center">
+                                    <a href="/adopet/articles/<%= article._id  %>" class="nav-link like-button">Like</a>
+                                    <% if(currentUser && article.author.equals(currentUser)) { %>
+
+                                    <a href="/adopet/articles/<%= article._id%>/edit" class="nav-link edit-button">Edit</a>
+                                    <a href="/adopet/articles/<%= article._id%>?_method=DELETE" class="nav-link delete-button">Delete</a>
+                                    <% } %>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        
+                        </div>
+
+                    </div>
+                    <!-- .post footer -->
+
+                </section>
+            <!-- .Post Content -->
+
+            <!-- Swiper slider -->
+                <section class="slider">
+                    <div class="container">
+
+                        <!-- Slider main container -->
+                            <div class="swiper-container">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./assets/slider/img1.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                     <!-- Slides -->
+                                      <!-- Slides -->
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./assets/slider/img2.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                     <!-- Slides -->
+                                      <!-- Slides -->
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./assets/slider/img3.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                        <!-- Slides -->
+                                             <!-- Slides -->
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./assets/slider/img4.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                        <!-- Slides -->
+                                        <div class="swiper-slide">
+                                            <a href="#">
+                                                <img src="./assets/slider/img5.jpg" class="img-fluid" alt="">
+                                            </a>
+                                        </div>
+                                            <!-- Slides -->
+                                            <div class="swiper-slide">
+                                                <a href="#">
+                                                    <img src="./assets/slider/img6.jpg" class="img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                                <!-- Slides -->
+                                                <div class="swiper-slide">
+                                                    <a href="#">
+                                                        <img src="./assets/slider/img7.jpg" class="img-fluid" alt="">
+                                                    </a>
+                                                </div>
+
+                                </div>
+                            </div>
+
+                    </div>
+                </section>
 
 
-    <div class="like-button">
-        <div class="heart-bg">
-            <form action="/adopet/articles/<%= article._id  %>" method="POST" >
-            <div class="heart-icon">
-                <div class="form-example">
-                    <input type="submit" />
-                </div>
-                </div>
-
-        </form>
-        </div>
-    </div>
+       </main>
+ 
 
 
 
-<!-- 
-        <h2>Leave a review</h2>
-        <form action="" class="mb-3">
-            <div class="mb-3">
-                <label class="form-label" for="rating" >Rating</label>
-                <input class="form-range" type="range" min="1" max="5" id="rating" name="review[rating]">
-            </div>
-            <div class="mb-3">
-                <label for="form-label" for="body">Review</label>
-                <textarea name="review[body]" class="form-control" id="body" cols="30" rows="3"></textarea>
-            </div>
-            <button class="btn btn-success">Submit</button>
-        </form> -->
-        <script src="../../js/like.js"></script>
 
-        
-    </div>
+    <!-- masonry libray for horizontal grid -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous"></script>
 
+    <!-- swiper slider cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js" integrity="sha512-1LlEYE0qExJ/GUfAJ0k2K2fB5sIvMv/q6ueo3syohvQ3ElWDQVSMUOf39cxaDWHtNu7M6lF6ZC1H6A1m3SvheA==" crossorigin="anonymous"></script>
+
+    <!-- custom javascript main.js file -->
+    <script src="main.js"></script>
 </body>
 </html>

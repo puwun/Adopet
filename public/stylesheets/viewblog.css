@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&family=Roboto&display=swap');
+
+/* Root styling */
+:root {
+    --light: #f8f9fa;
+    --secondary: #000000;
+    --dark: #343a40;
+    --primary-color: #f15bb5;
+    --secondary-color: #2ec4b6;
+    --border: #e9ecef;
+}
+
+/* Global styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(45deg, #fff, #f0f0f0, #e6e6e6, #ea7877, #dca29c, #edcf6b, #c1c7cf, #dca29c, #ea7877, #edcf6b, #e6e6e6);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+    position: relative;
+}
+
+.text-secondary.secondary-title p {
+    padding-top: 4rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+* > * {
+    box-sizing: border-box;
+}
+
+/* Typography */
+.text-light {
+    color: var(--light);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-dark {
+    color: var(--dark);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+}
+
+.secondary-title {
+    font-family: 'Poppins', sans-serif;
+}
+
+.display-1 {
+    font-size: 28px;
+}
+
+.display-2 {
+    font-size: 20px;
+}
+
+.display-3 {
+    font-size: 16px;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+/* Images */
+.img-fluid {
+    width: 100%;
+}
+
+.rounded {
+    height: 120px;
+    width: 120px;
+    object-fit: fill;
+    border-radius: 50%;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1a9274;
+}
+
+/* Main Site */
+#site-main {
+    margin-top: 8em;
+}
+
+/* Navigation Menu */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 20px;
+}
+
+.nav-link {
+    font-size: 18px;
+    margin: 0 10px;
+    color: var(--dark);
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.toggle-button {
+    font-size: 21px;
+    background-color: transparent;
+    border: none;
+    margin-right: 20px;
+    display: none;
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+
+@media (max-width: 992px) {
+    .toggle-button {
+        display: block;
+    }
+
+    .collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .collapse.show {
+        display: flex;
+    }
+
+    .collapse .nav-link {
+        margin: 10px 0;
+    }
+}
+
+/* Swiper slider */
+.swiper-container {
+    margin-top: 2em;
+}
+
+.swiper-slide img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Like, Edit, Delete Buttons */
+.like-button,
+.edit-button,
+.delete-button {
+    display: inline-block;
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.like-button {
+    background-color: red;
+}
+
+.edit-button {
+    background-color: hsl(204, 64%, 44%);
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.like-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+    background-color: pink;
+    transform: scale(1.05);
+}
