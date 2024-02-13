@@ -71,16 +71,30 @@ Adopet aims to revolutionize pet adoption by streamlining the process and promot
 
 To get started with Adopet, follow these steps:
 
-*Clone the repository:*
-  bash
-     git clone https://github.com/puwun/Pet-Adoption.git
 
+<p>1. Clone the repository to your local machine.</p>
 
-  bash
-    npm i
+```
+git clone https://github.com/puwun/Pet-Adoption.git
+```
 
-  bash
-    nodemon start
+<p>2. Navigate to the project directory.</p>
+
+```
+cd Adopet
+```
+
+<p>3. Install Dependencies</p>
+
+```
+npm i
+```
+
+<p>4. Start the Server Using Nodemon</p>
+
+```
+nodemon start
+```
 
 
 
